@@ -18,9 +18,9 @@ export async function Navbar() {
             <Link href="/pricing">
               <Button variant="ghost">{t("pricing")}</Button>
             </Link>
-            <a href={appPath("/docs")}>
+            <Link href="/docs">
               <Button variant="ghost">{t("docs")}</Button>
-            </a>
+            </Link>
             <a href={appPath("/login")}>
               <Button variant="ghost">{t("logIn")}</Button>
             </a>
