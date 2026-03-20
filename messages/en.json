@@ -1,0 +1,163 @@
+{
+  "nav": {
+    "pricing": "Pricing",
+    "docs": "Docs",
+    "logIn": "Log in",
+    "signUp": "Sign up",
+    "enter": "Enter"
+  },
+  "theme": {
+    "switchToLight": "Switch to light theme",
+    "switchToDark": "Switch to dark theme"
+  },
+  "pricing": {
+    "title": "Simple, transparent pricing",
+    "subtitle": "Choose the plan that fits: from Free to Business and Enterprise.",
+    "perMonth": "/month",
+    "mostPopular": "Most popular",
+    "startFree": "Start free",
+    "contactUs": "Contact us",
+    "questions": "Have questions?",
+    "byoLLM": "Integrated LLM (fair use) / BYO LLM"
+  },
+  "plans": {
+    "free": {
+      "name": "Free",
+      "description": "To get started",
+      "features": ["1 workspace", "1 project", "Unlimited decisions", "AI decision generation (fair use)", "LLM as a judge (advisory, BYO only)", "CI Observation (no blocking)"]
+    },
+    "team": {
+      "name": "Team",
+      "description": "For growing teams",
+      "features": ["1 workspace", "Unlimited projects", "Unlimited decisions", "AI decision generation (fair use)", "LLM as a Judge (blocking)*", "CI Blocking for High Impact changes", "Judge tolerance"]
+    },
+    "business": {
+      "name": "Business",
+      "description": "For organizations",
+      "features": ["Unlimited workspaces", "Unlimited projects", "Unlimited decisions", "AI decision generation (fair use)", "LLM as a Judge (blocking)*", "CI Blocking for High Impact changes", "Judge tolerance", "Advanced Policies", "Roles"]
+    },
+    "enterprise": {
+      "name": "Enterprise",
+      "description": "Let's Talk",
+      "features": ["Custom limits", "Dedicated Support", "Dedicated Hosting"]
+    }
+  },
+  "landing": {
+    "hero": {
+      "eyebrow": "CI gate for technical decisions",
+      "headline": "Your decisions. Enforced in every PR.",
+      "subheadline": "Document what your team decided, link it to a PR, and let the gate check every code change against the decision — <b>blocking what doesn't fit</b>.",
+      "ctaPrimary": "Start free",
+      "ctaSecondary": "Book a demo",
+      "ctaMicrocopy": "Free forever on observation mode.<br></br>No credit card."
+    },
+    "integrations": {
+      "label": "Works with your existing CI",
+      "i1": "GitHub Actions",
+      "i2": "GitLab CI",
+      "i3": "Bitbucket Pipelines",
+      "i4": "Jenkins",
+      "i5": "Azure DevOps"
+    },
+    "value": {
+      "eyebrow": "The problem worth solving",
+      "title": "Decisions get documented.<br></br>Code still drifts.",
+      "subtitle": "The gap is not documentation — it's enforcement at merge time.",
+      "painTitle": "Without Decern",
+      "pain1": "A PR adds a service layer nobody agreed on. Review misses it. It ships.",
+      "pain2": "You deprecate a pattern. Next sprint, AI brings it back.",
+      "pain3": "Three teams, three interpretations of the same decision.",
+      "gainTitle": "With Decern",
+      "gain1": "Every high-impact PR is checked against the approved decision scope.",
+      "gain2": "Tech leads set guardrails once — no more repeating rules in review.",
+      "gain3": "Teams keep velocity and architecture stays consistent."
+    },
+    "solution": {
+      "eyebrow": "How it works",
+      "title": "Four steps.<br></br>Two minutes to set up.",
+      "subtitle": "Record the decision, link it to a PR, and let the gate do the rest.",
+      "step1Title": "Record the decision",
+      "step2Title": "Link it to the PR",
+      "step3Title": "Gate checks in CI",
+      "step4Title": "Judge checks alignment",
+      "flowJudgeLabel": "LLM as a Judge",
+      "flowOutcome": "Gate blocks or allows",
+      "flowStep1Desc": "Document context, options, and the decision. Generate from notes with AI or write manually.",
+      "flowStep2Desc": "Reference the decision in the PR. The pipeline knows which rules apply.",
+      "flowStep3Desc": "Gate runs in CI. Checks the decision exists and is approved.",
+      "flowStep4Desc": "The LLM Judge compares the diff to the decision. Out of scope? Blocked with a clear reason."
+    },
+    "buyers": {
+      "eyebrow": "Who it's for",
+      "title": "One tool, four outcomes",
+      "b1Role": "Engineering Manager",
+      "b1Pain": "Wants speed across squads without architecture going sideways.",
+      "b1Outcome": "Guardrails that scale without manual policing.",
+      "b2Role": "Tech Lead",
+      "b2Pain": "Tired of repeating the same architectural rules in every review.",
+      "b2Outcome": "Decisions enforced in CI, not stuck in someone's head.",
+      "b3Role": "Platform / DevEx",
+      "b3Pain": "Needs governance that doesn't add process friction.",
+      "b3Outcome": "One CI step. Same workflow. Measurable compliance.",
+      "b4Role": "Compliance / Audit",
+      "b4Pain": "Needs traceability between decisions and production changes.",
+      "b4Outcome": "Clear audit trail: what was decided, what was merged."
+    },
+    "trust": {
+      "eyebrow": "Trust and control",
+      "title": "Your model. Your keys. Your rules.",
+      "intro": "Decern runs on the LLM provider you choose. Keys are used per-request, never stored. You control enforcement mode and confidence threshold per workspace.",
+      "t1Title": "Bring your own LLM provider",
+      "t1Desc": "OpenAI, Claude, or any OpenAI-compatible endpoint. Your API key, your budget, your latency profile.",
+      "t2Title": "Observation first, blocking when ready",
+      "t2Desc": "Start in report-only mode on the Free plan. Enable blocking on Team or Business when the team is aligned.",
+      "t3Title": "Auditable, deterministic outputs",
+      "t3Desc": "Every gate run produces a decision reference, scope verdict, and reason code. Ready for review and compliance."
+    },
+    "features": {
+      "eyebrow": "Core capabilities",
+      "title": "Three things<mbr></mbr>the gate does",
+      "feat1Title": "LLM Judge in your CI pipeline",
+      "feat1Desc": "The Judge reads the decision and the PR diff. If the change goes beyond scope, the gate blocks with a clear, actionable reason.",
+      "feat2Title": "Confidence scoring and thresholds",
+      "feat2Desc": "The Judge returns a score (0–100%). Set a threshold per workspace. Know exactly how well each change aligns before it merges.",
+      "feat3Title": "Observation mode on Free",
+      "feat3Desc": "On Free, the gate reports but never blocks. Try it on real PRs with zero risk to your pipeline. No time limit."
+    },
+    "pricingTeaser": {
+      "eyebrow": "Pricing",
+      "title": "Start free. Unlock blocking when ready.",
+      "freeDesc": "Observation mode, unlimited checks, AI generation. Validate value with zero risk.",
+      "teamDesc": "Blocking mode, confidence thresholds, and controls for growing teams.",
+      "businessDesc": "Multi-workspace governance, advanced policies, and roles.",
+      "ctaPrimary": "See full pricing"
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "q1": "How is this different from Confluence, Notion, or ADRs in Markdown?",
+      "a1": "Those tools store documents. They don't enforce them. Decern links decisions to PRs and checks them in CI.",
+      "q2": "Does the AI write the decisions for us?",
+      "a2": "You can use AI to draft a decision from meeting notes. A human reviews and approves.",
+      "q3": "Won't this add bureaucracy or block us too often?",
+      "a3": "One link in the PR, one step in CI. You choose blocking or observation mode.",
+      "q4": "Do we need to change our GitHub or GitLab workflow?",
+      "a4": "No. Add one step in CI and reference the decision in the PR."
+    },
+    "cta": {
+      "title": "Stop drift before it ships.<br></br><b>Start in two minutes.</b>",
+      "subline": "One decision log. One gate in CI.<br></br>Every change checked against what you decided.",
+      "ctaPrimary": "Start free",
+      "ctaSecondary": "See pricing",
+      "microcopy": "Free forever on observation mode.<br></br>No credit card required."
+    },
+    "footer": {
+      "pricing": "Pricing",
+      "dashboard": "Dashboard",
+      "logIn": "Log in",
+      "signUp": "Sign up",
+      "contact": "Contact",
+      "copyright": "© Decern. Technical decision log and CI gate for modern teams.",
+      "builtBy": "Built by PaLab"
+    }
+  }
+}

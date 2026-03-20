@@ -1,0 +1,163 @@
+{
+  "nav": {
+    "pricing": "Prezzi",
+    "docs": "Docs",
+    "logIn": "Log in",
+    "signUp": "Sign up",
+    "enter": "Entra"
+  },
+  "theme": {
+    "switchToLight": "Attiva tema chiaro",
+    "switchToDark": "Attiva tema scuro"
+  },
+  "pricing": {
+    "title": "Prezzi semplici e trasparenti",
+    "subtitle": "Scegli il piano più adatto: da Free a Business ed Enterprise.",
+    "perMonth": "/mese",
+    "mostPopular": "Più popolare",
+    "startFree": "Inizia gratis",
+    "contactUs": "Contattaci",
+    "questions": "Hai domande?",
+    "byoLLM": "LLM integrato (fair use) / BYO LLM"
+  },
+  "plans": {
+    "free": {
+      "name": "Free",
+      "description": "Per iniziare",
+      "features": ["1 workspace", "1 progetto", "Decisioni illimitate", "Generazione decisioni AI (fair use)", "LLM come giudice (advisory, solo BYO)", "CI Observation (no blocking)"]
+    },
+    "team": {
+      "name": "Team",
+      "description": "Per team in crescita",
+      "features": ["1 workspace", "Progetti illimitati", "Decisioni illimitate", "Generazione decisioni AI (fair use)", "LLM come giudice (può bloccare)*", "CI Blocking per High Impact changes", "Judge tolerance"]
+    },
+    "business": {
+      "name": "Business",
+      "description": "Per le organizzazioni",
+      "features": ["Workspace illimitati", "Progetti illimitati", "Decisioni illimitate", "Generazione decisioni AI (fair use)", "LLM come giudice (può bloccare)*", "CI Blocking per High Impact changes", "Judge tolerance", "Policy avanzate", "Ruoli"]
+    },
+    "enterprise": {
+      "name": "Enterprise",
+      "description": "Let's Talk",
+      "features": ["Limiti personalizzati", "Supporto dedicato", "Dedicated Hosting"]
+    }
+  },
+  "landing": {
+    "hero": {
+      "eyebrow": "Gate in CI per le decisioni tecniche",
+      "headline": "Le tue decisioni. Fatte rispettare in ogni PR.",
+      "subheadline": "Documenta cosa avete deciso, collega la decisione alla PR e lascia che il gate controlli ogni modifica — <b>bloccando ciò che non è coerente</b>.",
+      "ctaPrimary": "Inizia gratis",
+      "ctaSecondary": "Prenota una demo",
+      "ctaMicrocopy": "Gratis per sempre in observation mode.<br></br>Nessuna carta di credito."
+    },
+    "integrations": {
+      "label": "Si integra con la tua CI",
+      "i1": "GitHub Actions",
+      "i2": "GitLab CI",
+      "i3": "Bitbucket Pipelines",
+      "i4": "Jenkins",
+      "i5": "Azure DevOps"
+    },
+    "value": {
+      "eyebrow": "Il problema che vale la pena risolvere",
+      "title": "Le decisioni si documentano.<br></br>Il codice va alla deriva.",
+      "subtitle": "Il problema non è documentare — è far rispettare al momento del merge.",
+      "painTitle": "Senza Decern",
+      "pain1": "Una PR aggiunge un service layer che nessuno ha approvato. La review non lo nota. Va in produzione.",
+      "pain2": "Deprecate un pattern. Lo sprint dopo, l'AI lo reintroduce.",
+      "pain3": "Tre team, tre interpretazioni della stessa decisione.",
+      "gainTitle": "Con Decern",
+      "gain1": "Ogni PR ad alto impatto viene verificata rispetto allo scope della decisione.",
+      "gain2": "I tech lead impostano le guardrail una volta — basta ripetere le stesse regole in review.",
+      "gain3": "Il team mantiene velocità e l'architettura resta coerente."
+    },
+    "solution": {
+      "eyebrow": "Come funziona",
+      "title": "Quattro passi.<br></br>Due minuti per configurarlo.",
+      "subtitle": "Registra la decisione, collegala alla PR e lascia fare al gate.",
+      "step1Title": "Registra la decisione",
+      "step2Title": "Collegala alla PR",
+      "step3Title": "Il gate verifica in CI",
+      "step4Title": "Il Judge verifica l'allineamento",
+      "flowJudgeLabel": "LLM as a Judge",
+      "flowOutcome": "Il gate blocca o lascia passare",
+      "flowStep1Desc": "Documenta contesto, opzioni e decisione. Genera da note con l'AI o scrivi a mano.",
+      "flowStep2Desc": "Fai riferimento alla decisione nella PR. La pipeline sa quali regole applicare.",
+      "flowStep3Desc": "Il gate gira in CI. Verifica che la decisione esista e sia approvata.",
+      "flowStep4Desc": "L'LLM Judge confronta il diff con la decisione. Modifica fuori scope? Bloccata con motivazione chiara."
+    },
+    "buyers": {
+      "eyebrow": "Per chi è",
+      "title": "Uno strumento, quattro risultati",
+      "b1Role": "Engineering Manager",
+      "b1Pain": "Vuole velocità tra squad senza che l'architettura vada alla deriva.",
+      "b1Outcome": "Guardrail che scalano senza controllo manuale.",
+      "b2Role": "Tech Lead",
+      "b2Pain": "Stanco di ripetere le stesse regole architetturali in ogni review.",
+      "b2Outcome": "Decisioni enforced in CI, non nella testa di qualcuno.",
+      "b3Role": "Platform / DevEx",
+      "b3Pain": "Serve governance senza aggiungere attrito al processo.",
+      "b3Outcome": "Uno step in CI. Stesso workflow. Compliance misurabile.",
+      "b4Role": "Compliance / Audit",
+      "b4Pain": "Serve tracciabilità tra decisioni e modifiche in produzione.",
+      "b4Outcome": "Audit trail chiaro: cosa è stato deciso, cosa è stato mergiato."
+    },
+    "trust": {
+      "eyebrow": "Trust e controllo",
+      "title": "Il tuo modello. Le tue chiavi. Le tue regole.",
+      "intro": "Decern gira sul provider LLM che scegli tu. Le chiavi sono usate per singola richiesta, mai salvate.",
+      "t1Title": "Porta il tuo provider LLM",
+      "t1Desc": "OpenAI, Claude o qualsiasi endpoint compatibile OpenAI.",
+      "t2Title": "Prima observation, poi blocking",
+      "t2Desc": "Parti in modalità report-only sul piano Free.",
+      "t3Title": "Output auditabili e deterministici",
+      "t3Desc": "Ogni run del gate produce riferimento decisione, verdetto di scope e codice motivazione."
+    },
+    "features": {
+      "eyebrow": "Capacità principali",
+      "title": "Tre cose<mbr></mbr>che fa il gate",
+      "feat1Title": "LLM Judge nella tua pipeline CI",
+      "feat1Desc": "Il Judge legge la decisione e il diff della PR.",
+      "feat2Title": "Punteggio di confidenza e soglie",
+      "feat2Desc": "Il Judge restituisce un punteggio (0–100%).",
+      "feat3Title": "Observation mode su Free",
+      "feat3Desc": "Sul piano Free, il gate segnala ma non blocca mai."
+    },
+    "pricingTeaser": {
+      "eyebrow": "Prezzi",
+      "title": "Parti gratis. Blocking quando sei pronto.",
+      "freeDesc": "Observation mode, check illimitati, generazione AI.",
+      "teamDesc": "Blocking mode, soglie di confidenza e controlli.",
+      "businessDesc": "Governance multi-workspace, policy avanzate e ruoli.",
+      "ctaPrimary": "Vedi tutti i prezzi"
+    },
+    "faq": {
+      "title": "Domande frequenti",
+      "q1": "In cosa è diverso da Confluence, Notion o ADR in Markdown?",
+      "a1": "Quei tool conservano documenti. Non li fanno rispettare.",
+      "q2": "L'AI scrive le decisioni al posto nostro?",
+      "a2": "Puoi usare l'AI per abbozzare una decisione da note di meeting.",
+      "q3": "Non si rischia di aggiungere burocrazia?",
+      "a3": "Un link nella PR, uno step in CI.",
+      "q4": "Dobbiamo cambiare workflow?",
+      "a4": "No. Aggiungi uno step in CI e referenzia la decisione."
+    },
+    "cta": {
+      "title": "Ferma il drift prima che vada in produzione.<br></br><b>Inizia in due minuti.</b>",
+      "subline": "Un decision log. Un gate in CI.<br></br>Ogni modifica controllata rispetto a quanto deciso.",
+      "ctaPrimary": "Inizia gratis",
+      "ctaSecondary": "Vedi i prezzi",
+      "microcopy": "Gratis per sempre in observation mode.<br></br>Nessuna carta di credito."
+    },
+    "footer": {
+      "pricing": "Prezzi",
+      "dashboard": "Dashboard",
+      "logIn": "Accedi",
+      "signUp": "Registrati",
+      "contact": "Contatti",
+      "copyright": "© Decern. Decision log tecnico e gate in CI per team moderni.",
+      "builtBy": "Realizzato da PaLab"
+    }
+  }
+}
