@@ -34,8 +34,8 @@ Open `http://localhost:3000`.
 
 ## Required environment variables
 
-- `NEXT_PUBLIC_WEBSITE_URL` (e.g. `https://decern.app`)
-- `NEXT_PUBLIC_APP_URL` (e.g. `https://app.decern.app`)
+- `NEXT_PUBLIC_WEBSITE_URL` (e.g. `https://decern.dev`)
+- `NEXT_PUBLIC_APP_URL` (e.g. `https://app.decern.dev`)
 - `STRIPE_SECRET_KEY`
 - `STRIPE_TEAM_PRICE_ID`
 - `STRIPE_BUSINESS_PRICE_ID`

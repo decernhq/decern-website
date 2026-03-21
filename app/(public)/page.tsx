@@ -76,7 +76,7 @@ export default async function LandingPage() {
                           {t("hero.ctaPrimary")}
                         </Button>
                       </a>
-                      <a href="mailto:support@decern.app?subject=Decern%20Demo">
+                      <a href="mailto:support@decern.dev?subject=Decern%20Demo">
                         <Button variant="outline" size="lg" className="h-12 rounded-xl px-7">
                           {t("hero.ctaSecondary")}
                         </Button>
@@ -149,7 +149,7 @@ export default async function LandingPage() {
                 <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-500 dark:text-gray-400">{t("value.painTitle")}</p>
                 <div className="mt-5 space-y-3">
                   {(["pain1", "pain2", "pain3"] as const).map((k) => (
-                    <p key={k} className="rounded-lg border-l-2 border-rose-400 bg-gray-50/80 py-3 pl-4 pr-3 text-sm leading-relaxed text-gray-600 dark:bg-gray-900/40 dark:text-gray-300">
+                    <p key={k} className="rounded-lg border-l-2 border-rose-400 bg-rose-50 py-3 pl-4 pr-3 text-sm leading-relaxed text-gray-700 dark:bg-rose-950/30 dark:text-rose-100/90">
                       {t(`value.${k}`)}
                     </p>
                   ))}
@@ -343,7 +343,7 @@ export default async function LandingPage() {
         <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-6 sm:flex-row">
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-1 text-sm">
             <Link href="/pricing" className="text-gray-500 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100">{t("footer.pricing")}</Link>
-            <a href="mailto:support@decern.app" className="text-gray-500 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100">{t("footer.contact")}</a>
+            <a href="mailto:support@decern.dev" className="text-gray-500 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100">{t("footer.contact")}</a>
             {user ? (
               <a href={appPath("/dashboard")} className="text-gray-500 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100">{t("footer.dashboard")}</a>
             ) : (

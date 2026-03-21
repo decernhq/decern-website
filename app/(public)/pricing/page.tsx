@@ -106,7 +106,7 @@ export default async function PricingPage() {
                 </a>
               ) : plan.id === "enterprise" ? (
                 <a
-                  href="mailto:support@decern.app?subject=Enterprise"
+                  href="mailto:support@decern.dev?subject=Enterprise"
                   className="block"
                 >
                   <Button variant="outline" className="w-full">
@@ -129,10 +129,10 @@ export default async function PricingPage() {
       <p className="mt-12 text-center text-sm text-gray-500">
         {t("questions")}{" "}
         <a
-          href="mailto:support@decern.app"
+          href="mailto:support@decern.dev"
           className="text-brand-600 hover:text-brand-500"
         >
-          support@decern.app
+          support@decern.dev
         </a>
       </p>
       <div className="mt-6">
