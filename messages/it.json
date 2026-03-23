@@ -12,13 +12,14 @@
   },
   "pricing": {
     "title": "Prezzi semplici e trasparenti",
-    "subtitle": "Scegli il piano più adatto: da Free a Business ed Enterprise.",
+    "subtitle": "Scegli il piano più adatto: da Free a Business a Self Hosted.",
     "perMonth": "/mese",
     "mostPopular": "Più popolare",
     "startFree": "Inizia gratis",
     "contactUs": "Contattaci",
     "questions": "Hai domande?",
-    "byoLLM": "LLM integrato (fair use) / BYO LLM"
+    "byoLLM": "LLM integrato (fair use) / BYO LLM",
+    "byoLLMEnterprise": "BYO LLM"
   },
   "plans": {
     "free": {
@@ -37,9 +38,21 @@
       "features": ["Workspace illimitati", "Progetti illimitati", "Decisioni illimitate", "Generazione decisioni AI (fair use)", "LLM come giudice (può bloccare)*", "CI Blocking per High Impact changes", "Judge tolerance", "Policy avanzate", "Ruoli"]
     },
     "enterprise": {
-      "name": "Enterprise",
-      "description": "Let's Talk",
-      "features": ["Limiti personalizzati", "Supporto dedicato", "Dedicated Hosting"]
+      "name": "Self Hosted",
+      "description": "Sulla tua infrastruttura",
+      "features": [
+        "Workspace illimitati",
+        "Progetti illimitati",
+        "Decisioni illimitate",
+        "Generazione decisioni AI (BYO)",
+        "LLM come giudice (può bloccare)*",
+        "CI Blocking per High Impact changes",
+        "Judge tolerance",
+        "Policy avanzate",
+        "Ruoli",
+        "Integrazione self-hosted",
+        "Supporto dedicato"
+      ]
     }
   },
   "landing": {

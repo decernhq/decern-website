@@ -29,7 +29,7 @@ export const PLANS: Plan[] = [
     id: "team",
     name: "Team",
     description: "For growing teams",
-    priceLabel: "EUR 49 / month",
+    priceLabel: "EUR 19 / month",
     ctaLabel: "Choose Team",
     checkout: true,
     features: [
@@ -43,7 +43,7 @@ export const PLANS: Plan[] = [
     id: "business",
     name: "Business",
     description: "For organizations",
-    priceLabel: "EUR 99 / month",
+    priceLabel: "EUR 59 / month",
     ctaLabel: "Choose Business",
     checkout: true,
     features: [
@@ -55,15 +55,18 @@ export const PLANS: Plan[] = [
   },
   {
     id: "enterprise",
-    name: "Enterprise",
-    description: "Custom support and deployment",
+    name: "Self Hosted",
+    description: "Deploy on your infrastructure",
     priceLabel: "Contact us",
     ctaLabel: "Contact sales",
     checkout: false,
     features: [
-      "Custom limits",
+      "Unlimited workspaces",
+      "Advanced policies",
+      "Roles and collaboration",
+      "Judge + governance controls",
+      "Self-hosted integration",
       "Dedicated support",
-      "Private hosting options",
     ],
   },
 ];

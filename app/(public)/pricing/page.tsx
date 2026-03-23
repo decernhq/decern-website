@@ -96,6 +96,9 @@ export default async function PricingPage() {
             {(plan.id === "team" || plan.id === "business") && (
               <p className="mt-2 text-xs text-gray-400">* {t("byoLLM")}</p>
             )}
+            {plan.id === "enterprise" && (
+              <p className="mt-2 text-xs text-gray-400">* {t("byoLLMEnterprise")}</p>
+            )}
 
             <div className="mt-6">
               {plan.id === "free" ? (
@@ -106,7 +109,7 @@ export default async function PricingPage() {
                 </a>
               ) : plan.id === "enterprise" ? (
                 <a
-                  href="mailto:support@decern.dev?subject=Enterprise"
+                  href="mailto:support@decern.dev?subject=Self%20Hosted"
                   className="block"
                 >
                   <Button variant="outline" className="w-full">

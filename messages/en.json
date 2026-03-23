@@ -12,13 +12,14 @@
   },
   "pricing": {
     "title": "Simple, transparent pricing",
-    "subtitle": "Choose the plan that fits: from Free to Business and Enterprise.",
+    "subtitle": "Choose the plan that fits: from Free to Business and Self Hosted.",
     "perMonth": "/month",
     "mostPopular": "Most popular",
     "startFree": "Start free",
     "contactUs": "Contact us",
     "questions": "Have questions?",
-    "byoLLM": "Integrated LLM (fair use) / BYO LLM"
+    "byoLLM": "Integrated LLM (fair use) / BYO LLM",
+    "byoLLMEnterprise": "BYO LLM"
   },
   "plans": {
     "free": {
@@ -37,9 +38,21 @@
       "features": ["Unlimited workspaces", "Unlimited projects", "Unlimited decisions", "AI decision generation (fair use)", "LLM as a Judge (blocking)*", "CI Blocking for High Impact changes", "Judge tolerance", "Advanced Policies", "Roles"]
     },
     "enterprise": {
-      "name": "Enterprise",
-      "description": "Let's Talk",
-      "features": ["Custom limits", "Dedicated Support", "Dedicated Hosting"]
+      "name": "Self Hosted",
+      "description": "Deploy on your infrastructure",
+      "features": [
+        "Unlimited workspaces",
+        "Unlimited projects",
+        "Unlimited decisions",
+        "AI decision generation (BYO)",
+        "LLM as a Judge (blocking)*",
+        "CI Blocking for High Impact changes",
+        "Judge tolerance",
+        "Advanced Policies",
+        "Roles",
+        "Self-hosted integration",
+        "Dedicated support"
+      ]
     }
   },
   "landing": {
