@@ -50,7 +50,7 @@ export const PLANS: Record<PlanId, Plan> = {
       "CI Blocking for High Impact changes",
       "Judge tolerance",
     ],
-    limits: { workspaces_limit: 1, projects_limit: -1, users_per_workspace_limit: 10, decisions_limit: -1, ai_generations_per_month: 500 },
+    limits: { workspaces_limit: 1, projects_limit: -1, users_per_workspace_limit: 10, decisions_limit: -1, ai_generations_per_month: 700 },
   },
   business: {
     id: "business",
@@ -69,7 +69,7 @@ export const PLANS: Record<PlanId, Plan> = {
       "Advanced Policies",
       "Roles",
     ],
-    limits: { workspaces_limit: -1, projects_limit: -1, users_per_workspace_limit: 20, decisions_limit: -1, ai_generations_per_month: 1500 },
+    limits: { workspaces_limit: -1, projects_limit: -1, users_per_workspace_limit: 20, decisions_limit: -1, ai_generations_per_month: 1400 },
   },
   enterprise: {
     id: "enterprise",
