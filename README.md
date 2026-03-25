@@ -1,5 +1,56 @@
 # decern-website
 
+Public website for Decern: landing, docs teaser, and pricing with checkout entry points.
+
+## Scope
+
+This repo is intentionally separate from `decern-core`:
+
+- `decern-website`: marketing and pricing surfaces
+- `decern-core`: authenticated app, dashboard, workspace and decision management
+
+## Stack
+
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS
+- Stripe SDK (checkout integration)
+- `next-intl` for localization
+
+## Routes
+
+- `/` - landing page
+- `/pricing` - plans and checkout CTA
+- `/docs` - public docs entry page
+
+## Local Development
+
+```bash
+npm install
+npm run dev
+```
+
+Open `http://localhost:3000`.
+
+## Required Environment Variables
+
+Set these in your environment (local and deployment):
+
+- `NEXT_PUBLIC_WEBSITE_URL`
+- `NEXT_PUBLIC_APP_URL`
+- `STRIPE_SECRET_KEY`
+- `STRIPE_TEAM_PRICE_ID`
+- `STRIPE_BUSINESS_PRICE_ID`
+
+## Scripts
+
+- `npm run dev` - development server
+- `npm run build` - production build
+- `npm run start` - run built app
+- `npm run lint` - lint codebase
+# decern-website
+
 Marketing and pricing website for Decern.
 
 - Landing page: `/`
