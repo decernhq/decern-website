@@ -305,3 +305,113 @@
 .landing-cta-glow {
   animation: cta-glow-pulse 5s ease-in-out infinite;
 }
+
+/* ── Apple-style animated glow cards ── */
+
+@keyframes glow-rotate {
+  to { transform: rotate(360deg); }
+}
+
+.glow-card {
+  position: relative;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  padding: 2px;
+}
+
+/* Rotating gradient disc (visible border) */
+.glow-card::after {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: conic-gradient(
+    var(--glow-c1) 0%,
+    transparent 10%,
+    transparent 40%,
+    var(--glow-c2) 50%,
+    transparent 60%,
+    transparent 90%,
+    var(--glow-c1) 100%
+  );
+  animation: glow-rotate 8s linear infinite;
+}
+
+/* Outer glow (blurred copy) */
+.glow-card::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: inherit;
+  background: conic-gradient(
+    var(--glow-c1) 0%,
+    transparent 10%,
+    transparent 40%,
+    var(--glow-c2) 50%,
+    transparent 60%,
+    transparent 90%,
+    var(--glow-c1) 100%
+  );
+  filter: blur(8px);
+  opacity: 0.6;
+  animation: glow-rotate 8s linear infinite;
+}
+
+.glow-card-inner {
+  position: relative;
+  z-index: 1;
+  border-radius: calc(1.5rem - 2px);
+  height: 100%;
+}
+
+.glow-card-rose {
+  --glow-c1: #fb7185;
+  --glow-c2: #e11d48;
+}
+
+.glow-card-emerald {
+  --glow-c1: #34d399;
+  --glow-c2: #059669;
+}
+
+.dark .glow-card::before {
+  opacity: 0.5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glow-card::before,
+  .glow-card::after {
+    animation: none;
+  }
+}
+
+/* ── Pricing animated chevron arrows ── */
+
+@keyframes pricing-chevron {
+  0%, 100% { opacity: 0.12; transform: translateX(-1px) scale(0.85); }
+  50% { opacity: 1; transform: translateX(1px) scale(1.1); }
+}
+
+/* ── Documentation page ── */
+
+.docs-section + .docs-section {
+  margin-top: 3.5rem;
+  padding-top: 3.5rem;
+  border-top: 1px solid var(--app-border);
+}
+
+.docs-link {
+  color: #0284c7;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.15s;
+}
+.docs-link:hover {
+  color: #0369a1;
+  text-decoration: underline;
+}
+.dark .docs-link {
+  color: #38bdf8;
+}
+.dark .docs-link:hover {
+  color: #7dd3fc;
+}

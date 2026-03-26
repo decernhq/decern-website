@@ -143,28 +143,46 @@ export default async function LandingPage() {
               </p>
             </div>
           </FadeIn>
-          <div className="mt-14 grid gap-6 lg:grid-cols-2">
+          <div className="mt-14 grid gap-8 lg:grid-cols-2">
             <FadeIn>
-              <div className="h-full rounded-2xl border border-gray-200/80 bg-white p-6 dark:border-gray-700/50 dark:bg-gray-900/60">
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-500 dark:text-gray-400">{t("value.painTitle")}</p>
-                <div className="mt-5 space-y-3">
-                  {(["pain1", "pain2", "pain3"] as const).map((k) => (
-                    <p key={k} className="rounded-lg border-l-2 border-rose-400 bg-rose-50 py-3 pl-4 pr-3 text-sm leading-relaxed text-gray-700 dark:bg-rose-950/30 dark:text-rose-100/90">
-                      {t(`value.${k}`)}
-                    </p>
-                  ))}
+              <div className="glow-card glow-card-rose h-full">
+                <div className="glow-card-inner bg-white p-8 dark:bg-gray-900">
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-rose-100 dark:bg-rose-900/50">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5 text-rose-500 dark:text-rose-400">
+                        <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
+                      </svg>
+                    </span>
+                    <p className="text-base font-bold uppercase tracking-wide text-rose-600 dark:text-rose-400">{t("value.painTitle")}</p>
+                  </div>
+                  <div className="mt-6 space-y-3">
+                    {(["pain1", "pain2", "pain3"] as const).map((k) => (
+                      <p key={k} className="rounded-xl border-l-[3px] border-rose-400 bg-rose-50/50 py-3.5 pl-4 pr-4 text-[0.9rem] leading-relaxed text-gray-700 dark:bg-rose-950/20 dark:text-rose-100/90">
+                        {t(`value.${k}`)}
+                      </p>
+                    ))}
+                  </div>
                 </div>
               </div>
             </FadeIn>
             <FadeIn delay={120}>
-              <div className="h-full rounded-2xl border border-emerald-200/70 bg-emerald-50/50 p-6 dark:border-emerald-800/40 dark:bg-emerald-950/20">
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-emerald-700 dark:text-emerald-300">{t("value.gainTitle")}</p>
-                <div className="mt-5 space-y-3">
-                  {(["gain1", "gain2", "gain3"] as const).map((k) => (
-                    <p key={k} className="rounded-lg border-l-2 border-emerald-400 bg-white/80 py-3 pl-4 pr-3 text-sm leading-relaxed text-gray-700 dark:bg-gray-900/40 dark:text-gray-200">
-                      {t(`value.${k}`)}
-                    </p>
-                  ))}
+              <div className="glow-card glow-card-emerald h-full">
+                <div className="glow-card-inner bg-white p-8 dark:bg-gray-900">
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-100 dark:bg-emerald-900/50">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5 text-emerald-500 dark:text-emerald-400">
+                        <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clipRule="evenodd" />
+                      </svg>
+                    </span>
+                    <p className="text-base font-bold uppercase tracking-wide text-emerald-700 dark:text-emerald-400">{t("value.gainTitle")}</p>
+                  </div>
+                  <div className="mt-6 space-y-3">
+                    {(["gain1", "gain2", "gain3"] as const).map((k) => (
+                      <p key={k} className="rounded-xl border-l-[3px] border-emerald-400 bg-emerald-50/50 py-3.5 pl-4 pr-4 text-[0.9rem] leading-relaxed text-gray-700 dark:bg-emerald-950/20 dark:text-gray-200">
+                        {t(`value.${k}`)}
+                      </p>
+                    ))}
+                  </div>
                 </div>
               </div>
             </FadeIn>

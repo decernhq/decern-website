@@ -31,40 +31,47 @@ export default async function PricingPage() {
           {t("title")}
         </h1>
         <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
-          {t("subtitle")}
+          {t.rich("subtitle", { mbr: () => <br className="sm:hidden" /> })}
         </p>
       </div>
 
-      <div className="mx-auto mt-6 w-full max-w-5xl">
-        <div className="hidden items-center justify-center gap-3 md:flex">
-          <span className="rounded-full border border-gray-200 bg-white px-3 py-1 text-xs font-semibold text-gray-700 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200">
-            {t("progressFree")}
-          </span>
-          <span className="text-gray-400 dark:text-gray-500" aria-hidden>
-            →
-          </span>
-          <span className="rounded-full border border-gray-200 bg-white px-3 py-1 text-xs font-semibold text-gray-700 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200">
-            {t("progressTeam")}
-          </span>
-          <span className="text-gray-400 dark:text-gray-500" aria-hidden>
-            →
-          </span>
-          <span className="rounded-full border border-gray-200 bg-white px-3 py-1 text-xs font-semibold text-gray-700 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200">
-            {t("progressBusiness")}
-          </span>
-          <span className="text-gray-400 dark:text-gray-500" aria-hidden>
-            →
-          </span>
-          <span className="rounded-full border border-gray-900 bg-gray-900 px-3 py-1 text-xs font-semibold text-white dark:border-gray-100 dark:bg-gray-100 dark:text-gray-900">
-            {t("progressEnterprise")}
-          </span>
-        </div>
-        <p className="text-center text-xs text-gray-500 dark:text-gray-400 md:hidden">
-          {t("tierLadder")}
-        </p>
-      </div>
 
       <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {/* Progress badges aligned to card columns – desktop only */}
+        <div className="relative col-span-full mb-4 hidden lg:grid lg:grid-cols-4 lg:gap-6">
+          {(["progressFree", "progressTeam", "progressBusiness", "progressEnterprise"] as const).map((k, i) => (
+            <div key={k} className="relative flex items-center justify-center">
+              <span
+                className={cn(
+                  "rounded-full px-3.5 py-1.5 text-xs font-semibold shadow-sm",
+                  k === "progressEnterprise"
+                    ? "border border-gray-900 bg-gray-900 text-white shadow-gray-900/20 dark:border-gray-100 dark:bg-gray-100 dark:text-gray-900 dark:shadow-gray-100/10"
+                    : "border border-gray-200 bg-white text-gray-700 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200"
+                )}
+              >
+                {t(k)}
+              </span>
+              {i < 3 && (
+                <div className="absolute -right-3 flex translate-x-1/2 items-center gap-[1px]" aria-hidden>
+                  {[0, 1, 2].map((j) => (
+                    <svg
+                      key={j}
+                      className="h-3 w-3 text-brand-500 dark:text-brand-400"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      style={{
+                        animation: "pricing-chevron 1.8s ease-in-out infinite",
+                        animationDelay: `${i * 0.6 + j * 0.18}s`,
+                      }}
+                    >
+                      <path d="M5.5 3l5 5-5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
         {plans.map((plan) => (
           <div
             key={plan.id}
