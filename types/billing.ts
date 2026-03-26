@@ -31,7 +31,7 @@ export const PLANS: Record<PlanId, Plan> = {
       "Unlimited decisions",
       "AI decision generation (fair use)",
       "LLM as a judge (advisory)*",
-      "CI Observation (no blocking)",
+      "CI checks (warnings only, no blocking)",
     ],
     limits: { workspaces_limit: 1, projects_limit: 1, users_per_workspace_limit: 1, decisions_limit: -1, ai_generations_per_month: 10 },
   },

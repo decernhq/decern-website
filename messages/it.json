@@ -19,13 +19,21 @@
     "contactUs": "Contattaci",
     "questions": "Hai domande?",
     "byoLLM": "LLM integrato (fair use) / BYO LLM",
-    "byoLLMEnterprise": "BYO LLM"
+    "byoLLMEnterprise": "BYO LLM",
+    "fromLabel": "Da",
+    "tierLadder": "👉 Da visibilità → enforcement → governance",
+    "progressFree": "Free: Visibilità",
+    "progressTeam": "Team: Enforcement",
+    "progressBusiness": "Business: Governance",
+    "progressEnterprise": "Enterprise: Controllo deploy",
+    "enterpriseBadge": "Premium",
+    "enterpriseSubprice": "Deploy privato e supporto dedicato"
   },
   "plans": {
     "free": {
       "name": "Free",
       "description": "Per iniziare",
-      "features": ["1 workspace", "1 progetto", "Decisioni illimitate", "Generazione decisioni AI (fair use)", "LLM come giudice (advisory, solo BYO)", "CI Observation (no blocking)"]
+      "features": ["1 workspace", "1 progetto", "Decisioni illimitate", "Generazione decisioni AI (fair use)", "LLM come giudice (advisory, solo BYO)", "Controlli CI (solo avvisi, nessun blocco)"]
     },
     "team": {
       "name": "Team",
@@ -129,7 +137,7 @@
     },
     "features": {
       "eyebrow": "Capacità principali",
-      "title": "Tre cose<mbr></mbr>che fa il gate",
+      "title": "Tre cose<mbr></mbr> che fa il gate",
       "feat1Title": "LLM Judge nella tua pipeline CI",
       "feat1Desc": "Il Judge legge la decisione e il diff della PR.",
       "feat2Title": "Punteggio di confidenza e soglie",

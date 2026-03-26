@@ -19,13 +19,21 @@
     "contactUs": "Contact us",
     "questions": "Have questions?",
     "byoLLM": "Integrated LLM (fair use) / BYO LLM",
-    "byoLLMEnterprise": "BYO LLM"
+    "byoLLMEnterprise": "BYO LLM",
+    "fromLabel": "From",
+    "tierLadder": "👉 From visibility → enforcement → governance",
+    "progressFree": "Free: Visibility",
+    "progressTeam": "Team: Enforcement",
+    "progressBusiness": "Business: Governance",
+    "progressEnterprise": "Enterprise: Deployment control",
+    "enterpriseBadge": "Premium",
+    "enterpriseSubprice": "Private deployment and dedicated support"
   },
   "plans": {
     "free": {
       "name": "Free",
       "description": "To get started",
-      "features": ["1 workspace", "1 project", "Unlimited decisions", "AI decision generation (fair use)", "LLM as a judge (advisory, BYO only)", "CI Observation (no blocking)"]
+      "features": ["1 workspace", "1 project", "Unlimited decisions", "AI decision generation (fair use)", "LLM as a judge (advisory, BYO only)", "CI checks (warnings only, no blocking)"]
     },
     "team": {
       "name": "Team",
@@ -129,7 +137,7 @@
     },
     "features": {
       "eyebrow": "Core capabilities",
-      "title": "Three things<mbr></mbr>the gate does",
+      "title": "Three things<mbr></mbr> the gate does",
       "feat1Title": "LLM Judge in your CI pipeline",
       "feat1Desc": "The Judge reads the decision and the PR diff. If the change goes beyond scope, the gate blocks with a clear, actionable reason.",
       "feat2Title": "Confidence scoring and thresholds",

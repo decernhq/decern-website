@@ -1,13 +1,11 @@
 # decern-website
 
-Public website for Decern: landing, docs teaser, and pricing with checkout entry points.
+Marketing and pricing website for Decern.
 
-## Scope
+This repository is intentionally separate from `decern-core`:
 
-This repo is intentionally separate from `decern-core`:
-
-- `decern-website`: marketing and pricing surfaces
-- `decern-core`: authenticated app, dashboard, workspace and decision management
+- `decern-website` serves public marketing pages and checkout flow
+- `decern-core` serves app/dashboard/auth/API product functionality
 
 ## Stack
 
@@ -15,53 +13,17 @@ This repo is intentionally separate from `decern-core`:
 - React 19
 - TypeScript
 - Tailwind CSS
-- Stripe SDK (checkout integration)
+- Stripe SDK
 - `next-intl` for localization
 
-## Routes
+## Main Routes
 
 - `/` - landing page
-- `/pricing` - plans and checkout CTA
-- `/docs` - public docs entry page
+- `/pricing` - pricing and checkout CTA
+- `/docs` - public docs entry
+- `POST /api/stripe/checkout` - checkout session creation
 
 ## Local Development
-
-```bash
-npm install
-npm run dev
-```
-
-Open `http://localhost:3000`.
-
-## Required Environment Variables
-
-Set these in your environment (local and deployment):
-
-- `NEXT_PUBLIC_WEBSITE_URL`
-- `NEXT_PUBLIC_APP_URL`
-- `STRIPE_SECRET_KEY`
-- `STRIPE_TEAM_PRICE_ID`
-- `STRIPE_BUSINESS_PRICE_ID`
-
-## Scripts
-
-- `npm run dev` - development server
-- `npm run build` - production build
-- `npm run start` - run built app
-- `npm run lint` - lint codebase
-# decern-website
-
-Marketing and pricing website for Decern.
-
-- Landing page: `/`
-- Pricing page: `/pricing`
-- Stripe checkout endpoint: `POST /api/stripe/checkout`
-
-This repository is intentionally separate from `decern-core`:
-- `decern-website` serves public marketing pages and checkout flow.
-- `decern-core` serves app/dashboard/auth/API product functionality.
-
-## Local development
 
 1) Install dependencies:
 
@@ -83,14 +45,21 @@ npm run dev
 
 Open `http://localhost:3000`.
 
-## Required environment variables
+## Required Environment Variables
 
-- `NEXT_PUBLIC_WEBSITE_URL` (e.g. `https://decern.dev`)
-- `NEXT_PUBLIC_APP_URL` (e.g. `https://app.decern.dev`)
+- `NEXT_PUBLIC_WEBSITE_URL` (example: `https://decern.dev`)
+- `NEXT_PUBLIC_APP_URL` (example: `https://app.decern.dev`)
 - `STRIPE_SECRET_KEY`
 - `STRIPE_TEAM_PRICE_ID`
 - `STRIPE_BUSINESS_PRICE_ID`
 
+## Scripts
+
+- `npm run dev` - development server
+- `npm run build` - production build
+- `npm run start` - run built app
+- `npm run lint` - lint codebase
+
 ## Deploy
 
-Deploy on Vercel as a standalone app and set the env vars above for Production/Preview.
+Deploy on Vercel as a standalone app and set the env vars above for Production and Preview.
