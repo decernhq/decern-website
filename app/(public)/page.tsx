@@ -35,12 +35,12 @@ export default async function LandingPage() {
 
   return (
     <main className="overflow-x-hidden bg-white dark:bg-gray-950">
-      <section className="relative overflow-hidden px-4 pb-24 pt-16 sm:pb-28 sm:pt-20 lg:pb-20">
+      <section className="relative overflow-hidden pb-24 pt-16 sm:pb-28 sm:pt-20 lg:pb-20">
         <div className="pointer-events-none absolute -left-24 top-0 h-[420px] w-[420px] rounded-full bg-brand-400/20 blur-[110px] dark:bg-brand-500/20" aria-hidden />
         <div className="pointer-events-none absolute -right-24 top-1/3 h-[420px] w-[420px] rounded-full bg-violet-400/15 blur-[110px] dark:bg-violet-500/20" aria-hidden />
         <div className="pointer-events-none absolute inset-0 landing-grid-pattern landing-hero-grid-fade" aria-hidden />
 
-        <div className="relative mx-auto max-w-6xl">
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-[1fr_1.03fr] lg:items-center">
             <div>
               <FadeIn delay={0} duration={600}>
