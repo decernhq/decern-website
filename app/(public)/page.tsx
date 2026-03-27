@@ -21,17 +21,12 @@ function Bold({ children }: { children: React.ReactNode }) {
     </strong>
   );
 }
-function BoldWhite({ children }: { children: React.ReactNode }) {
-  return <strong className="font-bold text-white">{children}</strong>;
-}
-
 export default async function LandingPage() {
   const user = null;
   const t = await getTranslations("landing");
   const plansT = await getTranslations("plans");
 
   const bold = { b: (c: React.ReactNode) => <Bold>{c}</Bold> };
-  const boldWhite = { b: (c: React.ReactNode) => <BoldWhite>{c}</BoldWhite> };
 
   return (
     <main className="overflow-x-hidden bg-white dark:bg-gray-950">
@@ -331,29 +326,29 @@ export default async function LandingPage() {
         <div className="landing-cta-shine pointer-events-none absolute inset-0" aria-hidden />
         <div className="landing-cta-glow pointer-events-none absolute inset-0" aria-hidden />
         <div className="relative z-10 mx-auto max-w-2xl text-center">
-          <h2 className="landing-cta-title text-3xl font-bold leading-snug tracking-tight text-white sm:text-4xl lg:text-5xl">
-            {t.rich("cta.title", { ...boldWhite, br: () => <br /> })}
+          <h2 className="landing-cta-title text-3xl font-bold leading-snug tracking-tight text-gray-900 sm:text-4xl lg:text-5xl dark:text-white">
+            {t.rich("cta.title", { ...bold, br: () => <br /> })}
           </h2>
-          <p className="landing-cta-subline mt-6 text-lg text-gray-400 sm:text-xl">{t.rich("cta.subline", { br: () => <br /> })}</p>
+          <p className="landing-cta-subline mt-6 text-lg text-gray-600 sm:text-xl dark:text-gray-300">{t.rich("cta.subline", { br: () => <br /> })}</p>
           <div className="landing-cta-buttons mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             {user ? (
               <a href={appPath("/dashboard")}>
-                <Button size="lg" className="bg-white text-gray-900 hover:bg-gray-100 shadow-lg shadow-white/10">Dashboard</Button>
+                <Button size="lg" className="shadow-lg shadow-brand-500/20">Dashboard</Button>
               </a>
             ) : (
               <>
                 <a href={appPath("/signup")}>
-                  <Button size="lg" className="bg-white text-gray-900 hover:bg-gray-100 shadow-lg shadow-white/10">{t("cta.ctaPrimary")}</Button>
+                  <Button size="lg" className="shadow-lg shadow-brand-500/20">{t("cta.ctaPrimary")}</Button>
                 </a>
                 <Link href="/pricing">
-                  <Button size="lg" variant="outline" className="border-gray-600 text-gray-300 hover:bg-white/5 hover:text-white">
+                  <Button size="lg" variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-white/5 dark:hover:text-white">
                     {t("cta.ctaSecondary")}
                   </Button>
                 </Link>
               </>
             )}
           </div>
-          <p className="landing-cta-subline mt-4 text-sm text-gray-500">{t.rich("cta.microcopy", { br: () => <br /> })}</p>
+          <p className="landing-cta-subline mt-4 text-sm text-gray-500 dark:text-gray-400">{t.rich("cta.microcopy", { br: () => <br /> })}</p>
         </div>
       </section>
 

@@ -67,7 +67,7 @@
     "hero": {
       "eyebrow": "Gate in CI per le decisioni tecniche",
       "headline": "Le tue decisioni. Fatte rispettare in ogni PR.",
-      "subheadline": "Documenta cosa avete deciso, collega la decisione alla PR e lascia che il gate controlli ogni modifica — <b>bloccando ciò che non è coerente</b>.",
+      "subheadline": "Documenta cosa avete deciso, collega la decisione alla PR e lascia che il gate controlli ogni modifica - <b>bloccando ciò che non è coerente</b>.",
       "ctaPrimary": "Inizia gratis",
       "ctaSecondary": "Prenota una demo",
       "ctaMicrocopy": "Gratis per sempre in observation mode.<br></br>Nessuna carta di credito."
@@ -83,14 +83,14 @@
     "value": {
       "eyebrow": "Il problema che vale la pena risolvere",
       "title": "Le decisioni si documentano.<br></br>Il codice va alla deriva.",
-      "subtitle": "Il problema non è documentare — è far rispettare al momento del merge.",
+      "subtitle": "Il problema non è documentare, è far rispettare al momento del merge.",
       "painTitle": "Senza Decern",
       "pain1": "Una PR aggiunge un service layer che nessuno ha approvato. La review non lo nota. Va in produzione.",
       "pain2": "Deprecate un pattern. Lo sprint dopo, l'AI lo reintroduce.",
       "pain3": "Tre team, tre interpretazioni della stessa decisione.",
       "gainTitle": "Con Decern",
       "gain1": "Ogni PR ad alto impatto viene verificata rispetto allo scope della decisione.",
-      "gain2": "I tech lead impostano le guardrail una volta — basta ripetere le stesse regole in review.",
+      "gain2": "I tech lead impostano le guardrail una volta - basta ripetere le stesse regole in review.",
       "gain3": "Il team mantiene velocità e l'architettura resta coerente."
     },
     "solution": {

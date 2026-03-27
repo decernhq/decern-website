@@ -115,7 +115,7 @@ export default function DocsPage() {
               across your entire software delivery lifecycle.
             </P>
             <P>
-              Every significant technical choice — from database migrations to infrastructure changes —
+              Every significant technical choice, from database migrations to infrastructure changes,
               gets recorded as a <em>decision</em>. Decisions flow through a clear lifecycle
               (<Code>proposed</Code> → <Code>approved</Code> → <Code>superseded</Code> / <Code>rejected</Code>)
               and can be enforced automatically in your CI/CD pipeline via <strong>Decision Gate</strong>.
@@ -138,9 +138,9 @@ export default function DocsPage() {
 
             <SubTitle>Core components</SubTitle>
             <ul className="mt-3 space-y-2 text-[0.935rem] text-gray-600 dark:text-gray-300">
-              <li><strong>Decern App</strong> — the web dashboard where you manage workspaces, projects, decisions and team members.</li>
-              <li><strong>Decision Gate</strong> (<Code>decern-gate</Code>) — a CLI you run in CI to enforce decision governance on high-impact changes.</li>
-              <li><strong>Protocol</strong> (<Code>@decern/protocol</Code>) — a stateless TypeScript library with shared domain logic (ADR parsing, validation, policies).</li>
+              <li><strong>Decern App</strong> - the web dashboard where you manage workspaces, projects, decisions and team members.</li>
+              <li><strong>Decision Gate</strong> (<Code>decern-gate</Code>) - a CLI you run in CI to enforce decision governance on high-impact changes.</li>
+              <li><strong>Protocol</strong> (<Code>@decern/protocol</Code>) - a stateless TypeScript library with shared domain logic (ADR parsing, validation, policies).</li>
             </ul>
           </section>
 
@@ -165,11 +165,11 @@ export default function DocsPage() {
             <SubTitle>3. Record your first decision</SubTitle>
             <P>Open the project and click <strong>New decision</strong>. Fill in:</P>
             <ul className="mt-2 ml-5 list-disc space-y-1 text-[0.935rem] text-gray-600 dark:text-gray-300">
-              <li><strong>Title</strong> — a short summary (e.g. &quot;Adopt PostgreSQL for user data&quot;).</li>
-              <li><strong>Context</strong> — the problem or requirement that prompted this decision.</li>
-              <li><strong>Options considered</strong> — the alternatives you evaluated.</li>
-              <li><strong>Decision</strong> — what you chose and why.</li>
-              <li><strong>Consequences</strong> — positive and negative impacts of this choice.</li>
+              <li><strong>Title</strong> - a short summary (e.g. &quot;Adopt PostgreSQL for user data&quot;).</li>
+              <li><strong>Context</strong> - the problem or requirement that prompted this decision.</li>
+              <li><strong>Options considered</strong> - the alternatives you evaluated.</li>
+              <li><strong>Decision</strong> - what you chose and why.</li>
+              <li><strong>Consequences</strong> - positive and negative impacts of this choice.</li>
             </ul>
             <P>
               The decision starts in <Code>proposed</Code> status. An approver can move it to <Code>approved</Code>.
@@ -203,7 +203,7 @@ export default function DocsPage() {
             <P>
               Invite team members via email from <strong>Workspace → Members</strong>.
               Each member has a <em>workspace access role</em> (admin or member).
-              On the Business plan, members also receive a <em>decision role</em> —
+              On the Business plan, members also receive a <em>decision role</em>,
               see <a href="#roles" className="docs-link">Roles &amp; Permissions</a>.
             </P>
 
@@ -211,7 +211,7 @@ export default function DocsPage() {
             <P>
               To use Decision Gate, the workspace owner generates a <strong>CI Token</strong> from
               <strong> Workspace → Token CI (Decision Gate)</strong>.
-              The token is shown only once — store it in your CI secrets as <Code>DECERN_CI_TOKEN</Code>.
+              The token is shown only once, store it in your CI secrets as <Code>DECERN_CI_TOKEN</Code>.
             </P>
             <Callout type="warn">
               Only the workspace owner can generate or revoke the CI token.
@@ -223,7 +223,7 @@ export default function DocsPage() {
           <section id="projects" className="docs-section">
             <SectionTitle id="projects">Projects</SectionTitle>
             <P>
-              Projects live inside a workspace and group related decisions together —
+              Projects live inside a workspace and group related decisions together,
               usually one project per repository or service.
             </P>
             <P>
@@ -231,7 +231,7 @@ export default function DocsPage() {
               This enables:
             </P>
             <ul className="mt-2 ml-5 list-disc space-y-1 text-[0.935rem] text-gray-600 dark:text-gray-300">
-              <li>Two-way ADR sync — decisions are committed as markdown files in your repo.</li>
+              <li>Two-way ADR sync - decisions are committed as markdown files in your repo.</li>
               <li>Pull request URLs are automatically linked to decisions.</li>
             </ul>
 
@@ -266,17 +266,17 @@ export default function DocsPage() {
 
             <SubTitle>Decision fields</SubTitle>
             <ul className="mt-3 ml-5 list-disc space-y-1.5 text-[0.935rem] text-gray-600 dark:text-gray-300">
-              <li><strong>Title</strong> — short summary of the decision.</li>
-              <li><strong>Status</strong> — <Code>proposed</Code>, <Code>approved</Code>, <Code>superseded</Code>, or <Code>rejected</Code>.</li>
-              <li><strong>Context</strong> — the problem or requirement.</li>
-              <li><strong>Options</strong> — alternatives considered (one per line).</li>
-              <li><strong>Decision</strong> — what was chosen and why.</li>
-              <li><strong>Consequences</strong> — positive and negative impacts.</li>
-              <li><strong>Tags</strong> — free-form labels for categorization.</li>
-              <li><strong>External links</strong> — references to RFCs, design docs, etc.</li>
-              <li><strong>Pull request URLs</strong> — linked PRs implementing this decision.</li>
-              <li><strong>ADR ref</strong> — an optional identifier like <Code>ADR-001</Code> used for GitHub sync and CI references.</li>
-              <li><strong>Linked decision</strong> — reference to a superseded decision.</li>
+              <li><strong>Title</strong> - short summary of the decision.</li>
+              <li><strong>Status</strong> - <Code>proposed</Code>, <Code>approved</Code>, <Code>superseded</Code>, or <Code>rejected</Code>.</li>
+              <li><strong>Context</strong> - the problem or requirement.</li>
+              <li><strong>Options</strong> - alternatives considered (one per line).</li>
+              <li><strong>Decision</strong> - what was chosen and why.</li>
+              <li><strong>Consequences</strong> - positive and negative impacts.</li>
+              <li><strong>Tags</strong> - free-form labels for categorization.</li>
+              <li><strong>External links</strong> - references to RFCs, design docs, etc.</li>
+              <li><strong>Pull request URLs</strong> - linked PRs implementing this decision.</li>
+              <li><strong>ADR ref</strong> - an optional identifier like <Code>ADR-001</Code> used for GitHub sync and CI references.</li>
+              <li><strong>Linked decision</strong> - reference to a superseded decision.</li>
             </ul>
 
             <SubTitle>Decision lifecycle</SubTitle>
@@ -296,13 +296,13 @@ export default function DocsPage() {
             <P>
               A decision starts as <Code>proposed</Code>. Team members with the appropriate role can
               approve or reject it. An approved decision can later be <Code>superseded</Code> by a new
-              one — the old decision links to its replacement.
+              one, and the old decision links to its replacement.
             </P>
 
             <SubTitle>AI generation</SubTitle>
             <P>
               Decern can generate a decision draft from a plain-text description using AI.
-              Paste your thoughts and click <strong>Generate with AI</strong> — the system produces
+              Paste your thoughts and click <strong>Generate with AI</strong>, and the system produces
               a structured ADR you can review and edit before saving. This feature is available
               on all plans under fair-use limits.
             </P>
@@ -379,14 +379,14 @@ npx decern-gate`}</Pre>
               Use any of these formats:
             </P>
             <ul className="mt-2 ml-5 list-disc space-y-1 text-[0.935rem] text-gray-600 dark:text-gray-300">
-              <li><Code>decern:&lt;decision-id&gt;</Code> — e.g. <Code>decern:550e8400-...</Code></li>
-              <li><Code>DECERN-&lt;id&gt;</Code> — e.g. <Code>DECERN-550e8400</Code></li>
+              <li><Code>decern:&lt;decision-id&gt;</Code> - e.g. <Code>decern:550e8400-...</Code></li>
+              <li><Code>DECERN-&lt;id&gt;</Code> - e.g. <Code>DECERN-550e8400</Code></li>
               <li>A Decern URL containing <Code>/decisions/&lt;id&gt;</Code></li>
-              <li>An ADR ref — e.g. <Code>ADR-001</Code></li>
+              <li>An ADR ref - e.g. <Code>ADR-001</Code></li>
             </ul>
 
             <Callout type="info">
-              If no high-impact files are changed, the gate passes immediately — no decision reference needed.
+              If no high-impact files are changed, the gate passes immediately, with no decision reference needed.
             </Callout>
           </section>
 
@@ -491,7 +491,7 @@ npx decern-gate`}</Pre>
             <SubTitle>BYO LLM</SubTitle>
             <P>
               The judge is <strong>Bring Your Own LLM</strong>. You provide the API credentials
-              via environment variables — they are sent in the request body and <strong>never stored</strong>
+              via environment variables, they are sent in the request body and <strong>never stored</strong>
               by the backend. Compatible with OpenAI and Anthropic APIs.
             </P>
             <EnvTable rows={[
@@ -512,7 +512,7 @@ npx decern-gate`}</Pre>
 
             <SubTitle>Advisory vs Blocking</SubTitle>
             <P>
-              On the <strong>Free</strong> plan the judge is always <em>advisory</em> — it logs warnings but never blocks the pipeline.
+              On the <strong>Free</strong> plan the judge is always <em>advisory</em>, it logs warnings but never blocks the pipeline.
               On <strong>Team</strong> and <strong>Business</strong>, the judge can block if the workspace policy &quot;Judge blocking&quot;
               is enabled (on by default). When the backend returns <Code>advisory: true</Code>, the CLI passes even if <Code>allowed: false</Code>.
             </P>
@@ -520,7 +520,7 @@ npx decern-gate`}</Pre>
             <SubTitle>Confidence &amp; tolerance</SubTitle>
             <P>
               The judge returns a confidence score (0–1). You can set a minimum threshold via
-              <Code> DECERN_JUDGE_MIN_CONFIDENCE</Code> — the gate blocks if the score is below, even when
+              <Code> DECERN_JUDGE_MIN_CONFIDENCE</Code> - the gate blocks if the score is below, even when
               <Code> allowed: true</Code>. Workspace admins can also set a <em>judge tolerance</em> percentage
               in the workspace policies.
             </P>
@@ -546,18 +546,18 @@ npx decern-gate`}</Pre>
                   <p className="text-sm font-bold text-gray-900 dark:text-white">Workspace access role</p>
                   <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">Controls administration capabilities</p>
                   <ul className="mt-3 space-y-1.5 text-sm text-gray-600 dark:text-gray-300">
-                    <li><strong>Owner</strong> — full control, generates CI tokens, manages billing.</li>
-                    <li><strong>Admin</strong> — can manage members, update workspace settings.</li>
-                    <li><strong>Member</strong> — basic workspace access.</li>
+                    <li><strong>Owner</strong> - full control, generates CI tokens, manages billing.</li>
+                    <li><strong>Admin</strong> - can manage members, update workspace settings.</li>
+                    <li><strong>Member</strong> - basic workspace access.</li>
                   </ul>
                 </div>
                 <div className="rounded-xl border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-800/50">
                   <p className="text-sm font-bold text-gray-900 dark:text-white">Decision role</p>
                   <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">Controls the decision lifecycle</p>
                   <ul className="mt-3 space-y-1.5 text-sm text-gray-600 dark:text-gray-300">
-                    <li><strong>Approver</strong> — can approve/reject decisions, plus edit.</li>
-                    <li><strong>Contributor</strong> — can create and edit decisions (not approve).</li>
-                    <li><strong>Viewer</strong> — read-only access to decisions.</li>
+                    <li><strong>Approver</strong> - can approve/reject decisions, plus edit.</li>
+                    <li><strong>Contributor</strong> - can create and edit decisions (not approve).</li>
+                    <li><strong>Viewer</strong> - read-only access to decisions.</li>
                   </ul>
                 </div>
               </div>
@@ -609,7 +609,7 @@ npx decern-gate`}</Pre>
                   <tr><td className="px-4 py-2.5 font-mono text-xs">require_approved</td><td className="px-4 py-2.5">on</td><td className="px-4 py-2.5 text-gray-600 dark:text-gray-300">The referenced decision must have &quot;approved&quot; status.</td></tr>
                   <tr><td className="px-4 py-2.5 font-mono text-xs">require_linked_pr</td><td className="px-4 py-2.5">off</td><td className="px-4 py-2.5 text-gray-600 dark:text-gray-300">The decision must have at least one linked PR URL.</td></tr>
                   <tr><td className="px-4 py-2.5 font-mono text-xs">judge_blocking</td><td className="px-4 py-2.5">on</td><td className="px-4 py-2.5 text-gray-600 dark:text-gray-300">LLM Judge can block the pipeline (vs advisory only).</td></tr>
-                  <tr><td className="px-4 py-2.5 font-mono text-xs">judge_tolerance_percent</td><td className="px-4 py-2.5">—</td><td className="px-4 py-2.5 text-gray-600 dark:text-gray-300">Confidence tolerance for the judge (0–100%).</td></tr>
+                  <tr><td className="px-4 py-2.5 font-mono text-xs">judge_tolerance_percent</td><td className="px-4 py-2.5">N/A</td><td className="px-4 py-2.5 text-gray-600 dark:text-gray-300">Confidence tolerance for the judge (0-100%).</td></tr>
                 </tbody>
               </table>
             </div>
@@ -624,7 +624,7 @@ npx decern-gate`}</Pre>
           <section id="github-sync" className="docs-section">
             <SectionTitle id="github-sync">GitHub Sync</SectionTitle>
             <P>
-              Decern can sync decisions as ADR markdown files in your GitHub repository — and vice versa.
+              Decern can sync decisions as ADR markdown files in your GitHub repository, and vice versa.
             </P>
 
             <SubTitle>Setup</SubTitle>
@@ -669,7 +669,7 @@ We will use PostgreSQL as our primary database.
               Decern is distributed as a <strong>Docker image</strong> for self-hosted deployments.
               The image includes all features (Decision Gate, Judge, GitHub Sync, AI generation,
               Roles, Policies) with unlimited members. You run the container on your
-              infrastructure — no source code is exposed.
+              infrastructure, and no source code is exposed.
             </P>
 
             <SubTitle>Quick start</SubTitle>
@@ -741,7 +741,7 @@ supabase db push
 
             <SubTitle>Plan &amp; features</SubTitle>
             <P>
-              Licensed self-hosted instances automatically unlock the <strong>enterprise</strong> tier —
+              Licensed self-hosted instances automatically unlock the <strong>enterprise</strong> tier,
               all features are enabled with no limits. No Stripe setup is required
               unless you want to manage internal billing for your organization.
             </P>

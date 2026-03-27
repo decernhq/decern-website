@@ -67,7 +67,7 @@
     "hero": {
       "eyebrow": "CI gate for technical decisions",
       "headline": "Enforce architecture decisions in CI",
-      "subheadline": "Document what your team decided, link it to a PR, and let the gate check every code change against the decision — <b>blocking what doesn't fit</b>.",
+      "subheadline": "Document what your team decided, link it to a PR, and let the gate check every code change against the decision - <b>blocking what doesn't fit</b>.",
       "ctaPrimary": "Start free",
       "ctaSecondary": "Book a demo",
       "ctaMicrocopy": "Free forever on observation mode.<br></br>No credit card."
@@ -83,14 +83,14 @@
     "value": {
       "eyebrow": "The problem worth solving",
       "title": "Decisions get documented.<br></br>Code still drifts.",
-      "subtitle": "The gap is not documentation — it's enforcement at merge time.",
+      "subtitle": "The gap is not documentation, it's enforcement at merge time.",
       "painTitle": "Without Decern",
       "pain1": "A PR adds a service layer nobody agreed on. Review misses it. It ships.",
       "pain2": "You deprecate a pattern. Next sprint, AI brings it back.",
       "pain3": "Three teams, three interpretations of the same decision.",
       "gainTitle": "With Decern",
       "gain1": "Every high-impact PR is checked against the approved decision scope.",
-      "gain2": "Tech leads set guardrails once — no more repeating rules in review.",
+      "gain2": "Tech leads set guardrails once - no more repeating rules in review.",
       "gain3": "Teams keep velocity and architecture stays consistent."
     },
     "solution": {
@@ -165,7 +165,7 @@
       "a4": "No. Add one step in CI and reference the decision in the PR."
     },
     "cta": {
-      "title": "Stop drift before it ships.<br></br><b>Start in two minutes.</b>",
+      "title": "Decisions only matter if they’re enforced.<br></br><b>Start in two minutes.</b>",
       "subline": "One decision log. One gate in CI.<br></br>Every change checked against what you decided.",
       "ctaPrimary": "Start free",
       "ctaSecondary": "See pricing",
