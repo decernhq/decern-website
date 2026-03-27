@@ -63,6 +63,25 @@
       ]
     }
   },
+  "contactForm": {
+    "title": "Scrivici",
+    "subtitle": "Hai una domanda, vuoi una demo o stai valutando il self-hosted? Scrivici e ti rispondiamo entro un giorno lavorativo.",
+    "name": "Il tuo nome",
+    "namePlaceholder": "Mario Rossi",
+    "email": "Email aziendale",
+    "emailPlaceholder": "mario@azienda.com",
+    "subject": "Oggetto",
+    "subjectPlaceholder": "Come possiamo aiutarti?",
+    "message": "Messaggio",
+    "messagePlaceholder": "Parlaci del tuo team, del tuo caso d'uso, o di cosa vorresti sapere...",
+    "send": "Invia messaggio",
+    "sending": "Invio in corso...",
+    "successTitle": "Messaggio inviato!",
+    "successBody": "Grazie per averci scritto. Ti rispondiamo entro un giorno lavorativo. Nel frattempo, esplora la documentazione o inizia gratis.",
+    "error": "Qualcosa è andato storto. Riprova o scrivici a opensource@decern.dev.",
+    "close": "Chiudi",
+    "privacy": "Useremo la tua email solo per risponderti. Niente spam, mai."
+  },
   "landing": {
     "hero": {
       "eyebrow": "Gate in CI per le decisioni tecniche",

@@ -3,6 +3,7 @@ import { getTranslations, getMessages } from "next-intl/server";
 import { PLANS, type PlanId } from "@/types/billing";
 import { Button } from "@/components/ui/button";
 import { PricingCheckoutButton } from "@/components/pricing-checkout-button";
+import { ContactForm, ContactFormButton } from "@/components/contact-form";
 import { cn } from "@/lib/utils";
 import { appPath } from "@/lib/config";
 
@@ -10,7 +11,27 @@ const PLAN_ORDER: PlanId[] = ["free", "team", "business", "enterprise"];
 
 export default async function PricingPage() {
   const t = await getTranslations("pricing");
+  const cfT = await getTranslations("contactForm");
   const messages = await getMessages();
+  const contactLabels = {
+    title: cfT("title"),
+    subtitle: cfT("subtitle"),
+    name: cfT("name"),
+    namePlaceholder: cfT("namePlaceholder"),
+    email: cfT("email"),
+    emailPlaceholder: cfT("emailPlaceholder"),
+    subject: cfT("subject"),
+    subjectPlaceholder: cfT("subjectPlaceholder"),
+    message: cfT("message"),
+    messagePlaceholder: cfT("messagePlaceholder"),
+    send: cfT("send"),
+    sending: cfT("sending"),
+    successTitle: cfT("successTitle"),
+    successBody: cfT("successBody"),
+    error: cfT("error"),
+    close: cfT("close"),
+    privacy: cfT("privacy"),
+  };
   const plansData = (messages as { plans?: Record<string, { name?: string; description?: string; features?: string[] }> })?.plans;
 
   const plans = PLAN_ORDER.map((id) => {
@@ -163,14 +184,13 @@ export default async function PricingPage() {
                   </Button>
                 </a>
               ) : plan.id === "enterprise" ? (
-                <a
-                  href="mailto:support@decern.dev?subject=Self%20Hosted"
-                  className="block"
+                <ContactFormButton
+                  labels={contactLabels}
+                  defaultSubject="Self Hosted"
+                  className="w-full bg-gray-900 text-white hover:bg-black dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-200"
                 >
-                  <Button className="w-full bg-gray-900 text-white hover:bg-black dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-200">
-                    {t("contactUs")}
-                  </Button>
-                </a>
+                  {t("contactUs")}
+                </ContactFormButton>
               ) : (
                 <PricingCheckoutButton
                   planId={plan.id as "team" | "business"}
@@ -184,15 +204,10 @@ export default async function PricingPage() {
         ))}
       </div>
 
-      <p className="mt-12 text-center text-sm text-gray-500 dark:text-gray-400">
-        {t("questions")}{" "}
-        <a
-          href="mailto:support@decern.dev"
-          className="text-brand-600 hover:text-brand-500 dark:text-brand-400 dark:hover:text-brand-300"
-        >
-          support@decern.dev
-        </a>
-      </p>
+      <div className="mt-12 flex items-center justify-center gap-1.5 text-sm text-gray-500 dark:text-gray-400">
+        <span>{t("questions")}</span>
+        <ContactForm labels={contactLabels} />
+      </div>
       <div className="mt-6">
         <Link href="/">
           <Button variant="ghost">Back to home</Button>

@@ -63,6 +63,25 @@
       ]
     }
   },
+  "contactForm": {
+    "title": "Get in touch",
+    "subtitle": "Have a question, want a demo, or exploring self-hosted? Drop us a line and we'll get back to you within one business day.",
+    "name": "Your name",
+    "namePlaceholder": "Jane Smith",
+    "email": "Work email",
+    "emailPlaceholder": "jane@company.com",
+    "subject": "Subject",
+    "subjectPlaceholder": "What can we help with?",
+    "message": "Message",
+    "messagePlaceholder": "Tell us about your team, use case, or what you'd like to know...",
+    "send": "Send message",
+    "sending": "Sending...",
+    "successTitle": "Message sent!",
+    "successBody": "Thanks for reaching out. We'll get back to you within one business day. In the meantime, feel free to explore the docs or start free.",
+    "error": "Something went wrong. Please try again or write us at opensource@decern.dev.",
+    "close": "Close",
+    "privacy": "We'll only use your email to reply. No spam, ever."
+  },
   "landing": {
     "hero": {
       "eyebrow": "CI gate for technical decisions",

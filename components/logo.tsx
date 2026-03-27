@@ -10,7 +10,7 @@ export function Logo({ className, linkToHome = true }: LogoProps) {
   const content = (
     <span
       className={cn(
-        "text-xl font-semibold tracking-tight text-brand-600 sm:text-2xl",
+        "flex items-center gap-2 text-xl font-semibold tracking-tight text-brand-600 sm:text-2xl",
         className
       )}
     >

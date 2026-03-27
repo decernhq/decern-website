@@ -4,6 +4,7 @@ import { HiCommandLine, HiShieldCheck, HiEye } from "react-icons/hi2";
 import { Button } from "@/components/ui/button";
 import { SolutionFlowAnimation } from "@/components/landing/solution-flow-animation";
 import { FadeIn } from "@/components/landing/fade-in";
+import { ContactForm, ContactFormButton } from "@/components/contact-form";
 import { appPath } from "@/lib/config";
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
@@ -25,6 +26,26 @@ export default async function LandingPage() {
   const user = null;
   const t = await getTranslations("landing");
   const plansT = await getTranslations("plans");
+  const cfT = await getTranslations("contactForm");
+  const contactLabels = {
+    title: cfT("title"),
+    subtitle: cfT("subtitle"),
+    name: cfT("name"),
+    namePlaceholder: cfT("namePlaceholder"),
+    email: cfT("email"),
+    emailPlaceholder: cfT("emailPlaceholder"),
+    subject: cfT("subject"),
+    subjectPlaceholder: cfT("subjectPlaceholder"),
+    message: cfT("message"),
+    messagePlaceholder: cfT("messagePlaceholder"),
+    send: cfT("send"),
+    sending: cfT("sending"),
+    successTitle: cfT("successTitle"),
+    successBody: cfT("successBody"),
+    error: cfT("error"),
+    close: cfT("close"),
+    privacy: cfT("privacy"),
+  };
 
   const bold = { b: (c: React.ReactNode) => <Bold>{c}</Bold> };
 
@@ -71,11 +92,13 @@ export default async function LandingPage() {
                           {t("hero.ctaPrimary")}
                         </Button>
                       </a>
-                      <a href="mailto:support@decern.dev?subject=Decern%20Demo">
-                        <Button variant="outline" size="lg" className="h-12 rounded-xl px-7">
-                          {t("hero.ctaSecondary")}
-                        </Button>
-                      </a>
+                      <ContactFormButton
+                        labels={contactLabels}
+                        defaultSubject="Decern Demo"
+                        className="h-12 rounded-xl border border-gray-300 bg-white px-7 text-base font-medium text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:bg-transparent dark:text-gray-200 dark:hover:bg-white/5"
+                      >
+                        {t("hero.ctaSecondary")}
+                      </ContactFormButton>
                     </>
                   )}
                 </div>
@@ -356,7 +379,7 @@ export default async function LandingPage() {
         <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-6 sm:flex-row">
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-1 text-sm">
             <Link href="/pricing" className="text-gray-500 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100">{t("footer.pricing")}</Link>
-            <a href="mailto:support@decern.dev" className="text-gray-500 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100">{t("footer.contact")}</a>
+            <ContactForm labels={contactLabels} />
             {user ? (
               <a href={appPath("/dashboard")} className="text-gray-500 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100">{t("footer.dashboard")}</a>
             ) : (
