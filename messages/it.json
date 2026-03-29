@@ -82,6 +82,218 @@
     "close": "Chiudi",
     "privacy": "Useremo la tua email solo per risponderti. Niente spam, mai."
   },
+  "terms": {
+    "title": "Termini e Condizioni",
+    "lastUpdated": "Ultimo aggiornamento: 27 marzo 2026",
+    "intro": "I presenti Termini e Condizioni (\"Termini\") costituiscono un accordo giuridicamente vincolante tra l'utente (\"Cliente\", \"tu\") e Alessandro Palazzesi, operante come Decern, P.IVA 12930530014 (di seguito \"Decern\", \"noi\", \"ci\" o \"nostro\"). Accedendo o utilizzando la piattaforma Decern, il sito web, le API, gli strumenti CLI o qualsiasi servizio correlato (collettivamente, il \"Servizio\"), accetti di essere vincolato da questi Termini nella loro interezza. Se non accetti, non devi utilizzare il Servizio. Decern fornisce un sistema di enforcement basato su CI che valuta le pull request rispetto a decisioni architetturali definite e può bloccare modifiche in base alle policy configurate.",
+    "definitions": {
+      "title": "Definizioni",
+      "body": [
+        "\"Servizio\" indica la piattaforma Decern, inclusa l'applicazione web, le API, lo strumento CLI gate (decern-gate), la documentazione e tutta l'infrastruttura correlata gestita da Decern.",
+        "\"Dati del Cliente\" indica qualsiasi dato, diff di codice, record di decisione, configurazione o altro contenuto che tu o i tuoi utenti autorizzati caricate, inviate o trasmettete attraverso il Servizio.",
+        "\"LLM Judge\" indica la funzionalità di analisi basata su AI che valuta le modifiche al codice rispetto alle decisioni architetturali documentate, utilizzando un modello linguistico di terze parti o fornito dal Cliente.",
+        "\"Abbonamento\" indica il piano a pagamento o gratuito selezionato dal Cliente, come descritto nella pagina dei prezzi.",
+        "\"Utente Autorizzato\" indica qualsiasi individuo a cui è stato concesso l'accesso al Servizio tramite l'account del Cliente.",
+        "\"BYO LLM\" (Bring Your Own LLM) indica la configurazione in cui il Cliente fornisce le proprie chiavi API per un provider di modelli linguistici di terze parti."
+      ]
+    },
+    "acceptance": {
+      "title": "Accettazione dei Termini",
+      "body": [
+        "Creando un account, accedendo al Servizio o utilizzando qualsiasi parte della piattaforma, dichiari e garantisci di avere l'autorità legale per stipulare questi Termini per conto tuo o dell'organizzazione che rappresenti.",
+        "Se utilizzi il Servizio per conto di un'azienda, organizzazione o altra entità giuridica, dichiari di avere l'autorità di vincolare tale entità a questi Termini. In tal caso, \"tu\" e \"Cliente\" si riferiscono a tale entità.",
+        "Devi avere almeno 18 anni per utilizzare il Servizio. Utilizzando il Servizio, dichiari e garantisci di soddisfare questo requisito."
+      ]
+    },
+    "accountRegistration": {
+      "title": "Registrazione Account e Sicurezza",
+      "body": [
+        "Devi fornire informazioni accurate, complete e aggiornate durante la registrazione e mantenere le informazioni del tuo account sempre aggiornate.",
+        "Sei l'unico responsabile del mantenimento della riservatezza delle credenziali del tuo account, incluse password e token API. Sei responsabile di tutte le attività che si verificano sotto il tuo account, autorizzate o meno.",
+        "Devi notificarci immediatamente a opensource@decern.dev se vieni a conoscenza di un uso non autorizzato del tuo account o di una violazione della sicurezza.",
+        "Decern si riserva il diritto di sospendere o terminare qualsiasi account che ragionevolmente ritenga sia stato compromesso o venga utilizzato in violazione di questi Termini."
+      ]
+    },
+    "subscriptionAndPayment": {
+      "title": "Piani di Abbonamento e Pagamento",
+      "body": [
+        "Il Servizio è offerto con diversi livelli di abbonamento (Free, Team, Business e Self-Hosted/Enterprise), ciascuno con funzionalità e limiti di utilizzo differenti come descritto nella pagina dei prezzi.",
+        "Gli abbonamenti a pagamento sono fatturati mensilmente in anticipo tramite Stripe. Tutti i prezzi sono indicati in Euro (EUR) e sono al netto delle imposte applicabili, che saranno aggiunte ove richiesto dalla legge.",
+        "Autorizzi Decern ad addebitare il metodo di pagamento designato per tutte le tariffe associate al piano selezionato. Il mancato pagamento può comportare la sospensione o la terminazione dell'accesso al Servizio.",
+        "Decern si riserva il diritto di modificare i prezzi in qualsiasi momento. Le modifiche di prezzo per gli abbonamenti esistenti avranno effetto all'inizio del ciclo di fatturazione successivo, con almeno 30 giorni di preavviso.",
+        "Tutte le tariffe non sono rimborsabili, salvo ove richiesto dalla legge applicabile. Non saranno emessi rimborsi o crediti per mesi parziali di servizio, downgrade o funzionalità non utilizzate."
+      ]
+    },
+    "freeplan": {
+      "title": "Piano Free",
+      "body": [
+        "Il piano Free fornisce accesso al Servizio solo in modalità osservazione. È offerto gratuitamente ed è soggetto a limitazioni di fair use.",
+        "Decern si riserva il diritto di modificare, limitare o interrompere il piano Free in qualsiasi momento senza preavviso. Gli utenti del piano Free non hanno alcun livello di servizio garantito.",
+        "Decern può imporre limiti di utilizzo, limiti di frequenza o restrizioni sulle funzionalità del piano Free a propria esclusiva discrezione per garantire la stabilità della piattaforma."
+      ]
+    },
+    "trialAndChanges": {
+      "title": "Modifiche al Piano e Downgrade",
+      "body": [
+        "Puoi effettuare upgrade o downgrade del tuo abbonamento in qualsiasi momento tramite il Servizio. Gli upgrade hanno effetto immediato; i downgrade hanno effetto alla fine del ciclo di fatturazione corrente.",
+        "In caso di downgrade, le funzionalità e i dati associati ai piani di livello superiore potrebbero diventare inaccessibili. Decern non è responsabile per la perdita di accesso a funzionalità o dati derivante da un downgrade.",
+        "Se superi i limiti di utilizzo del tuo piano attuale, Decern può limitare l'accesso a determinate funzionalità fino a quando non effettui un upgrade o riduci l'utilizzo."
+      ]
+    },
+    "licenseGrant": {
+      "title": "Concessione di Licenza e Restrizioni",
+      "body": [
+        "Subordinatamente alla tua conformità a questi Termini e al pagamento delle tariffe applicabili, Decern ti concede una licenza limitata, non esclusiva, non trasferibile e revocabile per accedere e utilizzare il Servizio durante la durata del tuo abbonamento.",
+        "Questa licenza non include il diritto di: (a) sublicenziare, rivendere, noleggiare o distribuire il Servizio o parte di esso; (b) modificare, adattare, decompilare, disassemblare o eseguire reverse engineering di qualsiasi parte del Servizio; (c) utilizzare il Servizio per costruire un prodotto o servizio concorrente; (d) accedere al Servizio tramite mezzi automatizzati (bot, scraper) se non attraverso la CLI e API ufficiali; (e) rimuovere o alterare avvisi proprietari, etichette o marchi sul Servizio.",
+        "Decern si riserva tutti i diritti non espressamente concessi in questi Termini."
+      ]
+    },
+    "acceptableUse": {
+      "title": "Politica di Utilizzo Accettabile",
+      "body": [
+        "Accetti di non utilizzare il Servizio per: (a) violare qualsiasi legge, regolamento o diritto di terzi applicabile; (b) caricare o trasmettere codice malevolo, virus o contenuti dannosi; (c) interferire con, interrompere o compromettere l'integrità o le prestazioni del Servizio o dei suoi sistemi sottostanti; (d) tentare di ottenere accesso non autorizzato al Servizio, ad altri account o a sistemi correlati; (e) utilizzare il Servizio per archiviare o elaborare dati personali sensibili (es. cartelle cliniche, numeri di conti finanziari) salvo accordo esplicito per iscritto.",
+        "Sei l'unico responsabile di assicurare che il tuo utilizzo del Servizio, incluso il contenuto dei tuoi Dati del Cliente e delle decisioni architetturali, sia conforme a tutte le leggi e i regolamenti applicabili.",
+        "Decern si riserva il diritto di sospendere o terminare l'accesso a qualsiasi Cliente che violi questa Politica di Utilizzo Accettabile, senza preavviso e senza rimborso."
+      ]
+    },
+    "intellectualProperty": {
+      "title": "Proprietà Intellettuale",
+      "body": [
+        "Il Servizio, inclusi software, codice, algoritmi, design, testi, grafiche, loghi e marchi, è e rimane di proprietà esclusiva di Decern e dei suoi licenzianti. Nulla in questi Termini trasferisce diritti di proprietà a te.",
+        "Mantieni tutti i diritti di proprietà sui tuoi Dati del Cliente. Utilizzando il Servizio, concedi a Decern una licenza limitata e non esclusiva per elaborare i tuoi Dati del Cliente al solo scopo di fornire e migliorare il Servizio.",
+        "Qualsiasi feedback, suggerimento o idea che fornisci riguardo al Servizio può essere utilizzato da Decern senza obbligo o compenso nei tuoi confronti."
+      ]
+    },
+    "userData": {
+      "title": "Dati del Cliente e Responsabilità",
+      "body": [
+        "Sei l'unico responsabile dell'accuratezza, qualità, integrità, legalità e appropriatezza di tutti i Dati del Cliente.",
+        "Decern non monitora, verifica o approva i Dati del Cliente. Decern non è responsabile per i Dati del Cliente inviati da te o dai tuoi Utenti Autorizzati.",
+        "Sei responsabile del mantenimento di backup indipendenti dei tuoi Dati del Cliente e dell'esportazione di qualsiasi dato che desideri conservare prima della terminazione dell'account o del downgrade del piano. Decern non garantisce contro la perdita di dati e non sarà responsabile per perdita, corruzione o distruzione dei Dati del Cliente, indipendentemente dalla causa.",
+        "Alla terminazione dell'account o al downgrade a un piano inferiore, i Dati del Cliente associati a funzionalità non più disponibili potrebbero essere eliminati definitivamente dopo un periodo di grazia di 30 giorni senza ulteriore preavviso."
+      ]
+    },
+    "thirdPartyLLM": {
+      "title": "Provider LLM di Terze Parti e Disclaimer AI",
+      "body": [
+        "La funzionalità LLM Judge si basa su provider di modelli linguistici di terze parti (es. OpenAI, Anthropic). Con BYO LLM, colleghi la tua chiave API a un provider di tua scelta. Quando utilizzi l'LLM fornito da Decern, Decern seleziona il provider.",
+        "Decern non controlla, garantisce o assicura l'output, l'accuratezza, la disponibilità o l'affidabilità di qualsiasi provider LLM di terze parti. Gli output LLM sono probabilistici e possono contenere errori, allucinazioni o valutazioni imprecise.",
+        "L'LLM JUDGE È UNO STRUMENTO CONSULTIVO. Non sostituisce il giudizio umano, la code review, gli audit di sicurezza o la valutazione architetturale professionale. Sei l'unico responsabile di tutte le decisioni prese sulla base o influenzate dagli output dell'LLM Judge.",
+        "Decern non è responsabile per danni, perdite, vulnerabilità di sicurezza, incidenti in produzione o impatti sul business derivanti dall'affidamento sugli output dell'LLM Judge, sia in modalità osservazione che blocking.",
+        "Con BYO LLM, sei l'unico responsabile della conformità ai termini di servizio, alle politiche di utilizzo e agli accordi di trattamento dati del provider di terze parti. Decern non ha alcuna responsabilità per il tuo rapporto con qualsiasi provider LLM di terze parti.",
+        "Riconosci che diff di codice e contenuto delle decisioni possono essere trasmessi a provider LLM di terze parti per l'analisi. È tua responsabilità assicurare che nessun dato soggetto a restrizioni legali (es. segreti commerciali, dati regolamentati) venga elaborato tramite l'LLM Judge senza le adeguate tutele.",
+        "Riconosci che il Servizio può bloccare, ritardare o comunque influenzare il tuo workflow di sviluppo, incluso impedire il merge di pull request in base a regole configurate o valutazioni LLM. Sei l'unico responsabile della revisione e configurazione delle regole di enforcement. Decern non è responsabile per ritardi, interruzioni o impatti operativi causati dalle azioni di enforcement."
+      ]
+    },
+    "selfHosted": {
+      "title": "Deployment Self-Hosted",
+      "body": [
+        "I clienti Self-Hosted (Enterprise) ricevono una licenza per distribuire il Servizio sulla propria infrastruttura. I termini specifici di ogni deployment self-hosted sono regolati da un accordo separato.",
+        "Per i deployment self-hosted, il Cliente è l'unico responsabile di: (a) provisioning, manutenzione e sicurezza dell'infrastruttura; (b) backup e disaster recovery; (c) conformità a tutte le leggi e regolamenti applicabili nelle giurisdizioni in cui il software è distribuito; (d) sicurezza della rete e controllo degli accessi.",
+        "Decern fornisce il software \"così com'è\" per i deployment self-hosted e non garantisce la compatibilità con tutte le configurazioni infrastrutturali. Il supporto è fornito secondo i termini dell'accordo di supporto applicabile.",
+        "Decern non ha alcuna responsabilità per il funzionamento, la sicurezza o le prestazioni dei deployment self-hosted."
+      ]
+    },
+    "availability": {
+      "title": "Disponibilità del Servizio e Supporto",
+      "body": [
+        "Decern compirà sforzi commercialmente ragionevoli per mantenere la disponibilità del Servizio. Tuttavia, il Servizio è fornito su base \"as-available\" e Decern non garantisce un funzionamento ininterrotto o privo di errori.",
+        "Il Servizio potrebbe essere temporaneamente non disponibile a causa di manutenzione programmata, manutenzione di emergenza, eventi di forza maggiore, interruzioni di servizi di terze parti (inclusi provider LLM, hosting cloud o processori di pagamento) o circostanze al di fuori del ragionevole controllo di Decern.",
+        "Decern non fornisce SLA (Service Level Agreement) garantiti, salvo diverso accordo scritto per i clienti Enterprise.",
+        "Il supporto è fornito su base best-effort via email a opensource@decern.dev. I tempi di risposta non sono garantiti salvo diverso accordo in un contratto di supporto separato."
+      ]
+    },
+    "disclaimerOfWarranties": {
+      "title": "Esclusione di Garanzie",
+      "body": [
+        "IL SERVIZIO È FORNITO \"COSÌ COM'È\" E \"COME DISPONIBILE\", SENZA GARANZIE DI ALCUN TIPO, ESPLICITE, IMPLICITE, PREVISTE DALLA LEGGE O ALTRIMENTI. DECERN ESCLUDE ESPRESSAMENTE TUTTE LE GARANZIE, INCLUSE MA NON LIMITATE ALLE GARANZIE IMPLICITE DI COMMERCIABILITÀ, IDONEITÀ A UNO SCOPO PARTICOLARE, TITOLARITÀ E NON VIOLAZIONE.",
+        "DECERN NON GARANTISCE CHE: (A) IL SERVIZIO SODDISFI I TUOI REQUISITI O ASPETTATIVE; (B) IL SERVIZIO SIA ININTERROTTO, TEMPESTIVO, SICURO O PRIVO DI ERRORI; (C) I RISULTATI OTTENUTI DAL SERVIZIO, INCLUSI GLI OUTPUT DELL'LLM JUDGE, SIANO ACCURATI, AFFIDABILI O COMPLETI; (D) EVENTUALI DIFETTI DEL SERVIZIO VENGANO CORRETTI.",
+        "NESSUN CONSIGLIO O INFORMAZIONE, SIA ORALE CHE SCRITTA, OTTENUTA DALDECERN O ATTRAVERSO IL SERVIZIO CREERÀ ALCUNA GARANZIA NON ESPRESSAMENTE DICHIARATA IN QUESTI TERMINI.",
+        "Gli output dell'LLM Judge sono di natura probabilistica e non devono essere considerati come unica base per decisioni architetturali, di sicurezza, di conformità o aziendali. Il Cliente riconosce che le valutazioni generate dall'AI possono essere errate e accetta la piena responsabilità per le decisioni prese utilizzando il Servizio."
+      ]
+    },
+    "limitationOfLiability": {
+      "title": "Limitazione di Responsabilità",
+      "body": [
+        "NELLA MISURA MASSIMA CONSENTITA DALLA LEGGE APPLICABILE, DECERN, I SUOI AMMINISTRATORI, DIRIGENTI, DIPENDENTI, AGENTI E AFFILIATI NON SARANNO RESPONSABILI PER DANNI INDIRETTI, INCIDENTALI, SPECIALI, CONSEQUENZIALI, PUNITIVI O ESEMPLARI, INCLUSI MA NON LIMITATI A DANNI PER PERDITA DI PROFITTI, RICAVI, DATI, AVVIAMENTO, OPPORTUNITÀ COMMERCIALI O ALTRE PERDITE IMMATERIALI, DERIVANTI DA O IN CONNESSIONE CON IL SERVIZIO, ANCHE SE DECERN È STATA AVVISATA DELLA POSSIBILITÀ DI TALI DANNI.",
+        "LA RESPONSABILITÀ AGGREGATA TOTALE DELDECERN PER TUTTI I RECLAMI DERIVANTI DA O RELATIVI A QUESTI TERMINI O AL SERVIZIO NON SUPERERÀ IL MAGGIORE TRA: (A) LE TARIFFE TOTALI PAGATE DALL'UTENTE ALDECERN NEI DODICI (12) MESI IMMEDIATAMENTE PRECEDENTI L'EVENTO CHE HA DATO ORIGINE AL RECLAMO; O (B) CENTO EURO (€100).",
+        "LE LIMITAZIONI DI QUESTA SEZIONE SI APPLICANO INDIPENDENTEMENTE DALLA TEORIA DI RESPONSABILITÀ, SIA ESSA BASATA SU CONTRATTO, ILLECITO (INCLUSA NEGLIGENZA), RESPONSABILITÀ OGGETTIVA O QUALSIASI ALTRA TEORIA LEGALE, E ANCHE SE UN RIMEDIO PREVISTO NEL PRESENTE DOCUMENTO SI RIVELI INADEGUATO AL SUO SCOPO ESSENZIALE.",
+        "Senza limitare quanto sopra, Decern non avrà alcuna responsabilità per: (a) azioni intraprese o non intraprese sulla base degli output dell'LLM Judge; (b) PR bloccate o approvate e i loro effetti a valle sul workflow di sviluppo, sistemi di produzione o operazioni aziendali; (c) dati trasmessi a provider LLM di terze parti; (d) perdita o corruzione dei Dati del Cliente; (e) interruzioni del servizio causate da provider di terze parti o eventi di forza maggiore."
+      ]
+    },
+    "indemnification": {
+      "title": "Manleva",
+      "body": [
+        "Accetti di indennizzare, difendere e manlevare Decern, i suoi amministratori, dirigenti, dipendenti, agenti e affiliati da e contro qualsiasi reclamo, responsabilità, danno, perdita, costo e spesa (incluse ragionevoli spese legali) derivanti da o in connessione con: (a) il tuo utilizzo del Servizio; (b) i tuoi Dati del Cliente; (c) la tua violazione di questi Termini; (d) la tua violazione di qualsiasi legge o regolamento applicabile; (e) la tua violazione di diritti di terzi, inclusi diritti di proprietà intellettuale.",
+        "Decern si riserva il diritto di assumere la difesa e il controllo esclusivi di qualsiasi questione soggetta a manleva da parte tua, a tue spese. Accetti di cooperare con la difesa di Decern in tali reclami."
+      ]
+    },
+    "termination": {
+      "title": "Risoluzione",
+      "body": [
+        "Puoi terminare il tuo account in qualsiasi momento contattandoci a opensource@decern.dev o tramite le impostazioni dell'account nel Servizio.",
+        "Decern può sospendere o terminare il tuo accesso al Servizio in qualsiasi momento, con o senza causa, con o senza preavviso. I motivi di terminazione includono, senza limitazione: (a) violazione di questi Termini; (b) mancato pagamento; (c) uso abusivo o fraudolento del Servizio; (d) richiesta di autorità giudiziaria o agenzia governativa; (e) inattività prolungata.",
+        "Alla terminazione: (a) la tua licenza d'uso del Servizio termina immediatamente; (b) rimani responsabile per tutte le tariffe maturate prima della terminazione; (c) le disposizioni che per loro natura devono sopravvivere alla terminazione sopravvivranno, incluse le Sezioni su Proprietà Intellettuale, Esclusione di Garanzie, Limitazione di Responsabilità, Manleva, Legge Applicabile e questa sezione sulla Risoluzione.",
+        "Decern non sarà responsabile nei tuoi confronti o verso terzi per la terminazione del tuo accesso al Servizio."
+      ]
+    },
+    "confidentiality": {
+      "title": "Riservatezza",
+      "body": [
+        "Ciascuna parte si impegna a mantenere riservate le informazioni non pubbliche divulgate dall'altra parte che siano designate come riservate o che ragionevolmente dovrebbero essere intese come riservate data la natura delle informazioni e le circostanze della divulgazione.",
+        "Le informazioni riservate non includono informazioni che: (a) sono o diventano pubblicamente disponibili senza violazione di questi Termini; (b) erano già note alla parte ricevente senza restrizioni; (c) sono sviluppate indipendentemente senza utilizzo delle informazioni riservate della parte divulgante; (d) sono legittimamente ricevute da terzi senza restrizioni.",
+        "Ciascuna parte può divulgare informazioni riservate se richiesto dalla legge, da regolamenti o da ordini del tribunale, a condizione che la parte divulgante riceva pronto avviso (ove legalmente consentito) e ragionevole assistenza nell'opporsi a tale divulgazione."
+      ]
+    },
+    "dataProtection": {
+      "title": "Protezione dei Dati e Privacy",
+      "body": [
+        "Decern tratta i dati personali in conformità con le leggi applicabili sulla protezione dei dati, incluso il Regolamento Generale sulla Protezione dei Dati dell'UE (GDPR) ove applicabile.",
+        "Utilizzando il Servizio, acconsenti alla raccolta e al trattamento dei dati come descritto nell'Informativa sulla Privacy. Decern raccoglie solo i dati minimi necessari per fornire il Servizio.",
+        "Per le configurazioni BYO LLM, i Dati del Cliente (inclusi diff di codice) possono essere trasmessi al provider LLM di terze parti selezionato dal Cliente. Decern non è il titolare del trattamento per i dati elaborati da provider LLM di terze parti nelle configurazioni BYO LLM.",
+        "Decern implementa misure di sicurezza tecniche e organizzative commercialmente ragionevoli per proteggere i Dati del Cliente. Tuttavia, nessun metodo di trasmissione su Internet o di archiviazione elettronica è sicuro al 100% e Decern non può garantire una sicurezza assoluta."
+      ]
+    },
+    "modifications": {
+      "title": "Modifiche ai Termini",
+      "body": [
+        "Decern si riserva il diritto di modificare questi Termini in qualsiasi momento. Le modifiche sostanziali saranno comunicate pubblicando i Termini aggiornati sul sito web e aggiornando la data di \"Ultimo aggiornamento\".",
+        "Per modifiche sostanziali che incidono negativamente sui tuoi diritti, Decern compirà sforzi ragionevoli per fornire almeno 30 giorni di preavviso tramite l'indirizzo email associato al tuo account.",
+        "Il tuo uso continuato del Servizio dopo qualsiasi modifica costituisce la tua accettazione dei Termini rivisti. Se non accetti i Termini modificati, devi interrompere l'uso del Servizio e terminare il tuo account."
+      ]
+    },
+    "governingLaw": {
+      "title": "Legge Applicabile e Risoluzione delle Controversie",
+      "body": [
+        "Questi Termini saranno regolati e interpretati in conformità con le leggi italiane, senza riguardo alle disposizioni sul conflitto di leggi.",
+        "Qualsiasi controversia derivante da o in connessione con questi Termini sarà sottoposta alla giurisdizione esclusiva dei tribunali italiani.",
+        "Prima di avviare qualsiasi procedimento legale, entrambe le parti si impegnano a tentare di risolvere le controversie attraverso una negoziazione in buona fede per un periodo di almeno 30 giorni.",
+        "Nulla in questi Termini impedirà a Decern di richiedere provvedimenti ingiuntivi o altra tutela equitativa presso qualsiasi tribunale competente per proteggere la propria proprietà intellettuale o informazioni riservate."
+      ]
+    },
+    "severability": {
+      "title": "Clausola di Salvaguardia",
+      "body": [
+        "Se una qualsiasi disposizione di questi Termini viene ritenuta invalida, illegale o inapplicabile da un tribunale competente, le restanti disposizioni rimarranno pienamente valide ed efficaci.",
+        "La disposizione invalida o inapplicabile sarà modificata nella misura minima necessaria per renderla valida e applicabile, preservando l'intento originale delle parti."
+      ]
+    },
+    "entireAgreement": {
+      "title": "Intero Accordo",
+      "body": [
+        "Questi Termini, insieme all'Informativa sulla Privacy e a eventuali moduli d'ordine o accordi separati per i clienti Enterprise, costituiscono l'intero accordo tra te e Decern riguardo al Servizio.",
+        "Questi Termini sostituiscono tutte le intese, accordi, dichiarazioni e garanzie precedenti e contemporanee, sia scritte che orali, riguardanti il Servizio.",
+        "Nessuna rinuncia a qualsiasi disposizione di questi Termini sarà considerata una rinuncia ulteriore o continuativa a tale disposizione o a qualsiasi altra disposizione. La mancata applicazione da parte di Decern di qualsiasi diritto o disposizione di questi Termini non costituirà una rinuncia a tale diritto o disposizione."
+      ]
+    },
+    "contact": {
+      "title": "Informazioni di Contatto",
+      "body": [
+        "Per qualsiasi domanda riguardante questi Termini, contattaci a: opensource@decern.dev",
+        "Alessandro Palazzesi — Decern. Tutta la corrispondenza deve essere indirizzata all'indirizzo email sopra indicato."
+      ]
+    }
+  },
   "landing": {
     "hero": {
       "eyebrow": "Gate in CI per le decisioni tecniche",
@@ -195,9 +407,10 @@
       "dashboard": "Dashboard",
       "logIn": "Accedi",
       "signUp": "Registrati",
+      "terms": "Termini",
       "contact": "Contatti",
       "copyright": "© Decern. Decision log tecnico e gate in CI per team moderni.",
-      "builtBy": "Realizzato da PaLab"
+      "builtBy": "Progettato e realizzato da Alessandro Palazzesi"
     }
   }
 }

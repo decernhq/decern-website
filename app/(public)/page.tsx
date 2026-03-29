@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Script from "next/script";
 import { getTranslations } from "next-intl/server";
 import { HiCommandLine, HiShieldCheck, HiEye } from "react-icons/hi2";
 import { Button } from "@/components/ui/button";
@@ -376,25 +377,39 @@ export default async function LandingPage() {
       </section>
 
       <footer className="border-t border-gray-200 bg-gray-50 px-4 py-12 dark:border-gray-800 dark:bg-gray-900/50">
-        <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-6 sm:flex-row">
-          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-1 text-sm">
-            <Link href="/pricing" className="text-gray-500 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100">{t("footer.pricing")}</Link>
-            <ContactForm labels={contactLabels} />
-            {user ? (
-              <a href={appPath("/dashboard")} className="text-gray-500 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100">{t("footer.dashboard")}</a>
-            ) : (
-              <>
-                <a href={appPath("/login")} className="text-gray-500 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100">{t("footer.logIn")}</a>
-                <a href={appPath("/signup")} className="text-gray-500 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100">{t("footer.signUp")}</a>
-              </>
-            )}
+        <div className="mx-auto flex max-w-5xl flex-col justify-between gap-6 sm:flex-row">
+          <div className="flex flex-col gap-3">
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-1 text-sm">
+              <Link href="/pricing" className="text-gray-500 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100">{t("footer.pricing")}</Link>
+              <Link href="/terms" className="text-gray-500 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100">{t("footer.terms")}</Link>
+              <ContactForm labels={contactLabels} />
+              {user ? (
+                <a href={appPath("/dashboard")} className="text-gray-500 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100">{t("footer.dashboard")}</a>
+              ) : (
+                <>
+                  <a href={appPath("/login")} className="text-gray-500 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100">{t("footer.logIn")}</a>
+                  <a href={appPath("/signup")} className="text-gray-500 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100">{t("footer.signUp")}</a>
+                </>
+              )}
+            </div>
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-1 text-xs">
+              <a href="https://www.iubenda.com/privacy-policy/22250478" className="iubenda-white iubenda-noiframe iubenda-embed text-gray-400 transition-colors hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300" title="Privacy Policy">Privacy Policy</a>
+              <a href="https://www.iubenda.com/privacy-policy/22250478/cookie-policy" className="iubenda-white iubenda-noiframe iubenda-embed text-gray-400 transition-colors hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300" title="Cookie Policy">Cookie Policy</a>
+            </div>
           </div>
-          <div className="text-center sm:text-right">
+          <div className="text-left sm:text-right">
             <p className="text-sm text-gray-500 dark:text-gray-400">{t("footer.copyright")}</p>
-            <p className="mt-1 text-xs text-gray-400 dark:text-gray-500">{t("footer.builtBy")}</p>
+            <p className="mt-1 text-xs text-gray-400 dark:text-gray-500">
+              {t("footer.builtBy")}
+              {" · "}
+              <a href="https://www.linkedin.com/in/alessandropalazzesi" target="_blank" rel="noopener noreferrer" className="underline transition-colors hover:text-gray-600 dark:hover:text-gray-300">LinkedIn</a>
+              {" · "}
+              <a href="https://github.com/AlexPalaz" target="_blank" rel="noopener noreferrer" className="underline transition-colors hover:text-gray-600 dark:hover:text-gray-300">GitHub</a>
+            </p>
           </div>
         </div>
       </footer>
+      <Script src="https://cdn.iubenda.com/iubenda.js" strategy="lazyOnload" />
     </main>
   );
 }
