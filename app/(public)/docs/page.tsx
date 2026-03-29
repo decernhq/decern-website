@@ -139,7 +139,7 @@ export default function DocsPage() {
             <SubTitle>Core components</SubTitle>
             <ul className="mt-3 space-y-2 text-[0.935rem] text-gray-600 dark:text-gray-300">
               <li><strong>Decern App</strong> - the web dashboard where you manage workspaces, projects, decisions and team members.</li>
-              <li><strong>Decision Gate</strong> (<Code>decern-gate</Code>) - a CLI you run in CI to enforce decision governance on high-impact changes.</li>
+              <li><strong>Decision Gate</strong> (<Code>decern-gate</Code>) - a CLI you run in CI to enforce decision policies on high-impact changes.</li>
               <li><strong>Protocol</strong> (<Code>@decern/protocol</Code>) - a stateless TypeScript library with shared domain logic (ADR parsing, validation, policies).</li>
             </ul>
           </section>
@@ -737,7 +737,7 @@ We will use PostgreSQL as our primary database.
 supabase db push
 
 # Or apply manually: run each file in supabase/migrations/ in order
-# 00001_create_profiles.sql through 00038_projects_create_governance_roles.sql`}</Pre>
+# 00001_create_profiles.sql through 00038_projects_create_roles.sql`}</Pre>
 
             <SubTitle>Plan &amp; features</SubTitle>
             <P>

@@ -50,7 +50,7 @@ export const PLANS: Plan[] = [
       "Unlimited workspaces",
       "Advanced policies",
       "Roles and collaboration",
-      "Judge + governance controls",
+      "Judge + advanced controls",
     ],
   },
   {
@@ -64,7 +64,7 @@ export const PLANS: Plan[] = [
       "Unlimited workspaces",
       "Advanced policies",
       "Roles and collaboration",
-      "Judge + governance controls",
+      "Judge + advanced controls",
       "Self-hosted integration",
       "Dedicated support",
     ],

@@ -21,10 +21,10 @@
     "byoLLM": "LLM integrato (fair use) / BYO LLM",
     "byoLLMEnterprise": "BYO LLM",
     "fromLabel": "Da",
-    "tierLadder": "👉 Da visibilità → enforcement → governance",
+    "tierLadder": "👉 Da visibilità → enforcement → controllo completo",
     "progressFree": "Free: Visibilità",
     "progressTeam": "Team: Enforcement",
-    "progressBusiness": "Business: Governance",
+    "progressBusiness": "Business: Controllo completo",
     "progressEnterprise": "Enterprise: Controllo deploy",
     "enterpriseBadge": "Premium",
     "enterpriseSubprice": "Deploy privato e supporto dedicato"
@@ -349,7 +349,7 @@
       "b2Pain": "Stanco di ripetere le stesse regole architetturali in ogni review.",
       "b2Outcome": "Decisioni enforced in CI, non nella testa di qualcuno.",
       "b3Role": "Platform / DevEx",
-      "b3Pain": "Serve governance senza aggiungere attrito al processo.",
+      "b3Pain": "Serve enforcement senza aggiungere attrito al processo.",
       "b3Outcome": "Uno step in CI. Stesso workflow. Compliance misurabile.",
       "b4Role": "Compliance / Audit",
       "b4Pain": "Serve tracciabilità tra decisioni e modifiche in produzione.",
@@ -381,7 +381,7 @@
       "title": "Parti gratis. Blocking quando sei pronto.",
       "freeDesc": "Observation mode, check illimitati, generazione AI.",
       "teamDesc": "Blocking mode, soglie di confidenza e controlli.",
-      "businessDesc": "Governance multi-workspace, policy avanzate e ruoli.",
+      "businessDesc": "Gestione multi-workspace, policy avanzate e ruoli.",
       "ctaPrimary": "Vedi tutti i prezzi"
     },
     "faq": {

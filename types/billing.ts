@@ -1,4 +1,4 @@
-export type PlanId = "free" | "team" | "business" | "enterprise" | "governance";
+export type PlanId = "free" | "team" | "business" | "enterprise";
 
 export interface PlanLimits {
   workspaces_limit: number;
@@ -90,15 +90,6 @@ export const PLANS: Record<PlanId, Plan> = {
       "Self-hosted integration",
       "Dedicated support",
     ],
-    limits: { workspaces_limit: -1, projects_limit: -1, users_per_workspace_limit: -1, decisions_limit: -1, ai_generations_per_month: -1 },
-  },
-  governance: {
-    id: "governance",
-    name: "Governance / On Prem",
-    description: "Let's Talk",
-    price: 0,
-    priceId: null,
-    features: ["Custom limits", "Dedicated Support", "On Prem"],
     limits: { workspaces_limit: -1, projects_limit: -1, users_per_workspace_limit: -1, decisions_limit: -1, ai_generations_per_month: -1 },
   },
 };

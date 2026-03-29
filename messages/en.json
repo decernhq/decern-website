@@ -21,10 +21,10 @@
     "byoLLM": "Integrated LLM (fair use) / BYO LLM",
     "byoLLMEnterprise": "BYO LLM",
     "fromLabel": "From",
-    "tierLadder": "👉 From visibility → enforcement → governance",
+    "tierLadder": "👉 From visibility → enforcement → full control",
     "progressFree": "Free: Visibility",
     "progressTeam": "Team: Enforcement",
-    "progressBusiness": "Business: Governance",
+    "progressBusiness": "Business: Full control",
     "progressEnterprise": "Enterprise: Deployment control",
     "enterpriseBadge": "Premium",
     "enterpriseSubprice": "Private deployment and dedicated support"
@@ -349,7 +349,7 @@
       "b2Pain": "Tired of repeating the same architectural rules in every review.",
       "b2Outcome": "Decisions enforced in CI, not stuck in someone's head.",
       "b3Role": "Platform / DevEx",
-      "b3Pain": "Needs governance that doesn't add process friction.",
+      "b3Pain": "Needs enforcement that doesn't add process friction.",
       "b3Outcome": "One CI step. Same workflow. Measurable compliance.",
       "b4Role": "Compliance / Audit",
       "b4Pain": "Needs traceability between decisions and production changes.",
@@ -381,7 +381,7 @@
       "title": "Start free. Unlock blocking when ready.",
       "freeDesc": "Observation mode, unlimited checks, AI generation. Validate value with zero risk.",
       "teamDesc": "Blocking mode, confidence thresholds, and controls for growing teams.",
-      "businessDesc": "Multi-workspace governance, advanced policies, and roles.",
+      "businessDesc": "Multi-workspace management, advanced policies, and roles.",
       "ctaPrimary": "See full pricing"
     },
     "faq": {
