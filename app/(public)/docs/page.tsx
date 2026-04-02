@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
 import { DocsNav, type DocSection } from "@/components/docs/docs-nav";
 import { appPath } from "@/lib/config";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+
+export const metadata: Metadata = {
+  title: "Documentation",
+  description:
+    "Learn how to use Decern: workspaces, projects, decisions, CI integration, Decision Gate, LLM Judge, roles, policies, GitHub sync and self-hosting.",
+};
 
 const SECTIONS: DocSection[] = [
   { id: "overview", label: "Overview" },

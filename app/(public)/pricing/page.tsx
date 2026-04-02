@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { getTranslations, getMessages } from "next-intl/server";
 import { PLANS, type PlanId } from "@/types/billing";
@@ -6,6 +7,12 @@ import { PricingCheckoutButton } from "@/components/pricing-checkout-button";
 import { ContactForm, ContactFormButton } from "@/components/contact-form";
 import { cn } from "@/lib/utils";
 import { appPath } from "@/lib/config";
+
+export const metadata: Metadata = {
+  title: "Pricing",
+  description:
+    "Free, Team, Business and Enterprise plans. Start for free, upgrade when your team needs CI blocking and LLM Judge.",
+};
 
 const PLAN_ORDER: PlanId[] = ["free", "team", "business", "enterprise"];
 
