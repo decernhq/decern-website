@@ -20,14 +20,13 @@
     "questions": "Have questions?",
     "byoLLM": "Integrated LLM (fair use) / BYO LLM",
     "byoLLMEnterprise": "BYO LLM",
-    "fromLabel": "From",
     "tierLadder": "👉 From visibility → enforcement → full control",
     "progressFree": "Free: Visibility",
     "progressTeam": "Team: Enforcement",
     "progressBusiness": "Business: Full control",
     "progressEnterprise": "Enterprise: Deployment control",
-    "enterpriseBadge": "Premium",
-    "enterpriseSubprice": "Private deployment and dedicated support"
+    "customPricing": "Custom",
+    "enterpriseBadge": "Premium"
   },
   "plans": {
     "free": {

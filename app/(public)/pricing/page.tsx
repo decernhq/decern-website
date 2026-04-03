@@ -135,25 +135,17 @@ export default async function PricingPage() {
               <div className="mt-4">
                 <span className="text-3xl font-bold text-gray-900 dark:text-gray-100">
                   {plan.id === "enterprise" ? (
-                    <>
-                      <span className="text-lg font-semibold text-gray-600 dark:text-gray-300">
-                        {t("fromLabel")}{" "}
-                      </span>
-                      €149
-                    </>
+                    t("customPricing")
                   ) : plan.price === 0 ? (
                     "€0"
                   ) : (
                     `€${plan.price}`
                   )}
                 </span>
-                {(plan.price > 0 || plan.id === "enterprise") && (
+                {plan.price > 0 && plan.id !== "enterprise" && (
                   <span className="text-gray-500 text-sm dark:text-gray-400">{t("perMonth")}</span>
                 )}
               </div>
-              {plan.id === "enterprise" && (
-                <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">{t("enterpriseSubprice")}</p>
-              )}
             </div>
 
             <ul className="mt-6 flex-1 space-y-2">
