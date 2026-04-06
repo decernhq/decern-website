@@ -139,6 +139,18 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+.landing-gradient-text-reverse {
+  background: linear-gradient(135deg, #0284c7 0%, #374151 60%, #111827 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.dark .landing-gradient-text-reverse {
+  background: linear-gradient(135deg, #60a5fa 0%, #e0e7ff 55%, #ffffff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
 .landing-grid-pattern {
   background-image:

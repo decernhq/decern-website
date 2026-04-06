@@ -283,7 +283,7 @@ export default async function LandingPage() {
         <div className="landing-cta-glow pointer-events-none absolute inset-0" aria-hidden />
         <div className="relative z-10 mx-auto max-w-2xl text-center">
           <h2 className="landing-cta-title text-3xl font-bold leading-snug tracking-tight text-gray-900 sm:text-4xl lg:text-5xl dark:text-white">
-            {t.rich("cta.title", { ...bold, br: () => <br /> })}
+            {t.rich("cta.title", { ...bold, br: () => <br />, accent: (c) => <span className="mt-2 inline-block landing-gradient-text-reverse">{c}</span> })}
           </h2>
           <div className="landing-cta-buttons mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             {user ? (
