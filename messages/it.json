@@ -32,7 +32,7 @@
     "free": {
       "name": "Free",
       "description": "Per iniziare",
-      "features": ["1 workspace", "1 progetto", "Decisioni illimitate", "Generazione decisioni AI (fair use)", "LLM come giudice (advisory, solo BYO)", "Controlli CI (solo avvisi, nessun blocco)"]
+      "features": ["1 workspace", "Progetti illimitati", "Decisioni illimitate", "Generazione decisioni AI (fair use)", "LLM come giudice (advisory, solo BYO)", "Controlli CI (solo avvisi, nessun blocco)"]
     },
     "team": {
       "name": "Team",
@@ -347,7 +347,7 @@
     },
     "trust": {
       "eyebrow": "Trust e controllo",
-      "title": "Il tuo modello. Le tue chiavi. Le tue regole.",
+      "title": "Il tuo modello. Le tue chiavi.<mbr></mbr>Le tue regole.",
       "intro": "Decern non sostituisce la code review. Cattura quello che i reviewer non vedono, specialmente quando il codice è stato scritto da un'AI che non conosce le decisioni architetturali del team.",
       "t1Title": "Porta il tuo LLM",
       "t1Desc": "Il Judge gira sul provider che scegli tu. OpenAI, Claude o qualsiasi endpoint compatibile. Le chiavi API sono usate per singola richiesta, mai salvate. Pieno controllo per i team con policy interne sull'uso di LLM.",

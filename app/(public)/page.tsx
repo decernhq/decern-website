@@ -67,34 +67,34 @@ export default async function LandingPage() {
               </FadeIn>
 
               <FadeIn delay={90} duration={700}>
-                <h1 className="mt-6 text-5xl font-extrabold tracking-tight sm:text-6xl lg:text-[3.5rem] lg:leading-[1.1]">
+                <h1 className="mt-6 text-3xl font-extrabold tracking-tight sm:text-5xl lg:text-[3.5rem] lg:leading-[1.1]">
                   <span className="landing-gradient-text">{t.rich("hero.headline", { br: () => <br /> })}</span>
                 </h1>
               </FadeIn>
 
               <FadeIn delay={170} duration={700}>
-                <p className="mt-6 max-w-xl text-lg leading-relaxed text-gray-600 dark:text-gray-300 sm:text-xl">
+                <p className="mt-5 max-w-xl text-base leading-relaxed text-gray-600 dark:text-gray-300 sm:text-xl">
                   {t.rich("hero.subheadline", bold)}
                 </p>
               </FadeIn>
 
               <FadeIn delay={250} duration={650}>
-                <div className="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+                <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:items-center sm:gap-4">
                   {user ? (
-                    <a href={appPath("/dashboard")}>
-                      <Button size="lg" className="h-12 rounded-xl px-7 shadow-lg shadow-brand-500/20">
+                    <a href={appPath("/dashboard")} className="w-full sm:w-auto">
+                      <Button size="lg" className="h-12 w-full rounded-xl px-7 shadow-lg shadow-brand-500/20 sm:w-auto">
                         Dashboard
                       </Button>
                     </a>
                   ) : (
                     <>
-                      <a href={appPath("/signup")}>
-                        <Button size="lg" className="h-12 rounded-xl px-7 shadow-lg shadow-brand-500/20">
+                      <a href={appPath("/signup")} className="w-full sm:w-auto">
+                        <Button size="lg" className="h-12 w-full rounded-xl px-7 shadow-lg shadow-brand-500/20 sm:w-auto">
                           {t("hero.ctaPrimary")}
                         </Button>
                       </a>
-                      <a href="#solution">
-                        <Button size="lg" variant="outline" className="h-12 rounded-xl border-gray-300 px-7 text-base font-medium text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-white/5">
+                      <a href="#solution" className="w-full sm:w-auto">
+                        <Button size="lg" variant="outline" className="h-12 w-full rounded-xl border-gray-300 px-7 text-base font-medium text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-white/5 sm:w-auto">
                           {t("hero.ctaSecondary")}
                         </Button>
                       </a>
@@ -119,7 +119,7 @@ export default async function LandingPage() {
                       <span className="ml-3 font-mono text-[11px] text-gray-500">decern-gate</span>
                     </div>
                   </div>
-                  <div className="px-5 py-4 font-mono text-[13px] leading-7 text-gray-400 sm:px-6">
+                  <div className="px-4 py-3 font-mono text-[11px] leading-6 text-gray-400 sm:px-6 sm:py-4 sm:text-[13px] sm:leading-7">
                     <p><span className="text-gray-600">$</span> <span className="text-white">npx decern-gate</span></p>
                     <p className="mt-2 text-amber-400">Policy: decision required - <span className="font-medium text-amber-300">YES</span></p>
                     <p>Matched: <span className="text-gray-300">package.json, terraform/main.tf</span></p>
@@ -140,7 +140,7 @@ export default async function LandingPage() {
           <p className="text-center text-xs font-semibold uppercase tracking-[0.14em] text-gray-500 dark:text-gray-400">
             {t("integrations.label")}
           </p>
-          <div className="mt-4 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-sm font-semibold text-gray-400 dark:text-gray-500">
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs font-semibold text-gray-400 dark:text-gray-500 sm:gap-x-8 sm:text-sm">
             {(["i1", "i2", "i3", "i4", "i5"] as const).map((k) => (
               <span key={k}>{t(`integrations.${k}`)}</span>
             ))}
@@ -149,12 +149,12 @@ export default async function LandingPage() {
       </section>
 
       {/* ── Problem / Value ─────────────────────────────────────────── */}
-      <section id="value" className="scroll-mt-20 px-4 py-24 sm:py-28">
+      <section id="value" className="scroll-mt-20 px-4 py-16 sm:py-28">
         <div className="mx-auto max-w-5xl">
           <FadeIn>
             <div className="mx-auto max-w-3xl text-center">
               <Eyebrow>{t("value.eyebrow")}</Eyebrow>
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+              <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
                 {t.rich("value.title", { br: () => <br /> })}
               </h2>
             </div>
@@ -179,11 +179,11 @@ export default async function LandingPage() {
       </section>
 
       {/* ── How it works ────────────────────────────────────────────── */}
-      <section id="solution" className="scroll-mt-20 border-y border-gray-200/70 bg-gray-50/70 px-4 py-24 dark:border-gray-800/80 dark:bg-gray-900/40 sm:py-28">
+      <section id="solution" className="scroll-mt-20 border-y border-gray-200/70 bg-gray-50/70 px-4 py-16 dark:border-gray-800/80 dark:bg-gray-900/40 sm:py-28">
         <div className="mx-auto max-w-3xl">
           <FadeIn className="text-center">
             <Eyebrow>{t("solution.eyebrow")}</Eyebrow>
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">{t("solution.title")}</h2>
+            <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">{t("solution.title")}</h2>
           </FadeIn>
           <div className="mt-14">
             <SolutionFlowAnimation
@@ -202,11 +202,11 @@ export default async function LandingPage() {
       </section>
 
       {/* ── Who it's for ────────────────────────────────────────────── */}
-      <section id="buyers" className="scroll-mt-20 px-4 py-24 sm:py-28">
+      <section id="buyers" className="scroll-mt-20 px-4 py-16 sm:py-28">
         <div className="mx-auto max-w-5xl">
           <FadeIn className="text-center">
             <Eyebrow>{t("buyers.eyebrow")}</Eyebrow>
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">{t("buyers.title")}</h2>
+            <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">{t("buyers.title")}</h2>
           </FadeIn>
           <div className="mt-12 grid gap-5 lg:grid-cols-3">
             {([["b1Role", "b1Desc", "b1Outcome"], ["b2Role", "b2Desc", "b2Outcome"], ["b3Role", "b3Desc", "b3Outcome"]] as const).map(([role, desc, outcome], i) => (
@@ -223,11 +223,11 @@ export default async function LandingPage() {
       </section>
 
       {/* ── Trust and control ───────────────────────────────────────── */}
-      <section id="trust" className="scroll-mt-20 border-y border-gray-200/70 bg-gray-50/70 px-4 py-24 dark:border-gray-800/80 dark:bg-gray-900/40 sm:py-28">
+      <section id="trust" className="scroll-mt-20 border-y border-gray-200/70 bg-gray-50/70 px-4 py-16 dark:border-gray-800/80 dark:bg-gray-900/40 sm:py-28">
         <div className="mx-auto max-w-5xl">
           <FadeIn className="text-center">
             <Eyebrow>{t("trust.eyebrow")}</Eyebrow>
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">{t("trust.title")}</h2>
+            <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">{t.rich("trust.title", { mbr: () => <br className="sm:hidden" /> })}</h2>
             <p className="mx-auto mt-5 max-w-2xl text-lg text-gray-600 dark:text-gray-300">{t("trust.intro")}</p>
           </FadeIn>
           <div className="mt-12 grid gap-5 lg:grid-cols-3">
@@ -244,11 +244,11 @@ export default async function LandingPage() {
       </section>
 
       {/* ── Pricing teaser ──────────────────────────────────────────── */}
-      <section id="pricing-teaser" className="scroll-mt-20 px-4 py-24 sm:py-28">
+      <section id="pricing-teaser" className="scroll-mt-20 px-4 py-16 sm:py-28">
         <div className="mx-auto max-w-5xl">
           <FadeIn className="text-center">
             <Eyebrow>{t("pricingTeaser.eyebrow")}</Eyebrow>
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">{t("pricingTeaser.title")}</h2>
+            <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">{t("pricingTeaser.title")}</h2>
           </FadeIn>
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {([["free", "freeDesc"], ["team", "teamDesc"], ["business", "businessDesc"]] as const).map(([plan, descKey], i) => (
@@ -273,7 +273,7 @@ export default async function LandingPage() {
       </section>
 
       {/* ── Final CTA ───────────────────────────────────────────────── */}
-      <section className="landing-cta-bg relative overflow-hidden px-4 py-28 sm:py-36">
+      <section className="landing-cta-bg relative overflow-hidden px-4 py-16 sm:py-28 lg:py-36">
         <div className="landing-cta-horizon" aria-hidden />
         <div className="landing-cta-grid pointer-events-none absolute inset-0" aria-hidden />
         <div className="landing-cta-blob landing-cta-blob-1 absolute -left-[20%] top-1/4" aria-hidden />
@@ -292,13 +292,13 @@ export default async function LandingPage() {
               </a>
             ) : (
               <>
-                <a href={appPath("/signup")}>
-                  <Button size="lg" className="shadow-lg shadow-brand-500/20">{t("cta.ctaPrimary")}</Button>
+                <a href={appPath("/signup")} className="w-full sm:w-auto">
+                  <Button size="lg" className="w-full shadow-lg shadow-brand-500/20 sm:w-auto">{t("cta.ctaPrimary")}</Button>
                 </a>
                 <ContactFormButton
                   labels={contactLabels}
                   defaultSubject="Decern Demo"
-                  className="h-12 px-6 text-base border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:bg-transparent dark:text-gray-300 dark:hover:bg-white/5 dark:hover:text-white"
+                  className="h-12 w-full px-6 text-base border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:bg-transparent dark:text-gray-300 dark:hover:bg-white/5 dark:hover:text-white sm:w-auto"
                 >
                   {t("cta.ctaSecondary")}
                 </ContactFormButton>

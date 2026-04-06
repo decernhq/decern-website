@@ -20,7 +20,7 @@ export const PLANS: Plan[] = [
     checkout: false,
     features: [
       "1 workspace",
-      "1 project",
+      "Unlimited projects",
       "Unlimited decisions",
       "Judge (advisory, BYO LLM)",
     ],
@@ -29,7 +29,7 @@ export const PLANS: Plan[] = [
     id: "team",
     name: "Team",
     description: "For growing teams",
-    priceLabel: "EUR 19 / month",
+    priceLabel: "EUR 29 / month",
     ctaLabel: "Choose Team",
     checkout: true,
     features: [
@@ -43,7 +43,7 @@ export const PLANS: Plan[] = [
     id: "business",
     name: "Business",
     description: "For organizations",
-    priceLabel: "EUR 59 / month",
+    priceLabel: "EUR 149 / month",
     ctaLabel: "Choose Business",
     checkout: true,
     features: [
