@@ -11,26 +11,26 @@ const siteUrl = process.env.NEXT_PUBLIC_WEBSITE_URL || "https://decern.dev";
 
 export const metadata: Metadata = {
   title: {
-    default: "Decern - Technical Decision Records",
+    default: "Decern — The CI gate between AI code and production",
     template: "%s | Decern",
   },
   description:
-    "Document, share and enforce your team's architectural decisions. CI/CD gate blocks high-impact changes without an approved decision. LLM Judge evaluates compliance automatically.",
+    "A CI gate that checks every AI-generated pull request against your team's architecture decisions. What doesn't fit gets blocked.",
   metadataBase: new URL(siteUrl),
   openGraph: {
     type: "website",
     locale: "en_US",
     url: siteUrl,
     siteName: "Decern",
-    title: "Decern - Technical Decision Records for Engineering Teams",
+    title: "Decern — The CI gate between AI code and production",
     description:
-      "Document, share and enforce your team's architectural decisions. CI/CD gate blocks high-impact changes without an approved decision.",
+      "A CI gate that checks every AI-generated pull request against your team's architecture decisions. What doesn't fit gets blocked.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Decern - Technical Decision Records",
+    title: "Decern — The CI gate between AI code and production",
     description:
-      "Document, share and enforce your team's architectural decisions. CI/CD gate and LLM Judge for engineering teams.",
+      "A CI gate that checks every AI-generated pull request against your team's architecture decisions. What doesn't fit gets blocked.",
   },
   robots: {
     index: true,
