@@ -358,7 +358,7 @@
     },
     "pricingTeaser": {
       "eyebrow": "Pricing",
-      "title": "Start free. Unlock blocking when ready.",
+      "title": "Start free.<mbr></mbr>Unlock blocking when ready.",
       "freeDesc": "Observation mode, unlimited checks, AI generation. Validate value with zero risk.",
       "teamDesc": "Blocking mode, confidence thresholds, and controls for growing teams.",
       "businessDesc": "Multi-workspace management, advanced policies, and roles.",

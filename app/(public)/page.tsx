@@ -248,7 +248,7 @@ export default async function LandingPage() {
         <div className="mx-auto max-w-5xl">
           <FadeIn className="text-center">
             <Eyebrow>{t("pricingTeaser.eyebrow")}</Eyebrow>
-            <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">{t("pricingTeaser.title")}</h2>
+            <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">{t.rich("pricingTeaser.title", { mbr: () => <br className="sm:hidden" /> })}</h2>
           </FadeIn>
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {([["free", "freeDesc"], ["team", "teamDesc"], ["business", "businessDesc"]] as const).map(([plan, descKey], i) => (

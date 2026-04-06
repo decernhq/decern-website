@@ -358,7 +358,7 @@
     },
     "pricingTeaser": {
       "eyebrow": "Prezzi",
-      "title": "Parti gratis. Blocking quando sei pronto.",
+      "title": "Parti gratis.<mbr></mbr>Blocking quando sei pronto.",
       "freeDesc": "Observation mode, check illimitati, generazione AI. Valida il valore a rischio zero.",
       "teamDesc": "Blocking mode, soglie di confidenza e controlli per team in crescita.",
       "businessDesc": "Gestione multi-workspace, policy avanzate e ruoli.",
