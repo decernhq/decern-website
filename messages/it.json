@@ -295,11 +295,11 @@
   },
   "landing": {
     "hero": {
-      "eyebrow": "Gate in CI per le decisioni tecniche",
-      "headline": "Le tue decisioni. Fatte rispettare in ogni PR.",
-      "subheadline": "Documenta cosa avete deciso, collega la decisione alla PR e lascia che il gate controlli ogni modifica - <b>bloccando ciò che non è coerente</b>.",
+      "eyebrow": "Gate in CI per il codice generato da AI",
+      "headline": "L'AI scrive il codice.<br></br>Decern si assicura che rispetti le tue regole.",
+      "subheadline": "Un gate in CI che controlla ogni pull request generata dall'AI rispetto alle decisioni architetturali del team. <b>Ciò che non è coerente viene bloccato.</b>",
       "ctaPrimary": "Inizia gratis",
-      "ctaSecondary": "Prenota una demo",
+      "ctaSecondary": "Scopri come funziona",
       "ctaMicrocopy": "Gratis per sempre in observation mode.<br></br>Nessuna carta di credito."
     },
     "integrations": {
@@ -311,94 +311,64 @@
       "i5": "Azure DevOps"
     },
     "value": {
-      "eyebrow": "Il problema che vale la pena risolvere",
-      "title": "Le decisioni si documentano.<br></br>Il codice va alla deriva.",
-      "subtitle": "Il problema non è documentare, è far rispettare al momento del merge.",
-      "painTitle": "Senza Decern",
-      "pain1": "Una PR aggiunge un service layer che nessuno ha approvato. La review non lo nota. Va in produzione.",
-      "pain2": "Deprecate un pattern. Lo sprint dopo, l'AI lo reintroduce.",
-      "pain3": "Tre team, tre interpretazioni della stessa decisione.",
-      "gainTitle": "Con Decern",
-      "gain1": "Ogni PR ad alto impatto viene verificata rispetto allo scope della decisione.",
-      "gain2": "I tech lead impostano le guardrail una volta - basta ripetere le stesse regole in review.",
-      "gain3": "Il team mantiene velocità e l'architettura resta coerente."
+      "eyebrow": "Ti suona familiare?",
+      "title": "L'AI scrive codice più veloce<br></br>di quanto il team riesca a revisionare",
+      "pain1": "Un agente AI aggiunge un service layer che nessuno ha approvato. La review non lo nota. Va in produzione.",
+      "pain2": "Hai deprecato un pattern il trimestre scorso. Copilot lo reintroduce in ogni nuova PR.",
+      "pain3": "Tre team, tre interpretazioni della stessa decisione architetturale. L'AI amplifica l'incoerenza."
     },
     "solution": {
       "eyebrow": "Come funziona",
-      "title": "Quattro passi.<br></br>Due minuti per configurarlo.",
-      "subtitle": "Registra la decisione, collegala alla PR e lascia fare al gate.",
-      "step1Title": "Registra la decisione",
-      "step2Title": "Collegala alla PR",
-      "step3Title": "Il gate verifica in CI",
+      "title": "Quattro step. Un gate in CI.",
+      "step1Title": "Definisci le regole",
+      "step2Title": "Collega alla PR",
+      "step3Title": "Il gate gira in CI",
       "step4Title": "Il Judge verifica l'allineamento",
       "flowJudgeLabel": "LLM as a Judge",
       "flowOutcome": "Il gate blocca o lascia passare",
-      "flowStep1Desc": "Documenta contesto, opzioni e decisione. Genera da note con l'AI o scrivi a mano.",
-      "flowStep2Desc": "Fai riferimento alla decisione nella PR. La pipeline sa quali regole applicare.",
-      "flowStep3Desc": "Il gate gira in CI. Verifica che la decisione esista e sia approvata.",
-      "flowStep4Desc": "L'LLM Judge confronta il diff con la decisione. Modifica fuori scope? Bloccata con motivazione chiara."
+      "flowStep1Desc": "Documenta le decisioni architetturali del team. Quali pattern usare, quali evitare, quali dipendenze sono approvate. L'AI può aiutarti a scriverle da note o meeting.",
+      "flowStep2Desc": "Ogni PR che tocca un'area governata referenzia la decisione. Un tag, un link, una riga.",
+      "flowStep3Desc": "Il gate si attiva automaticamente. Zero friction per il developer.",
+      "flowStep4Desc": "L'LLM Judge confronta il diff con la decisione. Se il codice esce dallo scope, la PR viene bloccata con una ragione chiara. Umano o AI, stesse regole.",
+      "bottomLine": "Stesso workflow. Uno step in più in CI.<br></br>Ogni modifica controllata, scritta da un developer o da un agente AI."
     },
     "buyers": {
       "eyebrow": "Per chi è",
-      "title": "Uno strumento, quattro risultati",
+      "title": "Uno strumento, tre risultati",
       "b1Role": "Engineering Manager",
-      "b1Pain": "Vuole velocità tra squad senza che l'architettura vada alla deriva.",
-      "b1Outcome": "Guardrail che scalano senza controllo manuale.",
+      "b1Desc": "L'AI sta moltiplicando l'output del tuo team per 10. Decern si assicura che sia l'output giusto.",
+      "b1Outcome": "Velocità senza perdere il controllo.",
       "b2Role": "Tech Lead",
-      "b2Pain": "Stanco di ripetere le stesse regole architetturali in ogni review.",
-      "b2Outcome": "Decisioni enforced in CI, non nella testa di qualcuno.",
+      "b2Desc": "Basta ripetere le regole architetturali in ogni review. Impostale una volta, falle rispettare in CI.",
+      "b2Outcome": "Basta fare il poliziotto dell'architettura.",
       "b3Role": "Platform / DevEx",
-      "b3Pain": "Serve enforcement senza aggiungere attrito al processo.",
-      "b3Outcome": "Uno step in CI. Stesso workflow. Compliance misurabile.",
-      "b4Role": "Compliance / Audit",
-      "b4Pain": "Serve tracciabilità tra decisioni e modifiche in produzione.",
-      "b4Outcome": "Audit trail chiaro: cosa è stato deciso, cosa è stato mergiato."
+      "b3Desc": "Uno step in CI. Nessun cambio di workflow. Governance misurabile.",
+      "b3Outcome": "Enforcement senza friction."
     },
     "trust": {
       "eyebrow": "Trust e controllo",
       "title": "Il tuo modello. Le tue chiavi. Le tue regole.",
-      "intro": "Decern gira sul provider LLM che scegli tu. Le chiavi sono usate per singola richiesta, mai salvate.",
-      "t1Title": "Porta il tuo provider LLM",
-      "t1Desc": "OpenAI, Claude o qualsiasi endpoint compatibile OpenAI.",
+      "intro": "Decern non sostituisce la code review. Cattura quello che i reviewer non vedono, specialmente quando il codice è stato scritto da un'AI che non conosce le decisioni architetturali del team.",
+      "t1Title": "Porta il tuo LLM",
+      "t1Desc": "Il Judge gira sul provider che scegli tu. OpenAI, Claude o qualsiasi endpoint compatibile. Le chiavi API sono usate per singola richiesta, mai salvate. Pieno controllo per i team con policy interne sull'uso di LLM.",
       "t2Title": "Prima observation, poi blocking",
-      "t2Desc": "Parti in modalità report-only sul piano Free.",
+      "t2Desc": "Parti in modalità report. Guarda cosa cattura il gate. Abilita il blocking quando il team è pronto. Nessun big-bang.",
       "t3Title": "Output auditabili e deterministici",
-      "t3Desc": "Ogni run del gate produce riferimento decisione, verdetto di scope e codice motivazione."
-    },
-    "features": {
-      "eyebrow": "Capacità principali",
-      "title": "Tre cose<mbr></mbr> che fa il gate",
-      "feat1Title": "LLM Judge nella tua pipeline CI",
-      "feat1Desc": "Il Judge legge la decisione e il diff della PR.",
-      "feat2Title": "Punteggio di confidenza e soglie",
-      "feat2Desc": "Il Judge restituisce un punteggio (0–100%).",
-      "feat3Title": "Observation mode su Free",
-      "feat3Desc": "Sul piano Free, il gate segnala ma non blocca mai."
+      "t3Desc": "Ogni run del gate produce riferimento alla decisione, verdetto di scope e codice motivazione. Pronto per review e compliance."
     },
     "pricingTeaser": {
       "eyebrow": "Prezzi",
       "title": "Parti gratis. Blocking quando sei pronto.",
-      "freeDesc": "Observation mode, check illimitati, generazione AI.",
-      "teamDesc": "Blocking mode, soglie di confidenza e controlli.",
+      "freeDesc": "Observation mode, check illimitati, generazione AI. Valida il valore a rischio zero.",
+      "teamDesc": "Blocking mode, soglie di confidenza e controlli per team in crescita.",
       "businessDesc": "Gestione multi-workspace, policy avanzate e ruoli.",
-      "ctaPrimary": "Vedi tutti i prezzi"
-    },
-    "faq": {
-      "title": "Domande frequenti",
-      "q1": "In cosa è diverso da Confluence, Notion o ADR in Markdown?",
-      "a1": "Quei tool conservano documenti. Non li fanno rispettare.",
-      "q2": "L'AI scrive le decisioni al posto nostro?",
-      "a2": "Puoi usare l'AI per abbozzare una decisione da note di meeting.",
-      "q3": "Non si rischia di aggiungere burocrazia?",
-      "a3": "Un link nella PR, uno step in CI.",
-      "q4": "Dobbiamo cambiare workflow?",
-      "a4": "No. Aggiungi uno step in CI e referenzia la decisione."
+      "ctaPrimary": "Vedi tutti i prezzi",
+      "bottomLine": "Gratis per sempre in observation mode. Nessuna carta di credito."
     },
     "cta": {
-      "title": "Ferma il drift prima che vada in produzione.<br></br><b>Inizia in due minuti.</b>",
-      "subline": "Un decision log. Un gate in CI.<br></br>Ogni modifica controllata rispetto a quanto deciso.",
+      "title": "L'AI non sa cosa ha deciso il tuo team.<br></br><b>Decern sì.</b>",
       "ctaPrimary": "Inizia gratis",
-      "ctaSecondary": "Vedi i prezzi",
+      "ctaSecondary": "Prenota una demo",
       "microcopy": "Gratis per sempre in observation mode.<br></br>Nessuna carta di credito."
     },
     "footer": {
@@ -408,7 +378,7 @@
       "signUp": "Registrati",
       "terms": "Termini",
       "contact": "Contatti",
-      "copyright": "© Decern. Decision log tecnico e gate in CI per team moderni.",
+      "copyright": "© Decern. Gate in CI per le decisioni architetturali.",
       "builtBy": "Progettato e realizzato da Alessandro Palazzesi"
     }
   }
