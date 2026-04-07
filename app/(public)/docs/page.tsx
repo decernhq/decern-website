@@ -358,6 +358,7 @@ jobs:
           CI_BASE_SHA: \${{ github.event.pull_request.base.sha }}
           CI_HEAD_SHA: \${{ github.event.pull_request.head.sha }}
           CI_PR_TITLE: \${{ github.event.pull_request.title }}
+          CI_PR_URL: \${{ github.event.pull_request.html_url }}
           CI_PR_BODY: \${{ github.event.pull_request.body }}
         run: npx decern-gate`}</Pre>
 
@@ -367,6 +368,7 @@ jobs:
     - export CI_BASE_SHA=$CI_MERGE_REQUEST_DIFF_BASE_SHA
     - export CI_HEAD_SHA=$CI_COMMIT_SHA
     - export CI_PR_TITLE="$CI_MERGE_REQUEST_TITLE"
+    - export CI_PR_URL="$CI_MERGE_REQUEST_PROJECT_URL/-/merge_requests/$CI_MERGE_REQUEST_IID"
     - export CI_PR_BODY="$CI_MERGE_REQUEST_DESCRIPTION"
     - npx decern-gate
   variables:
@@ -467,7 +469,8 @@ npx decern-gate`}</Pre>
               { name: "DECERN_CI_TOKEN", required: true, desc: "Workspace CI token (from Dashboard → Workspace)." },
               { name: "CI_BASE_SHA", required: false, desc: "Git base ref for diff. Falls back to origin/main...HEAD." },
               { name: "CI_HEAD_SHA", required: false, desc: "Git head ref for diff." },
-              { name: "CI_PR_TITLE", required: false, desc: "PR title (used to extract decision refs)." },
+              { name: "CI_PR_TITLE", required: false, desc: "PR title (used to extract decision refs and label gate runs in the dashboard)." },
+              { name: "CI_PR_URL", required: false, desc: "PR URL (used by the Gate runs dashboard to link back to the PR)." },
               { name: "CI_PR_BODY", required: false, desc: "PR body (used to extract decision refs)." },
               { name: "CI_COMMIT_MESSAGE", required: false, desc: "Commit message (fallback if PR vars not set)." },
               { name: "DECERN_GATE_TIMEOUT_MS", required: false, desc: "Validate API timeout in ms (default: 5000)." },
@@ -530,6 +533,17 @@ npx decern-gate`}</Pre>
               <Code> DECERN_JUDGE_MIN_CONFIDENCE</Code> - the gate blocks if the score is below, even when
               <Code> allowed: true</Code>. Workspace admins can also set a <em>judge tolerance</em> percentage
               in the workspace policies.
+            </P>
+
+            <SubTitle>Gate runs dashboard</SubTitle>
+            <P>
+              Every judge call is recorded in <strong>Dashboard → Gate runs</strong>. The page shows
+              total PRs checked this month, how many were flagged as out of scope, the overall
+              alignment percentage, and the average judge confidence — plus a table of recent runs
+              with PR title, decision reference, verdict, confidence and one-line reason. Set
+              <Code> CI_PR_TITLE</Code> and <Code>CI_PR_URL</Code> in your CI environment so each
+              run is labeled and links back to the PR. Only verdicts and PR metadata are stored,
+              never the diff or your LLM credentials.
             </P>
           </section>
 
