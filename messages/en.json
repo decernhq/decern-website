@@ -82,17 +82,19 @@
   },
   "terms": {
     "title": "Terms and Conditions",
-    "lastUpdated": "Last updated: 27 March 2026",
-    "intro": "These Terms and Conditions (\"Terms\") constitute a legally binding agreement between you (\"Customer\", \"you\") and Alessandro Palazzesi, operating as Decern, VAT number IT12930530014 (hereinafter referred to as \"Decern\", \"we\", \"us\", or \"our\"). By accessing or using the Decern platform, website, APIs, CLI tools, or any related services (collectively, the \"Service\"), you agree to be bound by these Terms in their entirety. If you do not agree, you must not use the Service. Decern provides a CI-based enforcement system that evaluates pull requests against defined architectural decisions and may block changes based on configured policies.",
+    "lastUpdated": "Last updated: 10 April 2026",
+    "intro": "These Terms and Conditions (\"Terms\") constitute a legally binding agreement between you (\"Customer\", \"you\") and Alessandro Palazzesi, operating as Decern, VAT number IT12930530014 (hereinafter referred to as \"Decern\", \"we\", \"us\", or \"our\"). By accessing or using the Decern platform, website, APIs, CLI tools, or any related services (collectively, the \"Service\"), you agree to be bound by these Terms in their entirety. If you do not agree, you must not use the Service. Decern provides a CI-based enforcement system that evaluates pull requests against defined architectural decisions and engineering rules, and may block changes based on configured policies.",
     "definitions": {
       "title": "Definitions",
       "body": [
         "\"Service\" means the Decern platform, including the web application, APIs, CLI gate tool (decern-gate), documentation, and all associated infrastructure operated by Decern.",
         "\"Customer Data\" means any data, code diffs, decision records, configuration, or other content that you or your authorized users upload, submit, or transmit through the Service.",
-        "\"LLM Judge\" means the AI-powered analysis feature that evaluates code changes against documented architectural decisions using a third-party or customer-provided large language model.",
+        "\"LLM Judge\" means the AI-powered analysis feature that evaluates code changes against documented architectural decisions and engineering rules using a third-party or customer-provided large language model.",
         "\"Subscription\" means the paid or free plan selected by the Customer, as described on the pricing page.",
         "\"Authorized User\" means any individual granted access to the Service through the Customer's account.",
-        "\"BYO LLM\" (Bring Your Own LLM) means the configuration where the Customer provides their own API keys for a third-party large language model provider."
+        "\"Developer\" means an active committer to any repository where Decern is installed. Bots, CI service accounts, and read-only users are not counted as Developers for billing purposes.",
+        "\"BYO LLM\" (Bring Your Own LLM) means the configuration where the Customer provides their own API keys for a third-party large language model provider.",
+        "\"Audit Log\" means the timestamped, deterministic record produced by each gate run, including the decision referenced, the scope verdict, and the reason code."
       ]
     },
     "acceptance": {
@@ -115,8 +117,9 @@
     "subscriptionAndPayment": {
       "title": "Subscription Plans and Payment",
       "body": [
-        "The Service is offered under multiple subscription tiers (Free, Team, Business, and Self-Hosted/Enterprise), each with different features and usage limits as described on the pricing page.",
-        "Paid subscriptions are billed monthly in advance via Stripe. All fees are quoted in Euros (EUR) and are exclusive of applicable taxes, which will be added where required by law.",
+        "The Service is offered under multiple subscription tiers (Free, Team, Business, and Enterprise / Self-Hosted), each with different features and usage limits as described on the pricing page.",
+        "Paid subscriptions (Team, Business) are billed per Developer per month in advance via Stripe. Each tier has a minimum number of Developers as stated on the pricing page. Enterprise / Self-Hosted subscriptions are billed under a custom agreement. All fees are quoted in Euros (EUR) and are exclusive of applicable taxes, which will be added where required by law.",
+        "Developer count is calculated based on active committers to repositories where Decern is installed during the billing period. Bots, CI service accounts, and read-only users are excluded from the count.",
         "You authorize Decern to charge your designated payment method for all fees associated with your selected plan. Failure to pay may result in suspension or termination of your access to the Service.",
         "Decern reserves the right to change pricing at any time. Price changes for existing subscriptions will take effect at the start of the next billing cycle, with at least 30 days' prior notice.",
         "All fees are non-refundable except where required by applicable law. No refunds or credits will be issued for partial months of service, downgrades, or unused features."
@@ -125,7 +128,7 @@
     "freeplan": {
       "title": "Free Plan",
       "body": [
-        "The Free plan provides access to the Service in observation mode only. It is offered at no charge and is subject to fair-use limitations.",
+        "The Free plan provides access to the Service in observation mode only for up to five (5) Developers. It is offered at no charge and is subject to fair-use limitations.",
         "Decern reserves the right to modify, limit, or discontinue the Free plan at any time without prior notice. Free plan users have no guaranteed service level.",
         "Decern may impose usage limits, rate limits, or feature restrictions on the Free plan at its sole discretion to ensure platform stability."
       ]
@@ -150,7 +153,7 @@
       "title": "Acceptable Use Policy",
       "body": [
         "You agree not to use the Service to: (a) violate any applicable law, regulation, or third-party rights; (b) upload or transmit malicious code, viruses, or harmful content; (c) interfere with, disrupt, or compromise the integrity or performance of the Service or its underlying systems; (d) attempt to gain unauthorized access to the Service, other accounts, or related systems; (e) use the Service to store or process sensitive personal data (e.g., health records, financial account numbers) unless explicitly agreed in writing.",
-        "You are solely responsible for ensuring that your use of the Service, including the content of your Customer Data and architectural decisions, complies with all applicable laws and regulations.",
+        "You are solely responsible for ensuring that your use of the Service, including the content of your Customer Data, architectural decisions, and engineering rules, complies with all applicable laws and regulations.",
         "Decern reserves the right to suspend or terminate access to any Customer that violates this Acceptable Use Policy, without prior notice and without refund."
       ]
     },
@@ -168,7 +171,8 @@
         "You are solely responsible for the accuracy, quality, integrity, legality, and appropriateness of all Customer Data.",
         "Decern does not monitor, verify, or endorse Customer Data. Decern is not liable for any Customer Data submitted by you or your Authorized Users.",
         "You are responsible for maintaining independent backups of your Customer Data and for exporting any data you wish to retain prior to account termination or plan downgrade. Decern does not guarantee against data loss and shall not be liable for any loss, corruption, or destruction of Customer Data, regardless of cause.",
-        "Upon termination of your account or downgrade to a lower plan, Customer Data associated with features no longer available may be permanently deleted after a 30-day grace period without further notice."
+        "Upon termination of your account or downgrade to a lower plan, Customer Data associated with features no longer available may be permanently deleted after a 30-day grace period without further notice.",
+        "Audit log retention periods vary by plan. Business plans include extended audit log retention. Enterprise / Self-Hosted customers control their own retention policies. When downgrading from a plan with extended retention, audit log entries beyond the lower plan's retention period may be permanently deleted after a 30-day grace period."
       ]
     },
     "thirdPartyLLM": {
@@ -184,11 +188,12 @@
       ]
     },
     "selfHosted": {
-      "title": "Self-Hosted Deployment",
+      "title": "Enterprise / Self-Hosted Deployment",
       "body": [
-        "Self-Hosted (Enterprise) customers receive a license to deploy the Service on their own infrastructure. The specific terms of each self-hosted deployment are governed by a separate agreement.",
+        "Enterprise / Self-Hosted customers receive a license to deploy the Service on their own infrastructure, including VPC and air-gapped environments. The specific terms of each deployment are governed by a separate agreement.",
         "For self-hosted deployments, the Customer is solely responsible for: (a) infrastructure provisioning, maintenance, and security; (b) backups and disaster recovery; (c) compliance with all applicable laws and regulations in the jurisdictions where the software is deployed; (d) network security and access control.",
-        "Decern provides the software on an \"as-is\" basis for self-hosted deployments and does not guarantee compatibility with all infrastructure configurations. Support is provided according to the terms of the applicable support agreement.",
+        "Enterprise / Self-Hosted deployments require BYO LLM. No data leaves the Customer's infrastructure unless the Customer explicitly configures an external LLM endpoint.",
+        "Decern provides the software on an \"as-is\" basis for self-hosted deployments and does not guarantee compatibility with all infrastructure configurations. Dedicated support with SLA is provided according to the terms of the applicable support agreement.",
         "Decern has no responsibility for the operation, security, or performance of self-hosted deployments."
       ]
     },
@@ -197,8 +202,8 @@
       "body": [
         "Decern will make commercially reasonable efforts to maintain the availability of the Service. However, the Service is provided on an \"as-available\" basis, and Decern does not guarantee uninterrupted or error-free operation.",
         "The Service may be temporarily unavailable due to scheduled maintenance, emergency maintenance, force majeure events, third-party service outages (including LLM providers, cloud hosting, or payment processors), or circumstances beyond Decern's reasonable control.",
-        "Decern does not provide guaranteed SLAs (Service Level Agreements) unless separately agreed in writing for Enterprise customers.",
-        "Support is provided on a best-effort basis via email at opensource@decern.dev. Response times are not guaranteed unless otherwise agreed in a separate support agreement."
+        "Decern does not provide guaranteed SLAs (Service Level Agreements) unless separately agreed in writing for Enterprise / Self-Hosted customers.",
+        "Support levels vary by plan: email support for Team, priority support for Business, and dedicated support with SLA for Enterprise / Self-Hosted. Free plan users receive community support only. Response times are not guaranteed unless otherwise agreed in a separate support agreement."
       ]
     },
     "disclaimerOfWarranties": {

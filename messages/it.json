@@ -82,17 +82,19 @@
   },
   "terms": {
     "title": "Termini e Condizioni",
-    "lastUpdated": "Ultimo aggiornamento: 27 marzo 2026",
-    "intro": "I presenti Termini e Condizioni (\"Termini\") costituiscono un accordo giuridicamente vincolante tra l'utente (\"Cliente\", \"tu\") e Alessandro Palazzesi, operante come Decern, P.IVA 12930530014 (di seguito \"Decern\", \"noi\", \"ci\" o \"nostro\"). Accedendo o utilizzando la piattaforma Decern, il sito web, le API, gli strumenti CLI o qualsiasi servizio correlato (collettivamente, il \"Servizio\"), accetti di essere vincolato da questi Termini nella loro interezza. Se non accetti, non devi utilizzare il Servizio. Decern fornisce un sistema di enforcement basato su CI che valuta le pull request rispetto a decisioni architetturali definite e può bloccare modifiche in base alle policy configurate.",
+    "lastUpdated": "Ultimo aggiornamento: 10 aprile 2026",
+    "intro": "I presenti Termini e Condizioni (\"Termini\") costituiscono un accordo giuridicamente vincolante tra l'utente (\"Cliente\", \"tu\") e Alessandro Palazzesi, operante come Decern, P.IVA 12930530014 (di seguito \"Decern\", \"noi\", \"ci\" o \"nostro\"). Accedendo o utilizzando la piattaforma Decern, il sito web, le API, gli strumenti CLI o qualsiasi servizio correlato (collettivamente, il \"Servizio\"), accetti di essere vincolato da questi Termini nella loro interezza. Se non accetti, non devi utilizzare il Servizio. Decern fornisce un sistema di enforcement basato su CI che valuta le pull request rispetto a decisioni architetturali e regole del team definite, e può bloccare modifiche in base alle policy configurate.",
     "definitions": {
       "title": "Definizioni",
       "body": [
         "\"Servizio\" indica la piattaforma Decern, inclusa l'applicazione web, le API, lo strumento CLI gate (decern-gate), la documentazione e tutta l'infrastruttura correlata gestita da Decern.",
         "\"Dati del Cliente\" indica qualsiasi dato, diff di codice, record di decisione, configurazione o altro contenuto che tu o i tuoi utenti autorizzati caricate, inviate o trasmettete attraverso il Servizio.",
-        "\"LLM Judge\" indica la funzionalità di analisi basata su AI che valuta le modifiche al codice rispetto alle decisioni architetturali documentate, utilizzando un modello linguistico di terze parti o fornito dal Cliente.",
+        "\"LLM Judge\" indica la funzionalità di analisi basata su AI che valuta le modifiche al codice rispetto alle decisioni architetturali e regole del team documentate, utilizzando un modello linguistico di terze parti o fornito dal Cliente.",
         "\"Abbonamento\" indica il piano a pagamento o gratuito selezionato dal Cliente, come descritto nella pagina dei prezzi.",
         "\"Utente Autorizzato\" indica qualsiasi individuo a cui è stato concesso l'accesso al Servizio tramite l'account del Cliente.",
-        "\"BYO LLM\" (Bring Your Own LLM) indica la configurazione in cui il Cliente fornisce le proprie chiavi API per un provider di modelli linguistici di terze parti."
+        "\"Sviluppatore\" indica un committer attivo su qualsiasi repository in cui Decern è installato. Bot, account CI e utenti in sola lettura non vengono conteggiati come Sviluppatori ai fini della fatturazione.",
+        "\"BYO LLM\" (Bring Your Own LLM) indica la configurazione in cui il Cliente fornisce le proprie chiavi API per un provider di modelli linguistici di terze parti.",
+        "\"Audit Log\" indica il record deterministico e con timestamp prodotto da ogni esecuzione del gate, inclusa la decisione referenziata, il verdetto di scope e il codice motivazione."
       ]
     },
     "acceptance": {
@@ -115,8 +117,9 @@
     "subscriptionAndPayment": {
       "title": "Piani di Abbonamento e Pagamento",
       "body": [
-        "Il Servizio è offerto con diversi livelli di abbonamento (Free, Team, Business e Self-Hosted/Enterprise), ciascuno con funzionalità e limiti di utilizzo differenti come descritto nella pagina dei prezzi.",
-        "Gli abbonamenti a pagamento sono fatturati mensilmente in anticipo tramite Stripe. Tutti i prezzi sono indicati in Euro (EUR) e sono al netto delle imposte applicabili, che saranno aggiunte ove richiesto dalla legge.",
+        "Il Servizio è offerto con diversi livelli di abbonamento (Free, Team, Business e Enterprise / Self-Hosted), ciascuno con funzionalità e limiti di utilizzo differenti come descritto nella pagina dei prezzi.",
+        "Gli abbonamenti a pagamento (Team, Business) sono fatturati per Sviluppatore al mese in anticipo tramite Stripe. Ogni piano ha un numero minimo di Sviluppatori come indicato nella pagina dei prezzi. Gli abbonamenti Enterprise / Self-Hosted sono fatturati secondo un accordo personalizzato. Tutti i prezzi sono indicati in Euro (EUR) e sono al netto delle imposte applicabili, che saranno aggiunte ove richiesto dalla legge.",
+        "Il conteggio degli Sviluppatori è calcolato in base ai committer attivi sui repository in cui Decern è installato durante il periodo di fatturazione. Bot, account CI e utenti in sola lettura sono esclusi dal conteggio.",
         "Autorizzi Decern ad addebitare il metodo di pagamento designato per tutte le tariffe associate al piano selezionato. Il mancato pagamento può comportare la sospensione o la terminazione dell'accesso al Servizio.",
         "Decern si riserva il diritto di modificare i prezzi in qualsiasi momento. Le modifiche di prezzo per gli abbonamenti esistenti avranno effetto all'inizio del ciclo di fatturazione successivo, con almeno 30 giorni di preavviso.",
         "Tutte le tariffe non sono rimborsabili, salvo ove richiesto dalla legge applicabile. Non saranno emessi rimborsi o crediti per mesi parziali di servizio, downgrade o funzionalità non utilizzate."
@@ -125,7 +128,7 @@
     "freeplan": {
       "title": "Piano Free",
       "body": [
-        "Il piano Free fornisce accesso al Servizio solo in modalità osservazione. È offerto gratuitamente ed è soggetto a limitazioni di fair use.",
+        "Il piano Free fornisce accesso al Servizio solo in modalità osservazione per un massimo di cinque (5) Sviluppatori. È offerto gratuitamente ed è soggetto a limitazioni di fair use.",
         "Decern si riserva il diritto di modificare, limitare o interrompere il piano Free in qualsiasi momento senza preavviso. Gli utenti del piano Free non hanno alcun livello di servizio garantito.",
         "Decern può imporre limiti di utilizzo, limiti di frequenza o restrizioni sulle funzionalità del piano Free a propria esclusiva discrezione per garantire la stabilità della piattaforma."
       ]
@@ -150,7 +153,7 @@
       "title": "Politica di Utilizzo Accettabile",
       "body": [
         "Accetti di non utilizzare il Servizio per: (a) violare qualsiasi legge, regolamento o diritto di terzi applicabile; (b) caricare o trasmettere codice malevolo, virus o contenuti dannosi; (c) interferire con, interrompere o compromettere l'integrità o le prestazioni del Servizio o dei suoi sistemi sottostanti; (d) tentare di ottenere accesso non autorizzato al Servizio, ad altri account o a sistemi correlati; (e) utilizzare il Servizio per archiviare o elaborare dati personali sensibili (es. cartelle cliniche, numeri di conti finanziari) salvo accordo esplicito per iscritto.",
-        "Sei l'unico responsabile di assicurare che il tuo utilizzo del Servizio, incluso il contenuto dei tuoi Dati del Cliente e delle decisioni architetturali, sia conforme a tutte le leggi e i regolamenti applicabili.",
+        "Sei l'unico responsabile di assicurare che il tuo utilizzo del Servizio, incluso il contenuto dei tuoi Dati del Cliente, delle decisioni architetturali e delle regole del team, sia conforme a tutte le leggi e i regolamenti applicabili.",
         "Decern si riserva il diritto di sospendere o terminare l'accesso a qualsiasi Cliente che violi questa Politica di Utilizzo Accettabile, senza preavviso e senza rimborso."
       ]
     },
@@ -168,7 +171,8 @@
         "Sei l'unico responsabile dell'accuratezza, qualità, integrità, legalità e appropriatezza di tutti i Dati del Cliente.",
         "Decern non monitora, verifica o approva i Dati del Cliente. Decern non è responsabile per i Dati del Cliente inviati da te o dai tuoi Utenti Autorizzati.",
         "Sei responsabile del mantenimento di backup indipendenti dei tuoi Dati del Cliente e dell'esportazione di qualsiasi dato che desideri conservare prima della terminazione dell'account o del downgrade del piano. Decern non garantisce contro la perdita di dati e non sarà responsabile per perdita, corruzione o distruzione dei Dati del Cliente, indipendentemente dalla causa.",
-        "Alla terminazione dell'account o al downgrade a un piano inferiore, i Dati del Cliente associati a funzionalità non più disponibili potrebbero essere eliminati definitivamente dopo un periodo di grazia di 30 giorni senza ulteriore preavviso."
+        "Alla terminazione dell'account o al downgrade a un piano inferiore, i Dati del Cliente associati a funzionalità non più disponibili potrebbero essere eliminati definitivamente dopo un periodo di grazia di 30 giorni senza ulteriore preavviso.",
+        "I periodi di retention dell'audit log variano per piano. I piani Business includono retention estesa dell'audit log. I clienti Enterprise / Self-Hosted gestiscono le proprie politiche di retention. In caso di downgrade da un piano con retention estesa, le voci dell'audit log oltre il periodo di retention del piano inferiore potrebbero essere eliminate definitivamente dopo un periodo di grazia di 30 giorni."
       ]
     },
     "thirdPartyLLM": {
@@ -184,11 +188,12 @@
       ]
     },
     "selfHosted": {
-      "title": "Deployment Self-Hosted",
+      "title": "Deployment Enterprise / Self-Hosted",
       "body": [
-        "I clienti Self-Hosted (Enterprise) ricevono una licenza per distribuire il Servizio sulla propria infrastruttura. I termini specifici di ogni deployment self-hosted sono regolati da un accordo separato.",
+        "I clienti Enterprise / Self-Hosted ricevono una licenza per distribuire il Servizio sulla propria infrastruttura, inclusi ambienti VPC e air-gapped. I termini specifici di ogni deployment sono regolati da un accordo separato.",
         "Per i deployment self-hosted, il Cliente è l'unico responsabile di: (a) provisioning, manutenzione e sicurezza dell'infrastruttura; (b) backup e disaster recovery; (c) conformità a tutte le leggi e regolamenti applicabili nelle giurisdizioni in cui il software è distribuito; (d) sicurezza della rete e controllo degli accessi.",
-        "Decern fornisce il software \"così com'è\" per i deployment self-hosted e non garantisce la compatibilità con tutte le configurazioni infrastrutturali. Il supporto è fornito secondo i termini dell'accordo di supporto applicabile.",
+        "I deployment Enterprise / Self-Hosted richiedono BYO LLM. Nessun dato lascia l'infrastruttura del Cliente a meno che il Cliente non configuri esplicitamente un endpoint LLM esterno.",
+        "Decern fornisce il software \"così com'è\" per i deployment self-hosted e non garantisce la compatibilità con tutte le configurazioni infrastrutturali. Il supporto dedicato con SLA è fornito secondo i termini dell'accordo di supporto applicabile.",
         "Decern non ha alcuna responsabilità per il funzionamento, la sicurezza o le prestazioni dei deployment self-hosted."
       ]
     },
@@ -197,8 +202,8 @@
       "body": [
         "Decern compirà sforzi commercialmente ragionevoli per mantenere la disponibilità del Servizio. Tuttavia, il Servizio è fornito su base \"as-available\" e Decern non garantisce un funzionamento ininterrotto o privo di errori.",
         "Il Servizio potrebbe essere temporaneamente non disponibile a causa di manutenzione programmata, manutenzione di emergenza, eventi di forza maggiore, interruzioni di servizi di terze parti (inclusi provider LLM, hosting cloud o processori di pagamento) o circostanze al di fuori del ragionevole controllo di Decern.",
-        "Decern non fornisce SLA (Service Level Agreement) garantiti, salvo diverso accordo scritto per i clienti Enterprise.",
-        "Il supporto è fornito su base best-effort via email a opensource@decern.dev. I tempi di risposta non sono garantiti salvo diverso accordo in un contratto di supporto separato."
+        "Decern non fornisce SLA (Service Level Agreement) garantiti, salvo diverso accordo scritto per i clienti Enterprise / Self-Hosted.",
+        "I livelli di supporto variano per piano: supporto email per Team, supporto prioritario per Business, e supporto dedicato con SLA per Enterprise / Self-Hosted. Gli utenti del piano Free ricevono solo supporto community. I tempi di risposta non sono garantiti salvo diverso accordo in un contratto di supporto separato."
       ]
     },
     "disclaimerOfWarranties": {
