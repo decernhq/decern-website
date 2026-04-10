@@ -19,7 +19,7 @@ const SECTIONS: DocSection[] = [
   { id: "ci-integration", label: "CI Integration" },
   { id: "decision-gate", label: "Decision Gate" },
   { id: "judge", label: "LLM Judge" },
-  { id: "roles", label: "Roles & Permissions", business: true },
+  { id: "roles", label: "Roles & Permissions" },
   { id: "policies", label: "Policies" },
   { id: "github-sync", label: "GitHub Sync" },
   { id: "self-hosted", label: "Self Hosted" },
@@ -73,12 +73,6 @@ const Callout = ({ children, type = "info" }: { children: React.ReactNode; type?
     </div>
   );
 };
-
-const BusinessBadge = () => (
-  <span className="ml-2 inline-flex items-center rounded-md bg-amber-100 px-2 py-0.5 text-xs font-bold uppercase tracking-wide text-amber-800 dark:bg-amber-900/40 dark:text-amber-400">
-    Business
-  </span>
-);
 
 const EnvTable = ({ rows }: { rows: { name: string; required: boolean; desc: string }[] }) => (
   <div className="mt-4 overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700">
@@ -190,7 +184,7 @@ export default function DocsPage() {
 
             <Callout type="tip">
               On the <strong>Free</strong> plan you can create unlimited decisions, one workspace, and one project.
-              Upgrade to <strong>Team</strong> or <strong>Business</strong> for unlimited projects and advanced features.
+              Contact us for <strong>Enterprise / Self-Hosted</strong> plans with unlimited projects and advanced features.
             </Callout>
           </section>
 
@@ -210,7 +204,7 @@ export default function DocsPage() {
             <P>
               Invite team members via email from <strong>Workspace → Members</strong>.
               Each member has a <em>workspace access role</em> (admin or member).
-              On the Business plan, members also receive a <em>decision role</em>,
+              On the Enterprise plan, members also receive a <em>decision role</em>,
               see <a href="#roles" className="docs-link">Roles &amp; Permissions</a>.
             </P>
 
@@ -254,10 +248,8 @@ export default function DocsPage() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
-                  <tr><td className="px-4 py-2.5 font-medium">Free</td><td className="px-4 py-2.5">1</td><td className="px-4 py-2.5">1</td><td className="px-4 py-2.5">1</td></tr>
-                  <tr><td className="px-4 py-2.5 font-medium">Team</td><td className="px-4 py-2.5">1</td><td className="px-4 py-2.5">Unlimited</td><td className="px-4 py-2.5">10</td></tr>
-                  <tr><td className="px-4 py-2.5 font-medium">Business</td><td className="px-4 py-2.5">Unlimited</td><td className="px-4 py-2.5">Unlimited</td><td className="px-4 py-2.5">20</td></tr>
-                  <tr><td className="px-4 py-2.5 font-medium">Self Hosted</td><td className="px-4 py-2.5">Unlimited</td><td className="px-4 py-2.5">Unlimited</td><td className="px-4 py-2.5">Unlimited</td></tr>
+                  <tr><td className="px-4 py-2.5 font-medium">Free</td><td className="px-4 py-2.5">1</td><td className="px-4 py-2.5">1</td><td className="px-4 py-2.5">5</td></tr>
+                  <tr><td className="px-4 py-2.5 font-medium">Enterprise / Self Hosted</td><td className="px-4 py-2.5">Unlimited</td><td className="px-4 py-2.5">Unlimited</td><td className="px-4 py-2.5">Unlimited</td></tr>
                 </tbody>
               </table>
             </div>
@@ -457,8 +449,7 @@ npx decern-gate`}</Pre>
                 </thead>
                 <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
                   <tr><td className="px-4 py-2.5 font-medium">Free</td><td className="px-4 py-2.5">Warnings only (non-blocking)</td><td className="px-4 py-2.5">Advisory only</td></tr>
-                  <tr><td className="px-4 py-2.5 font-medium">Team</td><td className="px-4 py-2.5">Blocking on high-impact</td><td className="px-4 py-2.5">Can block (configurable)</td></tr>
-                  <tr><td className="px-4 py-2.5 font-medium">Business</td><td className="px-4 py-2.5">Blocking + advanced policies</td><td className="px-4 py-2.5">Can block (configurable)</td></tr>
+                  <tr><td className="px-4 py-2.5 font-medium">Enterprise / Self Hosted</td><td className="px-4 py-2.5">Blocking + advanced policies</td><td className="px-4 py-2.5">Can block (configurable)</td></tr>
                 </tbody>
               </table>
             </div>
@@ -523,7 +514,7 @@ npx decern-gate`}</Pre>
             <SubTitle>Advisory vs Blocking</SubTitle>
             <P>
               On the <strong>Free</strong> plan the judge is always <em>advisory</em>, it logs warnings but never blocks the pipeline.
-              On <strong>Team</strong> and <strong>Business</strong>, the judge can block if the workspace policy &quot;Judge blocking&quot;
+              On <strong>Enterprise / Self Hosted</strong>, the judge can block if the workspace policy &quot;Judge blocking&quot;
               is enabled (on by default). When the backend returns <Code>advisory: true</Code>, the CLI passes even if <Code>allowed: false</Code>.
             </P>
 
@@ -547,16 +538,13 @@ npx decern-gate`}</Pre>
             </P>
           </section>
 
-          {/* ─── Roles & Permissions (Business) ─── */}
+          {/* ─── Roles & Permissions ─── */}
           <section id="roles" className="docs-section">
-            <div className="rounded-2xl border-2 border-amber-200 bg-amber-50/30 p-6 dark:border-amber-800/50 dark:bg-amber-900/10">
-              <div className="flex items-center gap-3">
-                <SectionTitle id="roles">Roles &amp; Permissions</SectionTitle>
-                <BusinessBadge />
-              </div>
+            <div className="rounded-2xl border-2 border-gray-200 bg-gray-50/30 p-6 dark:border-gray-700/50 dark:bg-gray-900/10">
+              <SectionTitle id="roles">Roles &amp; Permissions</SectionTitle>
               <P>
                 The roles system provides fine-grained control over who can do what inside your workspace.
-                It is available on the <strong>Business</strong> and <strong>Self Hosted</strong> plans.
+                It is available on the <strong>Enterprise / Self Hosted</strong> plan.
               </P>
 
               <SubTitle>Two-tier role model</SubTitle>
@@ -602,8 +590,8 @@ npx decern-gate`}</Pre>
               </P>
 
               <Callout type="info">
-                On plans without roles enabled (Free, Team), all members have full access to create,
-                edit, and approve decisions. Roles become active when you upgrade to Business.
+                On the Free plan, all members have full access to create,
+                edit, and approve decisions. Roles become active on the Enterprise / Self Hosted plan.
               </Callout>
             </div>
           </section>
@@ -613,7 +601,7 @@ npx decern-gate`}</Pre>
             <SectionTitle id="policies">Policies</SectionTitle>
             <P>
               Workspace policies configure how Decision Gate behaves for your team.
-              They are set in <strong>Workspace → Policies</strong> (Team+ plans).
+              They are set in <strong>Workspace → Policies</strong> (Enterprise / Self Hosted plan).
             </P>
 
             <div className="mt-4 overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700">
@@ -637,7 +625,7 @@ npx decern-gate`}</Pre>
 
             <Callout type="info">
               On the Free plan, the gate always runs in observation mode (warnings only, never blocks).
-              Policies become effective starting from the Team plan.
+              Policies become effective on the Enterprise / Self Hosted plan.
             </Callout>
           </section>
 

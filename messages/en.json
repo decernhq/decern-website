@@ -17,8 +17,6 @@
     "perMonth": "/month",
     "mostPopular": "Most popular",
     "startFree": "Start free",
-    "startTeamTrial": "Start Team trial",
-    "startBusinessTrial": "Start Business trial",
     "contactSales": "Contact sales",
     "contactUs": "Contact us",
     "questions": "Have questions?",
@@ -26,8 +24,6 @@
     "minDevs": "Minimum {min} developers",
     "devCountNote": "Developer count is based on active committers to repositories where Decern is installed. We don't count bots, CI service accounts, or read-only users.",
     "progressFree": "Free: Visibility",
-    "progressTeam": "Team: Enforcement",
-    "progressBusiness": "Business: Full control",
     "progressEnterprise": "Enterprise: Deployment control",
     "customPricing": "Custom",
     "enterpriseBadge": "Premium"
@@ -38,21 +34,13 @@
       "description": "Visibility",
       "features": ["Up to 5 developers", "1 workspace, unlimited projects, unlimited decisions", "Observation mode only (warnings, no blocking)", "LLM as a Judge (advisory, BYO only)", "AI decision generation (fair use)"]
     },
-    "team": {
-      "name": "Team",
-      "description": "Enforcement",
-      "features": ["1 workspace, unlimited projects, unlimited decisions", "Blocking mode", "Judge tolerance controls", "Integrated LLM (fair use) or BYO LLM", "Email support"]
-    },
-    "business": {
-      "name": "Business",
-      "description": "Full control",
-      "features": ["Unlimited workspaces, projects, decisions", "Everything in Team, plus:", "Advanced policies", "Roles & permissions", "SSO (SAML, OIDC)", "Audit log with extended retention", "Priority support"]
-    },
     "enterprise": {
       "name": "Enterprise / Self-Hosted",
       "description": "Deployment control",
       "features": [
-        "Everything in Business, plus:",
+        "Unlimited workspaces, projects, decisions",
+        "Blocking mode + advanced policies",
+        "Roles & permissions",
         "Self-hosted deployment (VPC, air-gapped options)",
         "BYO LLM enforced",
         "Dedicated support with SLA",
@@ -117,8 +105,8 @@
     "subscriptionAndPayment": {
       "title": "Subscription Plans and Payment",
       "body": [
-        "The Service is offered under multiple subscription tiers (Free, Team, Business, and Enterprise / Self-Hosted), each with different features and usage limits as described on the pricing page.",
-        "Paid subscriptions (Team, Business) are billed per Developer per month in advance via Stripe. Each tier has a minimum number of Developers as stated on the pricing page. Enterprise / Self-Hosted subscriptions are billed under a custom agreement. All fees are quoted in Euros (EUR) and are exclusive of applicable taxes, which will be added where required by law.",
+        "The Service is offered under multiple subscription tiers (Free and Enterprise / Self-Hosted), each with different features and usage limits as described on the pricing page.",
+        "Enterprise / Self-Hosted subscriptions are billed under a custom agreement. All fees are quoted in Euros (EUR) and are exclusive of applicable taxes, which will be added where required by law.",
         "Developer count is calculated based on active committers to repositories where Decern is installed during the billing period. Bots, CI service accounts, and read-only users are excluded from the count.",
         "You authorize Decern to charge your designated payment method for all fees associated with your selected plan. Failure to pay may result in suspension or termination of your access to the Service.",
         "Decern reserves the right to change pricing at any time. Price changes for existing subscriptions will take effect at the start of the next billing cycle, with at least 30 days' prior notice.",
@@ -172,7 +160,7 @@
         "Decern does not monitor, verify, or endorse Customer Data. Decern is not liable for any Customer Data submitted by you or your Authorized Users.",
         "You are responsible for maintaining independent backups of your Customer Data and for exporting any data you wish to retain prior to account termination or plan downgrade. Decern does not guarantee against data loss and shall not be liable for any loss, corruption, or destruction of Customer Data, regardless of cause.",
         "Upon termination of your account or downgrade to a lower plan, Customer Data associated with features no longer available may be permanently deleted after a 30-day grace period without further notice.",
-        "Audit log retention periods vary by plan. Business plans include extended audit log retention. Enterprise / Self-Hosted customers control their own retention policies. When downgrading from a plan with extended retention, audit log entries beyond the lower plan's retention period may be permanently deleted after a 30-day grace period."
+        "Audit log retention periods vary by plan. Enterprise / Self-Hosted customers control their own retention policies."
       ]
     },
     "thirdPartyLLM": {
@@ -203,7 +191,7 @@
         "Decern will make commercially reasonable efforts to maintain the availability of the Service. However, the Service is provided on an \"as-available\" basis, and Decern does not guarantee uninterrupted or error-free operation.",
         "The Service may be temporarily unavailable due to scheduled maintenance, emergency maintenance, force majeure events, third-party service outages (including LLM providers, cloud hosting, or payment processors), or circumstances beyond Decern's reasonable control.",
         "Decern does not provide guaranteed SLAs (Service Level Agreements) unless separately agreed in writing for Enterprise / Self-Hosted customers.",
-        "Support levels vary by plan: email support for Team, priority support for Business, and dedicated support with SLA for Enterprise / Self-Hosted. Free plan users receive community support only. Response times are not guaranteed unless otherwise agreed in a separate support agreement."
+        "Support levels vary by plan: community support for Free, and dedicated support with SLA for Enterprise / Self-Hosted. Response times are not guaranteed unless otherwise agreed in a separate support agreement."
       ]
     },
     "disclaimerOfWarranties": {
@@ -382,8 +370,7 @@
       "eyebrow": "Pricing",
       "title": "Start free.<mbr></mbr>Unlock blocking when ready.",
       "freeDesc": "Observation mode for up to 5 developers. Validate value with zero risk.",
-      "teamDesc": "Blocking mode, judge controls, and email support. €12/dev/month.",
-      "businessDesc": "Advanced policies, SSO, audit log, and priority support. €28/dev/month.",
+      "enterpriseDesc": "Blocking mode, advanced policies, roles, self-hosted deployment, and dedicated support.",
       "ctaPrimary": "See full pricing",
       "bottomLine": "Free forever on observation mode. No credit card."
     },

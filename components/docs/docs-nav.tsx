@@ -6,7 +6,6 @@ import { cn } from "@/lib/utils";
 export type DocSection = {
   id: string;
   label: string;
-  business?: boolean;
 };
 
 export function DocsNav({ sections }: { sections: DocSection[] }) {
@@ -48,11 +47,6 @@ export function DocsNav({ sections }: { sections: DocSection[] }) {
             )}
           >
             {s.label}
-            {s.business && (
-              <span className="rounded bg-amber-400/20 px-1 py-px text-[0.55rem] font-bold uppercase text-amber-600 dark:text-amber-400">
-                B
-              </span>
-            )}
           </a>
         ))}
       </nav>
@@ -75,11 +69,6 @@ export function DocsNav({ sections }: { sections: DocSection[] }) {
               )}
             >
               {s.label}
-              {s.business && (
-                <span className="rounded bg-amber-100 px-1.5 py-0.5 text-[0.6rem] font-bold uppercase tracking-wide text-amber-700 dark:bg-amber-900/40 dark:text-amber-400">
-                  Business
-                </span>
-              )}
             </a>
           ))}
         </div>

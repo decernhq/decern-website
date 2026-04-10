@@ -10,10 +10,10 @@ import { appPath } from "@/lib/config";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Per-developer pricing. Free forever on observation mode. Team, Business, and Enterprise plans for CI blocking, LLM Judge, and self-hosted deployment.",
+    "Free forever on observation mode. Enterprise and Self-Hosted plans for CI blocking, LLM Judge, and self-hosted deployment.",
 };
 
-const PLAN_ORDER: PlanId[] = ["free", "team", "business", "enterprise"];
+const PLAN_ORDER: PlanId[] = ["free", "enterprise"];
 
 export default async function PricingPage() {
   const t = await getTranslations("pricing");
@@ -63,61 +63,17 @@ export default async function PricingPage() {
       </div>
 
 
-      <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {/* Progress badges aligned to card columns – desktop only */}
-        <div className="relative col-span-full mb-4 hidden lg:grid lg:grid-cols-4 lg:gap-6">
-          {(["progressFree", "progressTeam", "progressBusiness", "progressEnterprise"] as const).map((k, i) => (
-            <div key={k} className="relative flex items-center justify-center">
-              <span
-                className={cn(
-                  "rounded-full px-3.5 py-1.5 text-xs font-semibold shadow-sm",
-                  k === "progressEnterprise"
-                    ? "border border-gray-900 bg-gray-900 text-white shadow-gray-900/20 dark:border-gray-100 dark:bg-gray-100 dark:text-gray-900 dark:shadow-gray-100/10"
-                    : "border border-gray-200 bg-white text-gray-700 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200"
-                )}
-              >
-                {t(k)}
-              </span>
-              {i < 3 && (
-                <div className="absolute -right-3 flex translate-x-1/2 items-center gap-[1px]" aria-hidden>
-                  {[0, 1, 2].map((j) => (
-                    <svg
-                      key={j}
-                      className="h-3 w-3 text-brand-500 dark:text-brand-400"
-                      viewBox="0 0 16 16"
-                      fill="none"
-                      style={{
-                        animation: "pricing-chevron 1.8s ease-in-out infinite",
-                        animationDelay: `${i * 0.6 + j * 0.18}s`,
-                      }}
-                    >
-                      <path d="M5.5 3l5 5-5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
+      <div className="mt-12 grid gap-6 sm:grid-cols-2 max-w-2xl mx-auto">
         {plans.map((plan) => (
           <div
             key={plan.id}
             className={cn(
               "relative flex flex-col rounded-2xl border bg-white p-6 dark:bg-gray-900",
-              plan.id === "team"
-                ? "border-brand-500 shadow-lg dark:border-brand-400"
-                : plan.id === "enterprise"
-                  ? "border-gray-900 bg-gradient-to-b from-gray-50 to-white shadow-md dark:border-gray-200 dark:from-gray-900 dark:to-gray-900"
-                  : "border-gray-200 dark:border-gray-700"
+              plan.id === "enterprise"
+                ? "border-gray-900 bg-gradient-to-b from-gray-50 to-white shadow-md dark:border-gray-200 dark:from-gray-900 dark:to-gray-900"
+                : "border-gray-200 dark:border-gray-700"
             )}
           >
-            {plan.id === "team" && (
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                <span className="rounded-full bg-brand-600 px-3 py-0.5 text-xs font-medium text-white">
-                  {t("mostPopular")}
-                </span>
-              </div>
-            )}
             {plan.id === "enterprise" && (
               <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                 <span className="rounded-full bg-gray-900 px-3 py-0.5 text-xs font-medium text-white dark:bg-gray-100 dark:text-gray-900">
@@ -183,7 +139,7 @@ export default async function PricingPage() {
                     {t("startFree")}
                   </Button>
                 </a>
-              ) : plan.id === "enterprise" ? (
+              ) : (
                 <ContactFormButton
                   labels={contactLabels}
                   defaultSubject="Enterprise / Self-Hosted"
@@ -191,12 +147,6 @@ export default async function PricingPage() {
                 >
                   {t("contactSales")}
                 </ContactFormButton>
-              ) : (
-                <a href={appPath(`/signup?plan=${plan.id}`)} className="block">
-                  <Button className={cn("w-full", plan.id === "team" && "bg-brand-600 hover:bg-brand-700")} size="sm">
-                    {plan.id === "team" ? t("startTeamTrial") : t("startBusinessTrial")}
-                  </Button>
-                </a>
               )}
             </div>
           </div>

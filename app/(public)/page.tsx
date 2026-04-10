@@ -313,8 +313,8 @@ export default async function LandingPage() {
             <Eyebrow>{t("pricingTeaser.eyebrow")}</Eyebrow>
             <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">{t.rich("pricingTeaser.title", { mbr: () => <br className="sm:hidden" /> })}</h2>
           </FadeIn>
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
-            {([["free", "freeDesc"], ["team", "teamDesc"], ["business", "businessDesc"]] as const).map(([plan, descKey], i) => (
+          <div className="mt-12 grid gap-5 md:grid-cols-2 max-w-2xl mx-auto">
+            {([["free", "freeDesc"], ["enterprise", "enterpriseDesc"]] as const).map(([plan, descKey], i) => (
               <FadeIn key={plan} delay={80 * i}>
                 <div className="h-full rounded-2xl border border-gray-200/80 bg-white p-6 shadow-sm dark:border-gray-700/50 dark:bg-gray-900/60">
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{plansT(`${plan}.name`)}</h3>
