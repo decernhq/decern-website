@@ -105,6 +105,12 @@ export default async function LandingPage() {
                   {t.rich("hero.ctaMicrocopy", { br: () => <br /> })}
                 </p>
               </FadeIn>
+
+              <FadeIn delay={320} duration={650}>
+                <p className="mt-5 max-w-xl text-sm leading-relaxed text-gray-500 dark:text-gray-400">
+                  {t("hero.buyerLine")}
+                </p>
+              </FadeIn>
             </div>
 
             <FadeIn delay={320} duration={850} direction="right" distance={28}>
@@ -134,21 +140,7 @@ export default async function LandingPage() {
         </div>
       </section>
 
-      {/* ── Integrations bar ────────────────────────────────────────── */}
-      <section className="border-y border-gray-200/70 bg-gray-50/70 px-4 py-10 dark:border-gray-800/80 dark:bg-gray-900/40">
-        <div className="mx-auto max-w-4xl">
-          <p className="text-center text-xs font-semibold uppercase tracking-[0.14em] text-gray-500 dark:text-gray-400">
-            {t("integrations.label")}
-          </p>
-          <div className="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs font-semibold text-gray-400 dark:text-gray-500 sm:gap-x-8 sm:text-sm">
-            {(["i1", "i2", "i3", "i4", "i5"] as const).map((k) => (
-              <span key={k}>{t(`integrations.${k}`)}</span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Problem / Value ─────────────────────────────────────────── */}
+      {/* ── Problem / Value (Sound familiar?) ──────────────────────── */}
       <section id="value" className="scroll-mt-20 px-4 py-16 sm:py-28">
         <div className="mx-auto max-w-5xl">
           <FadeIn>
@@ -175,6 +167,25 @@ export default async function LandingPage() {
               </FadeIn>
             ))}
           </div>
+          <FadeIn delay={260}>
+            <p className="mt-10 text-center text-base font-semibold text-gray-900 dark:text-white">
+              {t("value.closingLine")}
+            </p>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* ── Integrations bar ────────────────────────────────────────── */}
+      <section className="border-y border-gray-200/70 bg-gray-50/70 px-4 py-10 dark:border-gray-800/80 dark:bg-gray-900/40">
+        <div className="mx-auto max-w-4xl">
+          <p className="text-center text-xs font-semibold uppercase tracking-[0.14em] text-gray-500 dark:text-gray-400">
+            {t("integrations.label")}
+          </p>
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs font-semibold text-gray-400 dark:text-gray-500 sm:gap-x-8 sm:text-sm">
+            {(["i1", "i2", "i3", "i4", "i5"] as const).map((k) => (
+              <span key={k}>{t(`integrations.${k}`)}</span>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -197,6 +208,36 @@ export default async function LandingPage() {
             <p className="mt-12 text-center text-base font-medium text-gray-600 dark:text-gray-300">
               {t.rich("solution.bottomLine", { br: () => <br /> })}
             </p>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* ── Audit-ready by design ─────────────────────────────────── */}
+      <section id="audit" className="scroll-mt-20 border-y border-brand-100/60 bg-brand-50/30 px-4 py-16 dark:border-white/10 dark:bg-white/[0.03] sm:py-28">
+        <div className="mx-auto max-w-3xl">
+          <FadeIn className="text-center">
+            <Eyebrow>{t("audit.eyebrow")}</Eyebrow>
+            <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">{t("audit.title")}</h2>
+          </FadeIn>
+          <FadeIn delay={100}>
+            <p className="mt-8 text-center text-base leading-relaxed text-gray-600 dark:text-gray-300">
+              {t("audit.body1")}
+            </p>
+            <p className="mt-4 text-center text-base leading-relaxed text-gray-600 dark:text-gray-300">
+              {t("audit.body2")}
+            </p>
+          </FadeIn>
+          <FadeIn delay={200}>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
+              {(["badge1", "badge2", "badge3", "badge4"] as const).map((k) => (
+                <span
+                  key={k}
+                  className="rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-xs font-medium text-gray-600 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400"
+                >
+                  {t(`audit.${k}`)}
+                </span>
+              ))}
+            </div>
           </FadeIn>
         </div>
       </section>
@@ -243,6 +284,28 @@ export default async function LandingPage() {
         </div>
       </section>
 
+      {/* ── Self-hosted ────────────────────────────────────────────── */}
+      <section id="self-hosted" className="scroll-mt-20 border-y border-gray-900/10 bg-gray-900/[0.03] px-4 py-16 dark:border-white/10 dark:bg-white/[0.03] sm:py-28">
+        <div className="mx-auto max-w-3xl text-center">
+          <FadeIn>
+            <Eyebrow>{t("selfHosted.eyebrow")}</Eyebrow>
+            <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">{t("selfHosted.title")}</h2>
+            <p className="mx-auto mt-5 max-w-2xl text-lg text-gray-600 dark:text-gray-300">{t("selfHosted.body")}</p>
+          </FadeIn>
+          <FadeIn delay={100}>
+            <div className="mt-8">
+              <ContactFormButton
+                labels={contactLabels}
+                defaultSubject="Self-Hosted"
+                className="h-12 px-7 text-base border border-gray-900 bg-gray-900 text-white hover:bg-black dark:border-gray-100 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-200"
+              >
+                {t("selfHosted.cta")}
+              </ContactFormButton>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
       {/* ── Pricing teaser ──────────────────────────────────────────── */}
       <section id="pricing-teaser" className="scroll-mt-20 px-4 py-16 sm:py-28">
         <div className="mx-auto max-w-5xl">
@@ -269,6 +332,16 @@ export default async function LandingPage() {
               {t("pricingTeaser.bottomLine")}
             </p>
           </FadeIn>
+        </div>
+      </section>
+
+      {/* ── Social proof placeholder ────────────────────────────────── */}
+      {/* TODO: add design partner logos when available */}
+      <section className="hidden border-y border-gray-200/70 bg-gray-50/70 px-4 py-12 dark:border-gray-800/80 dark:bg-gray-900/40">
+        <div className="mx-auto max-w-4xl text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-500 dark:text-gray-400">
+            Trusted by platform teams shipping AI-assisted code
+          </p>
         </div>
       </section>
 

@@ -12,15 +12,19 @@
   },
   "pricing": {
     "title": "Prezzi semplici e trasparenti",
-    "subtitle": "Scegli il piano più adatto: da Free a Business a Self Hosted.",
+    "subtitle": "Gratis per sempre in observation mode. Attiva il blocking quando il team è pronto.",
+    "perDev": "per sviluppatore / mese",
     "perMonth": "/mese",
     "mostPopular": "Più popolare",
     "startFree": "Inizia gratis",
+    "startTeamTrial": "Prova Team",
+    "startBusinessTrial": "Prova Business",
+    "contactSales": "Contatta il team vendite",
     "contactUs": "Contattaci",
     "questions": "Hai domande?",
-    "byoLLM": "LLM integrato (fair use) / BYO LLM",
-    "byoLLMEnterprise": "BYO LLM",
-    "tierLadder": "👉 Da visibilità → enforcement → controllo completo",
+    "from": "Da",
+    "minDevs": "Minimo {min} sviluppatori",
+    "devCountNote": "Il conteggio sviluppatori si basa sui committer attivi sui repository dove Decern è installato. Non contiamo bot, account CI o utenti in sola lettura.",
     "progressFree": "Free: Visibilità",
     "progressTeam": "Team: Enforcement",
     "progressBusiness": "Business: Controllo completo",
@@ -31,34 +35,29 @@
   "plans": {
     "free": {
       "name": "Free",
-      "description": "Per iniziare",
-      "features": ["1 workspace", "Progetti illimitati", "Decisioni illimitate", "Generazione decisioni AI (fair use)", "LLM come giudice (advisory, solo BYO)", "Controlli CI (solo avvisi, nessun blocco)"]
+      "description": "Visibilità",
+      "features": ["Fino a 5 sviluppatori", "1 workspace, progetti e decisioni illimitati", "Solo observation mode (avvisi, nessun blocco)", "LLM come giudice (advisory, solo BYO)", "Generazione decisioni AI (fair use)"]
     },
     "team": {
       "name": "Team",
-      "description": "Per team in crescita",
-      "features": ["1 workspace", "Progetti illimitati", "Decisioni illimitate", "Generazione decisioni AI (fair use)", "LLM come giudice (può bloccare)*", "CI Blocking per High Impact changes", "Judge tolerance"]
+      "description": "Enforcement",
+      "features": ["1 workspace, progetti e decisioni illimitati", "Blocking mode", "Controlli judge tolerance", "LLM integrato (fair use) o BYO LLM", "Supporto email"]
     },
     "business": {
       "name": "Business",
-      "description": "Per le organizzazioni",
-      "features": ["Workspace illimitati", "Progetti illimitati", "Decisioni illimitate", "Generazione decisioni AI (fair use)", "LLM come giudice (può bloccare)*", "CI Blocking per High Impact changes", "Judge tolerance", "Policy avanzate", "Ruoli"]
+      "description": "Controllo completo",
+      "features": ["Workspace, progetti e decisioni illimitati", "Tutto in Team, più:", "Policy avanzate", "Ruoli e permessi", "SSO (SAML, OIDC)", "Audit log con retention estesa", "Supporto prioritario"]
     },
     "enterprise": {
-      "name": "Self Hosted",
-      "description": "Sulla tua infrastruttura",
+      "name": "Enterprise / Self-Hosted",
+      "description": "Controllo deploy",
       "features": [
-        "Workspace illimitati",
-        "Progetti illimitati",
-        "Decisioni illimitate",
-        "Generazione decisioni AI (BYO)",
-        "LLM come giudice (può bloccare)*",
-        "CI Blocking per High Impact changes",
-        "Judge tolerance",
-        "Policy avanzate",
-        "Ruoli",
-        "Integrazione self-hosted",
-        "Supporto dedicato"
+        "Tutto in Business, più:",
+        "Deploy self-hosted (VPC, opzioni air-gapped)",
+        "BYO LLM obbligatorio",
+        "Supporto dedicato con SLA",
+        "Assistenza security review (SOC 2, ISO 42001 evidence pack)",
+        "Onboarding personalizzato"
       ]
     }
   },
@@ -297,10 +296,11 @@
     "hero": {
       "eyebrow": "Gate in CI per il codice generato da AI",
       "headline": "L'AI scrive il codice.<br></br>Decern si assicura che rispetti le tue regole.",
-      "subheadline": "Un gate in CI che controlla ogni pull request generata dall'AI rispetto alle decisioni architetturali del team. <b>Ciò che non è coerente viene bloccato.</b>",
+      "subheadline": "Un gate in CI che controlla ogni pull request generata dall'AI rispetto alle decisioni architetturali e alle regole del team. <b>Ciò che non è coerente viene bloccato.</b>",
       "ctaPrimary": "Inizia gratis",
       "ctaSecondary": "Scopri come funziona",
-      "ctaMicrocopy": "Gratis per sempre in observation mode.<br></br>Nessuna carta di credito."
+      "ctaMicrocopy": "Gratis per sempre in observation mode.<br></br>Nessuna carta di credito.",
+      "buyerLine": "Pensato per i platform team i cui sviluppatori lavorano con Copilot, Cursor e Claude Code, e hanno bisogno che l'architettura regga."
     },
     "integrations": {
       "label": "Si integra con la tua CI",
@@ -313,9 +313,10 @@
     "value": {
       "eyebrow": "Ti suona familiare?",
       "title": "L'AI scrive codice più veloce<br></br>di quanto il team riesca a revisionare",
-      "pain1": "Un agente AI aggiunge un service layer che nessuno ha approvato. La review non lo nota. Va in produzione.",
-      "pain2": "Hai deprecato un pattern il trimestre scorso. Copilot lo reintroduce in ogni nuova PR.",
-      "pain3": "Tre team, tre interpretazioni della stessa decisione architetturale. L'AI amplifica l'incoerenza."
+      "pain1": "Un agente AI aggiunge un service layer che nessuno ha approvato. La review non lo nota in un diff da 800 righe. Va in produzione.",
+      "pain2": "Hai deprecato un pattern il trimestre scorso. Ogni nuovo suggerimento di Copilot lo reintroduce. Il tuo tech lead è stanco di ripetere lo stesso commento in review.",
+      "pain3": "Tre team, tre interpretazioni della stessa decisione architetturale. L'AI amplifica l'incoerenza a velocità 10x.",
+      "closingLine": "Non è un problema di review. È un problema di policy. Decern lo risolve in CI."
     },
     "solution": {
       "eyebrow": "Come funziona",
@@ -326,29 +327,39 @@
       "step4Title": "Il Judge verifica l'allineamento",
       "flowJudgeLabel": "LLM as a Judge",
       "flowOutcome": "Il gate blocca o lascia passare",
-      "flowStep1Desc": "Documenta le decisioni architetturali del team. Quali pattern usare, quali evitare, quali dipendenze sono approvate. L'AI può aiutarti a scriverle da note o meeting.",
+      "flowStep1Desc": "Documenta le decisioni architetturali e le regole del team, che le chiami ADR, engineering decisions o convenzioni. Quali pattern usare, quali evitare, quali dipendenze sono approvate. Non hai ADR? Decern può aiutarti a crearle da note di meeting, thread Slack o analizzando il codebase attuale.",
       "flowStep2Desc": "Ogni PR che tocca un'area governata referenzia la decisione. Un tag, un link, una riga.",
       "flowStep3Desc": "Il gate si attiva automaticamente. Zero friction per il developer.",
       "flowStep4Desc": "L'LLM Judge confronta il diff con la decisione. Se il codice esce dallo scope, la PR viene bloccata con una ragione chiara. Umano o AI, stesse regole.",
       "bottomLine": "Stesso workflow. Uno step in più in CI.<br></br>Ogni modifica controllata, scritta da un developer o da un agente AI."
     },
+    "audit": {
+      "eyebrow": "Compliance",
+      "title": "Pronto per l'audit, by design",
+      "body1": "Ogni run del gate produce un record deterministico: quale decisione è stata referenziata, cosa ha modificato il diff, perché è passato o è stato bloccato. Esportabile, con timestamp, tracciabile.",
+      "body2": "Quando il team compliance chiede come garantite la supervisione umana sul codice generato dall'AI, avete una risposta, e le prove.",
+      "badge1": "EU AI Act Art. 14",
+      "badge2": "ISO/IEC 42001",
+      "badge3": "NIST AI RMF",
+      "badge4": "SOC 2 AI controls"
+    },
     "buyers": {
       "eyebrow": "Per chi è",
       "title": "Uno strumento, tre risultati",
-      "b1Role": "Engineering Manager",
-      "b1Desc": "L'AI sta moltiplicando l'output del tuo team per 10. Decern si assicura che sia l'output giusto.",
-      "b1Outcome": "Velocità senza perdere il controllo.",
-      "b2Role": "Tech Lead",
-      "b2Desc": "Basta ripetere le regole architetturali in ogni review. Impostale una volta, falle rispettare in CI.",
-      "b2Outcome": "Basta fare il poliziotto dell'architettura.",
-      "b3Role": "Platform / DevEx",
-      "b3Desc": "Uno step in CI. Nessun cambio di workflow. Governance misurabile.",
-      "b3Outcome": "Enforcement senza friction."
+      "b1Role": "Platform / DevEx",
+      "b1Desc": "Uno step in CI. Zero cambi di workflow. Governance misurabile che la leadership può mostrare.",
+      "b1Outcome": "Enforcement senza friction, e le prove quando servono.",
+      "b2Role": "Engineering Manager",
+      "b2Desc": "L'AI sta moltiplicando l'output del tuo team per 10. Decern si assicura che sia l'output giusto.",
+      "b2Outcome": "Velocità senza perdere il controllo.",
+      "b3Role": "Tech Lead",
+      "b3Desc": "Basta ripetere le regole architetturali in ogni review. Impostale una volta, falle rispettare in CI.",
+      "b3Outcome": "Basta fare il poliziotto dell'architettura."
     },
     "trust": {
       "eyebrow": "Trust e controllo",
       "title": "Il tuo modello. Le tue chiavi.<mbr></mbr>Le tue regole.",
-      "intro": "Decern non sostituisce la code review. Cattura quello che i reviewer non vedono, specialmente quando il codice è stato scritto da un'AI che non conosce le decisioni architetturali del team.",
+      "intro": "Decern non sostituisce la code review. Cattura quello che i reviewer non vedono, specialmente quando il codice è stato scritto da un'AI che non conosce le decisioni, le convenzioni o i guardrail architetturali del team.",
       "t1Title": "Porta il tuo LLM",
       "t1Desc": "Il Judge gira sul provider che scegli tu. OpenAI, Claude o qualsiasi endpoint compatibile. Le chiavi API sono usate per singola richiesta, mai salvate. Pieno controllo per i team con policy interne sull'uso di LLM.",
       "t2Title": "Prima observation, poi blocking",
@@ -356,12 +367,18 @@
       "t3Title": "Output auditabili e deterministici",
       "t3Desc": "Ogni run del gate produce riferimento alla decisione, verdetto di scope e codice motivazione. Pronto per review e compliance."
     },
+    "selfHosted": {
+      "eyebrow": "Deploy enterprise",
+      "title": "Deploy nel tuo VPC",
+      "body": "Per team regolamentati in finanza, sanità, difesa e pubblica amministrazione, Decern gira in self-hosted. Il tuo codice, il tuo LLM, la tua infrastruttura. Nulla esce dalla tua rete.",
+      "cta": "Parliamo di self-hosted"
+    },
     "pricingTeaser": {
       "eyebrow": "Prezzi",
       "title": "Parti gratis.<mbr></mbr>Blocking quando sei pronto.",
-      "freeDesc": "Observation mode, check illimitati, generazione AI. Valida il valore a rischio zero.",
-      "teamDesc": "Blocking mode, soglie di confidenza e controlli per team in crescita.",
-      "businessDesc": "Gestione multi-workspace, policy avanzate e ruoli.",
+      "freeDesc": "Observation mode per fino a 5 sviluppatori. Valida il valore a rischio zero.",
+      "teamDesc": "Blocking mode, controlli judge e supporto email. €12/dev/mese.",
+      "businessDesc": "Policy avanzate, SSO, audit log e supporto prioritario. €28/dev/mese.",
       "ctaPrimary": "Vedi tutti i prezzi",
       "bottomLine": "Gratis per sempre in observation mode. Nessuna carta di credito."
     },
@@ -378,7 +395,7 @@
       "signUp": "Registrati",
       "terms": "Termini",
       "contact": "Contatti",
-      "copyright": "© Decern. Gate in CI per le decisioni architetturali.",
+      "copyright": "© Decern. Gate in CI per decisioni architetturali e regole del team.",
       "builtBy": "Progettato e realizzato da Alessandro Palazzesi"
     }
   }

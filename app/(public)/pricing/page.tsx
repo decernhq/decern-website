@@ -3,7 +3,6 @@ import Link from "next/link";
 import { getTranslations, getMessages } from "next-intl/server";
 import { PLANS, type PlanId } from "@/types/billing";
 import { Button } from "@/components/ui/button";
-import { PricingCheckoutButton } from "@/components/pricing-checkout-button";
 import { ContactForm, ContactFormButton } from "@/components/contact-form";
 import { cn } from "@/lib/utils";
 import { appPath } from "@/lib/config";
@@ -11,7 +10,7 @@ import { appPath } from "@/lib/config";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Free, Team, Business and Enterprise plans. Start for free, upgrade when your team needs CI blocking and LLM Judge.",
+    "Per-developer pricing. Free forever on observation mode. Team, Business, and Enterprise plans for CI blocking, LLM Judge, and self-hosted deployment.",
 };
 
 const PLAN_ORDER: PlanId[] = ["free", "team", "business", "enterprise"];
@@ -133,19 +132,28 @@ export default async function PricingPage() {
               </h2>
               <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">{plan.description}</p>
               <div className="mt-4">
-                <span className="text-3xl font-bold text-gray-900 dark:text-gray-100">
-                  {plan.id === "enterprise" ? (
-                    t("customPricing")
-                  ) : plan.price === 0 ? (
-                    "€0"
-                  ) : (
-                    `€${plan.price}`
-                  )}
-                </span>
-                {plan.price > 0 && plan.id !== "enterprise" && (
-                  <span className="text-gray-500 text-sm dark:text-gray-400">{t("perMonth")}</span>
+                {plan.id === "enterprise" ? (
+                  <>
+                    <span className="text-sm font-medium text-gray-500 dark:text-gray-400">{t("from")} </span>
+                    <span className="text-3xl font-bold text-gray-900 dark:text-gray-100">€{plan.price.toLocaleString()}</span>
+                    <span className="text-sm text-gray-500 dark:text-gray-400">{t("perMonth")}</span>
+                  </>
+                ) : plan.price === 0 ? (
+                  <span className="text-3xl font-bold text-gray-900 dark:text-gray-100">€0</span>
+                ) : (
+                  <>
+                    <span className="text-3xl font-bold text-gray-900 dark:text-gray-100">€{plan.price}</span>
+                    {plan.perDeveloper ? (
+                      <span className="block text-sm text-gray-500 dark:text-gray-400">{t("perDev")}</span>
+                    ) : (
+                      <span className="text-sm text-gray-500 dark:text-gray-400">{t("perMonth")}</span>
+                    )}
+                  </>
                 )}
               </div>
+              {plan.minDevelopers && (
+                <p className="mt-1 text-xs text-gray-400 dark:text-gray-500">{t("minDevs", { min: plan.minDevelopers })}</p>
+              )}
             </div>
 
             <ul className="mt-6 flex-1 space-y-2">
@@ -168,13 +176,6 @@ export default async function PricingPage() {
                 </li>
               ))}
             </ul>
-            {(plan.id === "team" || plan.id === "business") && (
-              <p className="mt-2 text-xs text-gray-400 dark:text-gray-500">* {t("byoLLM")}</p>
-            )}
-            {plan.id === "enterprise" && (
-              <p className="mt-2 text-xs text-gray-400 dark:text-gray-500">* {t("byoLLMEnterprise")}</p>
-            )}
-
             <div className="mt-6">
               {plan.id === "free" ? (
                 <a href={appPath("/signup")} className="block">
@@ -185,25 +186,28 @@ export default async function PricingPage() {
               ) : plan.id === "enterprise" ? (
                 <ContactFormButton
                   labels={contactLabels}
-                  defaultSubject="Self Hosted"
+                  defaultSubject="Enterprise / Self-Hosted"
                   className="w-full bg-gray-900 text-white hover:bg-black dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-200"
                 >
-                  {t("contactUs")}
+                  {t("contactSales")}
                 </ContactFormButton>
               ) : (
-                <PricingCheckoutButton
-                  planId={plan.id as "team" | "business"}
-                  planName={plan.name}
-                  className={cn(plan.id === "team" && "bg-brand-600 hover:bg-brand-700")}
-                  size="sm"
-                />
+                <a href={appPath(`/signup?plan=${plan.id}`)} className="block">
+                  <Button className={cn("w-full", plan.id === "team" && "bg-brand-600 hover:bg-brand-700")} size="sm">
+                    {plan.id === "team" ? t("startTeamTrial") : t("startBusinessTrial")}
+                  </Button>
+                </a>
               )}
             </div>
           </div>
         ))}
       </div>
 
-      <div className="mt-12 flex items-center justify-center gap-1.5 text-sm text-gray-500 dark:text-gray-400">
+      <p className="mt-8 max-w-2xl text-center text-xs text-gray-400 dark:text-gray-500">
+        {t("devCountNote")}
+      </p>
+
+      <div className="mt-10 flex items-center justify-center gap-1.5 text-sm text-gray-500 dark:text-gray-400">
         <span>{t("questions")}</span>
         <ContactForm labels={contactLabels} />
       </div>
