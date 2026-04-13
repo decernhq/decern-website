@@ -89,27 +89,11 @@ export default async function PricingPage() {
               <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">{plan.description}</p>
               <div className="mt-4">
                 {plan.id === "enterprise" ? (
-                  <>
-                    <span className="text-sm font-medium text-gray-500 dark:text-gray-400">{t("from")} </span>
-                    <span className="text-3xl font-bold text-gray-900 dark:text-gray-100">€{plan.price.toLocaleString()}</span>
-                    <span className="text-sm text-gray-500 dark:text-gray-400">{t("perMonth")}</span>
-                  </>
-                ) : plan.price === 0 ? (
-                  <span className="text-3xl font-bold text-gray-900 dark:text-gray-100">€0</span>
+                  <span className="text-lg font-semibold text-gray-900 dark:text-gray-100">{t("contactSales")}</span>
                 ) : (
-                  <>
-                    <span className="text-3xl font-bold text-gray-900 dark:text-gray-100">€{plan.price}</span>
-                    {plan.perDeveloper ? (
-                      <span className="block text-sm text-gray-500 dark:text-gray-400">{t("perDev")}</span>
-                    ) : (
-                      <span className="text-sm text-gray-500 dark:text-gray-400">{t("perMonth")}</span>
-                    )}
-                  </>
+                  <span className="text-3xl font-bold text-gray-900 dark:text-gray-100">€0</span>
                 )}
               </div>
-              {plan.minDevelopers && (
-                <p className="mt-1 text-xs text-gray-400 dark:text-gray-500">{t("minDevs", { min: plan.minDevelopers })}</p>
-              )}
             </div>
 
             <ul className="mt-6 flex-1 space-y-2">
@@ -152,10 +136,6 @@ export default async function PricingPage() {
           </div>
         ))}
       </div>
-
-      <p className="mt-8 max-w-2xl text-center text-xs text-gray-400 dark:text-gray-500">
-        {t("devCountNote")}
-      </p>
 
       <div className="mt-10 flex items-center justify-center gap-1.5 text-sm text-gray-500 dark:text-gray-400">
         <span>{t("questions")}</span>

@@ -122,16 +122,19 @@ export default async function LandingPage() {
                       <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
                       <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
                       <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-                      <span className="ml-3 font-mono text-[11px] text-gray-500">decern-gate</span>
+                      <span className="ml-3 font-mono text-[11px] text-gray-500">decern gate</span>
                     </div>
                   </div>
                   <div className="px-4 py-3 font-mono text-[11px] leading-6 text-gray-400 sm:px-6 sm:py-4 sm:text-[13px] sm:leading-7">
-                    <p><span className="text-gray-600">$</span> <span className="text-white">npx decern-gate</span></p>
-                    <p className="mt-2 text-amber-400">Policy: decision required - <span className="font-medium text-amber-300">YES</span></p>
-                    <p>Matched: <span className="text-gray-300">package.json, terraform/main.tf</span></p>
-                    <p className="mt-2">Ref: ADR-001 - <span className="text-emerald-400">Approved</span></p>
-                    <p className="mt-2 text-gray-600">Judge: analyzing scope alignment...</p>
-                    <p className="mt-2 font-medium text-red-400">Blocked - changes are out of decision scope.</p>
+                    <p><span className="text-gray-600">$</span> <span className="text-white">npx decern gate</span></p>
+                    <p className="mt-1">ADRs: found <span className="text-gray-300">4 approved</span> in docs/adr</p>
+                    <p>Changed files: <span className="text-gray-300">3</span></p>
+                    <p className="mt-2">Evaluating ADR-007: Use PostgreSQL for persistence...</p>
+                    <p className="text-emerald-400">  pass <span className="text-gray-500">(92%)</span></p>
+                    <p className="mt-1">Evaluating ADR-012: No direct DB access from handlers...</p>
+                    <p className="text-red-400">  BLOCKED <span className="text-gray-500">(87%)</span> <span className="text-gray-500">— handler queries DB directly, bypassing service layer</span></p>
+                    <p className="mt-1 text-amber-400">SIGNAL: New Redis caching layer detected</p>
+                    <p className="mt-2 font-medium text-red-400">Gate: blocked. <span className="text-gray-500">1 new decision also detected.</span></p>
                   </div>
                 </div>
               </div>

@@ -12,40 +12,37 @@
   },
   "pricing": {
     "title": "Simple, transparent pricing",
-    "subtitle": "Free forever on observation mode. Upgrade when your team is ready to block.",
-    "perDev": "per developer / month",
-    "perMonth": "/month",
-    "mostPopular": "Most popular",
+    "subtitle": "Free forever with full CI gate. Upgrade for draft generation and self-hosted deployment.",
     "startFree": "Start free",
     "contactSales": "Contact sales",
-    "contactUs": "Contact us",
     "questions": "Have questions?",
-    "from": "From",
-    "minDevs": "Minimum {min} developers",
-    "devCountNote": "Developer count is based on active committers to repositories where Decern is installed. We don't count bots, CI service accounts, or read-only users.",
-    "progressFree": "Free: Visibility",
-    "progressEnterprise": "Enterprise: Deployment control",
-    "customPricing": "Custom",
     "enterpriseBadge": "Premium"
   },
   "plans": {
     "free": {
       "name": "Free",
-      "description": "Visibility",
-      "features": ["Up to 5 developers", "1 workspace, unlimited projects, unlimited decisions", "Observation mode only (warnings, no blocking)", "LLM as a Judge (advisory, BYO only)", "AI decision generation (fair use)"]
+      "description": "Get started",
+      "features": [
+        "1 workspace, up to 3 developers",
+        "Unlimited ADRs and gate runs",
+        "CI gate with BYO LLM (blocking + warning)",
+        "Signal detection (new decisions in PRs)",
+        "Dashboard: ADRs, signals, gate runs",
+        "Evidence chain + export"
+      ]
     },
     "enterprise": {
-      "name": "Enterprise / Self-Hosted",
-      "description": "Deployment control",
+      "name": "Enterprise",
+      "description": "Full control",
       "features": [
-        "Unlimited workspaces, projects, decisions",
-        "Blocking mode + advanced policies",
-        "Roles & permissions",
-        "Self-hosted deployment (VPC, air-gapped options)",
-        "BYO LLM enforced",
+        "Unlimited workspaces and developers",
+        "Everything in Free",
+        "Draft ADR generation from signals (cloud LLM)",
+        "Create PR from dashboard (GitHub)",
+        "Self-hosted deployment (VPC, air-gapped)",
+        "SSO (SAML, OIDC)",
         "Dedicated support with SLA",
-        "Security review assistance (SOC 2, ISO 42001 evidence pack)",
-        "Custom onboarding"
+        "Security review assistance (SOC 2, ISO 42001)"
       ]
     }
   },
@@ -70,19 +67,20 @@
   },
   "terms": {
     "title": "Terms and Conditions",
-    "lastUpdated": "Last updated: 10 April 2026",
-    "intro": "These Terms and Conditions (\"Terms\") constitute a legally binding agreement between you (\"Customer\", \"you\") and Alessandro Palazzesi, operating as Decern, VAT number IT12930530014 (hereinafter referred to as \"Decern\", \"we\", \"us\", or \"our\"). By accessing or using the Decern platform, website, APIs, CLI tools, or any related services (collectively, the \"Service\"), you agree to be bound by these Terms in their entirety. If you do not agree, you must not use the Service. Decern provides a CI-based enforcement system that evaluates pull requests against defined architectural decisions and engineering rules, and may block changes based on configured policies.",
+    "lastUpdated": "Last updated: 13 April 2026",
+    "intro": "These Terms and Conditions (\"Terms\") constitute a legally binding agreement between you (\"Customer\", \"you\") and Alessandro Palazzesi, operating as Decern, VAT number IT12930530014 (hereinafter referred to as \"Decern\", \"we\", \"us\", or \"our\"). By accessing or using the Decern platform, website, APIs, CLI tools, or any related services (collectively, the \"Service\"), you agree to be bound by these Terms in their entirety. If you do not agree, you must not use the Service. Decern provides a CI-based architecture governance system that evaluates pull requests against Architecture Decision Records (ADRs) using a customer-provided LLM, and may block changes based on enforcement rules defined in each ADR.",
     "definitions": {
       "title": "Definitions",
       "body": [
-        "\"Service\" means the Decern platform, including the web application, APIs, CLI gate tool (decern-gate), documentation, and all associated infrastructure operated by Decern.",
-        "\"Customer Data\" means any data, code diffs, decision records, configuration, or other content that you or your authorized users upload, submit, or transmit through the Service.",
-        "\"LLM Judge\" means the AI-powered analysis feature that evaluates code changes against documented architectural decisions and engineering rules using a third-party or customer-provided large language model.",
+        "\"Service\" means the Decern platform, including the web application, dashboard, APIs, CLI tools (decern gate, decern init, decern adr sync), documentation, and all associated infrastructure operated by Decern.",
+        "\"Customer Data\" means any data, code diffs, ADR files, evidence records, signal data, configuration, or other content that you or your authorized users upload, submit, or transmit through the Service.",
+        "\"ADR\" (Architecture Decision Record) means a markdown file in the customer's repository that documents an architectural decision, including frontmatter metadata (status, enforcement, scope) and body sections (Context, Decision, Consequences).",
+        "\"Gate\" means the CI gate tool that evaluates pull request diffs against ADRs using the customer's BYO LLM, producing verdicts (pass, violation, unrelated, error) with confidence scores.",
+        "\"Signal\" means an architectural decision detected in a pull request that is not covered by any existing ADR (Case C verdict).",
+        "\"Evidence Record\" means the immutable, hash-chained, cryptographically signed record produced by each gate run, stored for audit and compliance purposes.",
         "\"Subscription\" means the paid or free plan selected by the Customer, as described on the pricing page.",
         "\"Authorized User\" means any individual granted access to the Service through the Customer's account.",
-        "\"Developer\" means an active committer to any repository where Decern is installed. Bots, CI service accounts, and read-only users are not counted as Developers for billing purposes.",
-        "\"BYO LLM\" (Bring Your Own LLM) means the configuration where the Customer provides their own API keys for a third-party large language model provider.",
-        "\"Audit Log\" means the timestamped, deterministic record produced by each gate run, including the decision referenced, the scope verdict, and the reason code."
+        "\"BYO LLM\" (Bring Your Own LLM) means the configuration where the Customer provides their own API keys for a third-party large language model provider used by the gate for ADR evaluation."
       ]
     },
     "acceptance": {
@@ -97,7 +95,7 @@
       "title": "Account Registration and Security",
       "body": [
         "You must provide accurate, complete, and current information during registration and keep your account information up to date at all times.",
-        "You are solely responsible for maintaining the confidentiality of your account credentials, including passwords and API tokens. You are responsible for all activities that occur under your account, whether or not authorized by you.",
+        "You are solely responsible for maintaining the confidentiality of your account credentials, including passwords and CI tokens. You are responsible for all activities that occur under your account, whether or not authorized by you.",
         "You must notify us immediately at opensource@decern.dev if you become aware of any unauthorized use of your account or any security breach.",
         "Decern reserves the right to suspend or terminate any account that is reasonably believed has been compromised or is being used in violation of these Terms."
       ]
@@ -105,27 +103,26 @@
     "subscriptionAndPayment": {
       "title": "Subscription Plans and Payment",
       "body": [
-        "The Service is offered under multiple subscription tiers (Free and Enterprise / Self-Hosted), each with different features and usage limits as described on the pricing page.",
-        "Enterprise / Self-Hosted subscriptions are billed under a custom agreement. All fees are quoted in Euros (EUR) and are exclusive of applicable taxes, which will be added where required by law.",
-        "Developer count is calculated based on active committers to repositories where Decern is installed during the billing period. Bots, CI service accounts, and read-only users are excluded from the count.",
+        "The Service is offered under multiple subscription tiers (Free and Enterprise), each with different features and usage limits as described on the pricing page.",
+        "Enterprise subscriptions are billed under a custom agreement. All fees are quoted in Euros (EUR) and are exclusive of applicable taxes, which will be added where required by law.",
         "You authorize Decern to charge your designated payment method for all fees associated with your selected plan. Failure to pay may result in suspension or termination of your access to the Service.",
         "Decern reserves the right to change pricing at any time. Price changes for existing subscriptions will take effect at the start of the next billing cycle, with at least 30 days' prior notice.",
-        "All fees are non-refundable except where required by applicable law. No refunds or credits will be issued for partial months of service, downgrades, or unused features."
+        "All fees are non-refundable except where required by applicable law."
       ]
     },
     "freeplan": {
       "title": "Free Plan",
       "body": [
-        "The Free plan provides access to the Service in observation mode only for up to five (5) Developers. It is offered at no charge and is subject to fair-use limitations.",
+        "The Free plan provides full access to the CI gate, signal detection, dashboard, and evidence chain for one workspace with up to three developers. It is offered at no charge.",
         "Decern reserves the right to modify, limit, or discontinue the Free plan at any time without prior notice. Free plan users have no guaranteed service level.",
-        "Decern may impose usage limits, rate limits, or feature restrictions on the Free plan at its sole discretion to ensure platform stability."
+        "Draft ADR generation from signals (cloud LLM feature) and PR creation from the dashboard are not available on the Free plan."
       ]
     },
     "trialAndChanges": {
-      "title": "Plan Changes and Downgrades",
+      "title": "Plan Changes",
       "body": [
-        "You may upgrade or downgrade your subscription at any time through the Service. Upgrades take effect immediately; downgrades take effect at the end of the current billing cycle.",
-        "When downgrading, features and data associated with higher-tier plans may become inaccessible. Decern is not responsible for any loss of access to features or data resulting from a downgrade.",
+        "You may upgrade your subscription at any time through the Service. Upgrades take effect immediately.",
+        "When downgrading, features associated with higher-tier plans may become inaccessible. Decern is not responsible for any loss of access to features resulting from a downgrade.",
         "If you exceed the usage limits of your current plan, Decern may restrict access to certain features until you upgrade or reduce your usage."
       ]
     },
@@ -133,252 +130,235 @@
       "title": "License Grant and Restrictions",
       "body": [
         "Subject to your compliance with these Terms and payment of applicable fees, Decern grants you a limited, non-exclusive, non-transferable, revocable license to access and use the Service during the term of your subscription.",
-        "This license does not include the right to: (a) sublicense, resell, lease, or distribute the Service or any part of it; (b) modify, adapt, reverse-engineer, decompile, or disassemble any part of the Service; (c) use the Service to build a competing product or service; (d) access the Service through automated means (bots, scrapers) except through the official CLI and API; (e) remove or alter any proprietary notices, labels, or marks on the Service.",
+        "This license does not include the right to: (a) sublicense, resell, lease, or distribute the Service; (b) modify, reverse-engineer, decompile, or disassemble any part of the Service; (c) use the Service to build a competing product; (d) access the Service through automated means except through the official CLI and API; (e) remove or alter any proprietary notices on the Service.",
         "Decern reserves all rights not expressly granted in these Terms."
       ]
     },
     "acceptableUse": {
       "title": "Acceptable Use Policy",
       "body": [
-        "You agree not to use the Service to: (a) violate any applicable law, regulation, or third-party rights; (b) upload or transmit malicious code, viruses, or harmful content; (c) interfere with, disrupt, or compromise the integrity or performance of the Service or its underlying systems; (d) attempt to gain unauthorized access to the Service, other accounts, or related systems; (e) use the Service to store or process sensitive personal data (e.g., health records, financial account numbers) unless explicitly agreed in writing.",
-        "You are solely responsible for ensuring that your use of the Service, including the content of your Customer Data, architectural decisions, and engineering rules, complies with all applicable laws and regulations.",
+        "You agree not to use the Service to: (a) violate any applicable law or third-party rights; (b) upload malicious code or harmful content; (c) interfere with the integrity or performance of the Service; (d) attempt to gain unauthorized access to the Service or related systems; (e) store or process sensitive personal data unless explicitly agreed.",
         "Decern reserves the right to suspend or terminate access to any Customer that violates this Acceptable Use Policy, without prior notice and without refund."
       ]
     },
     "intellectualProperty": {
       "title": "Intellectual Property",
       "body": [
-        "The Service, including all software, code, algorithms, designs, text, graphics, logos, and trademarks, is and remains the exclusive property of Decern and its licensors. Nothing in these Terms transfers any ownership rights to you.",
-        "You retain all ownership rights in your Customer Data. By using the Service, you grant Decern a limited, non-exclusive license to process your Customer Data solely to provide and improve the Service.",
-        "Any feedback, suggestions, or ideas you provide regarding the Service may be used by Decern without obligation or compensation to you."
+        "The Service, including all software, code, algorithms, designs, and trademarks, is and remains the exclusive property of Decern and its licensors.",
+        "You retain all ownership rights in your Customer Data, including ADR files, code diffs, and evidence records. By using the Service, you grant Decern a limited license to process your Customer Data solely to provide the Service.",
+        "Any feedback or suggestions you provide may be used by Decern without obligation or compensation."
       ]
     },
     "userData": {
       "title": "Customer Data and Responsibility",
       "body": [
-        "You are solely responsible for the accuracy, quality, integrity, legality, and appropriateness of all Customer Data.",
-        "Decern does not monitor, verify, or endorse Customer Data. Decern is not liable for any Customer Data submitted by you or your Authorized Users.",
-        "You are responsible for maintaining independent backups of your Customer Data and for exporting any data you wish to retain prior to account termination or plan downgrade. Decern does not guarantee against data loss and shall not be liable for any loss, corruption, or destruction of Customer Data, regardless of cause.",
-        "Upon termination of your account or downgrade to a lower plan, Customer Data associated with features no longer available may be permanently deleted after a 30-day grace period without further notice.",
-        "Audit log retention periods vary by plan. Enterprise / Self-Hosted customers control their own retention policies."
+        "You are solely responsible for the accuracy, quality, and legality of all Customer Data, including the content of your ADR files and the configuration of enforcement rules.",
+        "You are responsible for maintaining independent backups of your Customer Data. Decern does not guarantee against data loss.",
+        "Evidence record retention periods are configurable per workspace. Upon termination, data may be deleted after a 30-day grace period."
       ]
     },
     "thirdPartyLLM": {
-      "title": "Third-Party LLM Providers and AI Disclaimer",
+      "title": "BYO LLM and AI Disclaimer",
       "body": [
-        "The LLM Judge feature relies on third-party large language model providers (e.g., OpenAI, Anthropic). When using BYO LLM, you connect your own API key to a provider of your choice. When using Decern-provided LLM, Decern selects the provider.",
-        "Decern does not control, warrant, or guarantee the output, accuracy, availability, or reliability of any third-party LLM provider. LLM outputs are probabilistic and may contain errors, hallucinations, or inaccurate assessments.",
-        "THE LLM JUDGE IS AN ADVISORY TOOL. It does not replace human judgment, code review, security audits, or professional architectural assessment. You are solely responsible for all decisions made based on or influenced by LLM Judge outputs.",
-        "Decern is not liable for any damages, losses, security vulnerabilities, production incidents, or business impact arising from reliance on LLM Judge outputs, whether in observation or blocking mode.",
-        "When using BYO LLM, you are solely responsible for compliance with the third-party provider's terms of service, usage policies, and data processing agreements. Decern has no liability for your relationship with any third-party LLM provider.",
-        "You acknowledge that code diffs and decision content may be transmitted to third-party LLM providers for analysis. It is your responsibility to ensure that no data subject to legal restrictions (e.g., trade secrets, regulated data) is processed through the LLM Judge without appropriate safeguards.",
-        "You acknowledge that the Service may block, delay, or otherwise affect your development workflow, including preventing pull requests from being merged based on configured rules or LLM evaluations. You are solely responsible for reviewing and configuring enforcement rules. Decern is not liable for any delays, disruptions, or operational impacts caused by enforcement actions."
+        "The gate uses a customer-provided large language model (BYO LLM) for ADR evaluation and signal detection. You connect your own API key to a provider of your choice (OpenAI, Anthropic, or any OpenAI-compatible endpoint).",
+        "Decern does not control or guarantee the output, accuracy, or reliability of any LLM provider. LLM outputs are probabilistic and may contain errors.",
+        "THE GATE IS AN ENFORCEMENT TOOL THAT DEPENDS ON LLM EVALUATION. It does not replace human judgment or code review. You are solely responsible for all decisions made based on gate verdicts.",
+        "Decern is not liable for any damages arising from reliance on gate verdicts, whether in observation or blocking mode.",
+        "When using BYO LLM, you are responsible for compliance with the provider's terms of service. Code diffs and ADR content are transmitted to the LLM provider for analysis.",
+        "The gate may block pull requests based on configured rules and LLM evaluations. You are responsible for configuring enforcement rules. Decern is not liable for workflow disruptions caused by enforcement actions.",
+        "Enterprise plan features (draft ADR generation) use a Decern-managed LLM. The same disclaimers about LLM output accuracy apply."
       ]
     },
     "selfHosted": {
       "title": "Enterprise / Self-Hosted Deployment",
       "body": [
-        "Enterprise / Self-Hosted customers receive a license to deploy the Service on their own infrastructure, including VPC and air-gapped environments. The specific terms of each deployment are governed by a separate agreement.",
-        "For self-hosted deployments, the Customer is solely responsible for: (a) infrastructure provisioning, maintenance, and security; (b) backups and disaster recovery; (c) compliance with all applicable laws and regulations in the jurisdictions where the software is deployed; (d) network security and access control.",
-        "Enterprise / Self-Hosted deployments require BYO LLM. No data leaves the Customer's infrastructure unless the Customer explicitly configures an external LLM endpoint.",
-        "Decern provides the software on an \"as-is\" basis for self-hosted deployments and does not guarantee compatibility with all infrastructure configurations. Dedicated support with SLA is provided according to the terms of the applicable support agreement.",
-        "Decern has no responsibility for the operation, security, or performance of self-hosted deployments."
+        "Enterprise customers may deploy the Service on their own infrastructure. Specific terms are governed by a separate agreement.",
+        "For self-hosted deployments, the Customer is responsible for infrastructure, backups, security, and compliance.",
+        "Self-hosted deployments require BYO LLM. No data leaves the Customer's infrastructure unless explicitly configured.",
+        "Decern provides the software as-is for self-hosted deployments. Dedicated support with SLA is provided per the applicable support agreement."
       ]
     },
     "availability": {
       "title": "Service Availability and Support",
       "body": [
-        "Decern will make commercially reasonable efforts to maintain the availability of the Service. However, the Service is provided on an \"as-available\" basis, and Decern does not guarantee uninterrupted or error-free operation.",
-        "The Service may be temporarily unavailable due to scheduled maintenance, emergency maintenance, force majeure events, third-party service outages (including LLM providers, cloud hosting, or payment processors), or circumstances beyond Decern's reasonable control.",
-        "Decern does not provide guaranteed SLAs (Service Level Agreements) unless separately agreed in writing for Enterprise / Self-Hosted customers.",
-        "Support levels vary by plan: community support for Free, and dedicated support with SLA for Enterprise / Self-Hosted. Response times are not guaranteed unless otherwise agreed in a separate support agreement."
+        "Decern makes commercially reasonable efforts to maintain Service availability. The Service is provided on an as-available basis.",
+        "The Service may be temporarily unavailable due to maintenance, third-party outages, or force majeure.",
+        "Support levels: community support for Free, dedicated support with SLA for Enterprise."
       ]
     },
     "disclaimerOfWarranties": {
       "title": "Disclaimer of Warranties",
       "body": [
-        "THE SERVICE IS PROVIDED \"AS IS\" AND \"AS AVAILABLE\", WITHOUT WARRANTIES OF ANY KIND, WHETHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE. DECERN EXPRESSLY DISCLAIMS ALL WARRANTIES, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT.",
-        "DECERN DOES NOT WARRANT THAT: (A) THE SERVICE WILL MEET YOUR REQUIREMENTS OR EXPECTATIONS; (B) THE SERVICE WILL BE UNINTERRUPTED, TIMELY, SECURE, OR ERROR-FREE; (C) THE RESULTS OBTAINED FROM THE SERVICE, INCLUDING LLM JUDGE OUTPUTS, WILL BE ACCURATE, RELIABLE, OR COMPLETE; (D) ANY DEFECTS IN THE SERVICE WILL BE CORRECTED.",
-        "NO ADVICE OR INFORMATION, WHETHER ORAL OR WRITTEN, OBTAINED FROM DECERN OR THROUGH THE SERVICE SHALL CREATE ANY WARRANTY NOT EXPRESSLY STATED IN THESE TERMS.",
-        "The LLM Judge outputs are probabilistic in nature and should not be relied upon as the sole basis for architectural, security, compliance, or business decisions. The Customer acknowledges that AI-generated assessments may be incorrect and accepts full responsibility for decisions made using the Service."
+        "THE SERVICE IS PROVIDED \"AS IS\" AND \"AS AVAILABLE\", WITHOUT WARRANTIES OF ANY KIND. DECERN DISCLAIMS ALL WARRANTIES, INCLUDING IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.",
+        "DECERN DOES NOT WARRANT THAT THE SERVICE WILL BE UNINTERRUPTED, ERROR-FREE, OR THAT LLM-BASED EVALUATIONS WILL BE ACCURATE OR COMPLETE.",
+        "Gate verdicts depend on LLM quality. The Customer acknowledges that evaluation accuracy varies by model and accepts responsibility for model selection."
       ]
     },
     "limitationOfLiability": {
       "title": "Limitation of Liability",
       "body": [
-        "TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, DECERN, ITS DIRECTORS, OFFICERS, EMPLOYEES, AGENTS, AND AFFILIATES SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, PUNITIVE, OR EXEMPLARY DAMAGES, INCLUDING BUT NOT LIMITED TO DAMAGES FOR LOSS OF PROFITS, REVENUE, DATA, GOODWILL, BUSINESS OPPORTUNITY, OR OTHER INTANGIBLE LOSSES, ARISING OUT OF OR IN CONNECTION WITH THE SERVICE, EVEN IF DECERN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.",
-        "DECERN'S TOTAL AGGREGATE LIABILITY FOR ALL CLAIMS ARISING OUT OF OR RELATING TO THESE TERMS OR THE SERVICE SHALL NOT EXCEED THE GREATER OF: (A) THE TOTAL FEES PAID BY YOU TO DECERN IN THE TWELVE (12) MONTHS IMMEDIATELY PRECEDING THE EVENT GIVING RISE TO THE CLAIM; OR (B) ONE HUNDRED EUROS (€100).",
-        "THE LIMITATIONS IN THIS SECTION APPLY REGARDLESS OF THE THEORY OF LIABILITY, WHETHER BASED ON CONTRACT, TORT (INCLUDING NEGLIGENCE), STRICT LIABILITY, OR ANY OTHER LEGAL THEORY, AND EVEN IF A REMEDY SET FORTH HEREIN IS FOUND TO HAVE FAILED ITS ESSENTIAL PURPOSE.",
-        "Without limiting the foregoing, Decern shall have no liability for: (a) any actions taken or not taken based on LLM Judge outputs; (b) blocked or approved PRs and their downstream effects on your development workflow, production systems, or business operations; (c) data transmitted to third-party LLM providers; (d) Customer Data loss or corruption; (e) service interruptions caused by third-party providers or force majeure events."
+        "TO THE MAXIMUM EXTENT PERMITTED BY LAW, DECERN SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES ARISING FROM THE SERVICE.",
+        "DECERN'S TOTAL LIABILITY SHALL NOT EXCEED THE GREATER OF: (A) FEES PAID IN THE PRECEDING 12 MONTHS; OR (B) €100.",
+        "Decern has no liability for: (a) actions based on gate verdicts; (b) blocked PRs and downstream effects; (c) data transmitted to LLM providers; (d) Customer Data loss."
       ]
     },
     "indemnification": {
       "title": "Indemnification",
       "body": [
-        "You agree to indemnify, defend, and hold harmless Decern from and against any and all claims, liabilities, damages, losses, costs, and expenses (including reasonable attorneys' fees) arising out of or in connection with: (a) your use of the Service; (b) your Customer Data; (c) your violation of these Terms; (d) your violation of any applicable law or regulation; (e) your violation of any third-party rights, including intellectual property rights.",
-        "Decern reserves the right to assume the exclusive defense and control of any matter subject to indemnification by you, at your expense. You agree to cooperate with Decern's defense of any such claim."
+        "You agree to indemnify Decern from claims arising from: (a) your use of the Service; (b) your Customer Data; (c) your violation of these Terms or applicable law; (d) your violation of third-party rights."
       ]
     },
     "termination": {
       "title": "Termination",
       "body": [
-        "You may terminate your account at any time by contacting us at opensource@decern.dev or through the account settings in the Service.",
-        "Decern may suspend or terminate your access to the Service at any time, with or without cause, with or without notice. Grounds for termination include, but are not limited to: (a) violation of these Terms; (b) non-payment of fees; (c) abusive or fraudulent use of the Service; (d) request by law enforcement or government agency; (e) extended inactivity.",
-        "Upon termination: (a) your license to use the Service terminates immediately; (b) you remain liable for all fees accrued prior to termination; (c) provisions that by their nature should survive termination shall survive, including Sections on Intellectual Property, Disclaimer of Warranties, Limitation of Liability, Indemnification, Governing Law, and this Termination section.",
-        "Decern shall not be liable to you or any third party for any termination of your access to the Service."
+        "You may terminate your account at any time via account settings or by contacting opensource@decern.dev.",
+        "Decern may suspend or terminate access at any time for violation of Terms, non-payment, or abuse.",
+        "Upon termination, your license terminates immediately. Surviving provisions include Intellectual Property, Warranties, Liability, Indemnification, and Governing Law."
       ]
     },
     "confidentiality": {
       "title": "Confidentiality",
       "body": [
-        "Each party agrees to keep confidential any non-public information disclosed by the other party that is designated as confidential or that reasonably should be understood to be confidential given the nature of the information and the circumstances of disclosure.",
-        "Confidential information does not include information that: (a) is or becomes publicly available without breach of these Terms; (b) was already known to the receiving party without restriction; (c) is independently developed without use of the disclosing party's confidential information; (d) is rightfully received from a third party without restriction.",
-        "Each party may disclose confidential information if required by law, regulation, or court order, provided that the disclosing party is given prompt notice (where legally permitted) and reasonable assistance in opposing such disclosure."
+        "Each party agrees to keep confidential non-public information disclosed by the other party.",
+        "Exceptions: publicly available information, independently developed information, or information required to be disclosed by law."
       ]
     },
     "dataProtection": {
       "title": "Data Protection and Privacy",
       "body": [
-        "Decern processes personal data in accordance with applicable data protection laws, including the EU General Data Protection Regulation (GDPR) where applicable.",
-        "By using the Service, you consent to the collection and processing of data as described in the Privacy Policy. Decern collects only the minimum data necessary to provide the Service.",
-        "For BYO LLM configurations, Customer Data (including code diffs) may be transmitted to the third-party LLM provider selected by the Customer. Decern is not the data controller for data processed by third-party LLM providers under BYO LLM configurations.",
-        "Decern implements commercially reasonable technical and organizational security measures to protect Customer Data. However, no method of transmission over the internet or electronic storage is 100% secure, and Decern cannot guarantee absolute security."
+        "Decern processes personal data in accordance with applicable data protection laws, including GDPR where applicable.",
+        "For BYO LLM, code diffs may be transmitted to the customer's chosen LLM provider. Decern is not the data controller for data processed by third-party providers.",
+        "Decern implements commercially reasonable security measures to protect Customer Data."
       ]
     },
     "modifications": {
       "title": "Modifications to Terms",
       "body": [
-        "Decern reserves the right to modify these Terms at any time. Material changes will be communicated by posting the updated Terms on the website and updating the \"Last updated\" date.",
-        "For material changes that adversely affect your rights, Decern will make reasonable efforts to provide at least 30 days' advance notice via the email address associated with your account.",
-        "Your continued use of the Service after any modification constitutes your acceptance of the revised Terms. If you do not agree with the modified Terms, you must discontinue use of the Service and terminate your account."
+        "Decern may modify these Terms at any time. Material changes will be communicated with at least 30 days' notice.",
+        "Continued use after modification constitutes acceptance of revised Terms."
       ]
     },
     "governingLaw": {
-      "title": "Governing Law and Dispute Resolution",
+      "title": "Governing Law",
       "body": [
-        "These Terms shall be governed by and construed in accordance with the laws of Italy, without regard to its conflict of law provisions.",
-        "Any dispute arising out of or in connection with these Terms shall be submitted to the exclusive jurisdiction of the courts of Italy.",
-        "Before initiating any legal proceedings, both parties agree to attempt to resolve disputes through good-faith negotiation for a period of at least 30 days.",
-        "Nothing in these Terms shall prevent Decern from seeking injunctive or other equitable relief in any court of competent jurisdiction to protect its intellectual property or confidential information."
+        "These Terms are governed by the laws of Italy. Disputes are subject to the exclusive jurisdiction of Italian courts.",
+        "Both parties agree to attempt good-faith negotiation for at least 30 days before legal proceedings."
       ]
     },
     "severability": {
       "title": "Severability",
       "body": [
-        "If any provision of these Terms is held to be invalid, illegal, or unenforceable by a court of competent jurisdiction, the remaining provisions shall continue in full force and effect.",
-        "The invalid or unenforceable provision shall be modified to the minimum extent necessary to make it valid and enforceable while preserving the original intent of the parties."
+        "If any provision is held invalid, the remaining provisions continue in full force."
       ]
     },
     "entireAgreement": {
       "title": "Entire Agreement",
       "body": [
-        "These Terms, together with the Privacy Policy and any applicable order forms or separate agreements for Enterprise customers, constitute the entire agreement between you and Decern regarding the Service.",
-        "These Terms supersede all prior and contemporaneous understandings, agreements, representations, and warranties, both written and oral, regarding the Service.",
-        "No waiver of any provision of these Terms shall be deemed a further or continuing waiver of that provision or any other provision. Decern's failure to enforce any right or provision of these Terms shall not constitute a waiver of such right or provision."
+        "These Terms, together with the Privacy Policy and any Enterprise agreements, constitute the entire agreement regarding the Service."
       ]
     },
     "contact": {
       "title": "Contact Information",
       "body": [
-        "For any questions regarding these Terms, please contact us at: opensource@decern.dev",
-        "Alessandro Palazzesi — Decern. All correspondence should be directed to the email address above."
+        "For questions regarding these Terms: opensource@decern.dev",
+        "Alessandro Palazzesi — Decern."
       ]
     }
   },
   "landing": {
     "hero": {
-      "eyebrow": "CI gate for AI-generated code",
-      "headline": "AI writes your\u00a0code.<br></br>Decern makes sure it follows your\u00a0rules.",
-      "subheadline": "A CI gate that checks every AI-generated pull request against your team’s architecture decisions and engineering rules. <b>What doesn’t fit gets blocked.</b>",
+      "eyebrow": "Architecture governance for AI-assisted teams",
+      "headline": "Your team's ADRs.<br></br>Enforced in every PR.",
+      "subheadline": "Decern reads your Architecture Decision Records, evaluates every pull request against them with your LLM, and <b>blocks what doesn't fit.</b> New patterns get flagged as signals for the tech lead to formalize.",
       "ctaPrimary": "Start free",
       "ctaSecondary": "See how it works",
-      "ctaMicrocopy": "Free forever on observation mode.<br></br>No credit card.",
-      "buyerLine": "Built for platform teams whose developers ship with Copilot, Cursor, and Claude Code, and need architecture to hold."
+      "ctaMicrocopy": "Free forever. Full CI gate.<br></br>No credit card.",
+      "buyerLine": "Built for platform teams whose developers ship with Copilot, Cursor, and Claude Code."
     },
     "integrations": {
-      "label": "Works with your existing CI",
+      "label": "Works with your CI and your LLM",
       "i1": "GitHub Actions",
       "i2": "GitLab CI",
-      "i3": "Bitbucket Pipelines",
-      "i4": "Jenkins",
-      "i5": "Azure DevOps"
+      "i3": "OpenAI / GPT",
+      "i4": "Anthropic / Claude",
+      "i5": "Any OpenAI-compatible"
     },
     "value": {
       "eyebrow": "Sound familiar?",
       "title": "AI codes faster than<br></br>your team can review",
-      "pain1": "An AI agent adds a service layer nobody approved. Review misses it in a 800-line diff. It ships to production.",
-      "pain2": "You deprecated a pattern last quarter. Every new Copilot suggestion brings it back. Your tech lead is tired of repeating the same review comment.",
-      "pain3": "Three teams, three interpretations of the same architecture decision. AI amplifies the inconsistency at 10x the speed.",
-      "closingLine": "This isn't a review problem. It's a policy problem. Decern fixes it in CI."
+      "pain1": "An AI agent introduces a new caching layer nobody discussed. Review misses it in an 800-line diff. It ships, and now it's a de facto architecture decision that was never decided.",
+      "pain2": "You deprecated a pattern last quarter and wrote an ADR. Every new Copilot suggestion brings it back. Nobody checks the ADR before merging.",
+      "pain3": "Three teams, three interpretations of the same architecture decision. AI amplifies the inconsistency at 10x the speed. The drift report shows it, but by then it's already in production.",
+      "closingLine": "This isn't a review problem. It's an enforcement problem. Decern fixes it in CI."
     },
     "solution": {
       "eyebrow": "How it works",
-      "title": "Four steps. One new CI gate.",
-      "step1Title": "Define your rules",
-      "step2Title": "Link to the PR",
-      "step3Title": "Gate runs in CI",
-      "step4Title": "Judge checks alignment",
-      "flowJudgeLabel": "LLM as a Judge",
-      "flowOutcome": "Gate blocks or allows",
-      "flowStep1Desc": "Document your team’s architecture decisions and engineering rules, whether you call them ADRs, engineering decisions, or team conventions. Which patterns to use, which to avoid, which dependencies are approved. No existing ADRs? Decern can help you draft them from meeting notes, Slack threads, or by analyzing your current codebase.",
-      "flowStep2Desc": "Every PR that touches a governed area references the decision. A tag, a link, a line.",
-      "flowStep3Desc": "The gate activates automatically. Zero friction for the developer.",
-      "flowStep4Desc": "The LLM Judge compares the diff to the decision. If the code goes out of scope, the PR gets blocked with a clear reason. Human or AI, same rules.",
-      "bottomLine": "Same workflow. One new CI step.<br></br>Every change checked, whether written by a developer or an AI agent."
+      "title": "Three phases. One CI gate.",
+      "step1Title": "Bootstrap",
+      "step2Title": "CI gate",
+      "step3Title": "Signal detection",
+      "step4Title": "Dashboard lifecycle",
+      "flowJudgeLabel": "BYO LLM evaluates",
+      "flowOutcome": "Pass, block, or signal",
+      "flowStep1Desc": "Run `decern init` in your repo. Decern analyzes your codebase and proposes 15-25 ADR drafts. You review, approve the ones that matter, and commit them to /docs/adr/. Done in 30 minutes.",
+      "flowStep2Desc": "Add `decern gate` to your CI. Every PR gets evaluated against your ADRs. Violations on blocking ADRs fail the build. Warnings get logged. Confidence scores prevent false positives.",
+      "flowStep3Desc": "Every PR is also scanned for new architectural patterns not covered by any ADR. The tech lead sees them in the dashboard as signals, and can generate a draft ADR with one click.",
+      "flowStep4Desc": "Approve, promote to blocking, supersede, or dismiss ADRs from the dashboard. Every change creates a PR on your repo. The human always has the last word.",
+      "bottomLine": "ADRs in the repo are the source of truth.<br></br>The dashboard is the control plane. The gate is the enforcement."
     },
     "audit": {
       "eyebrow": "Compliance",
       "title": "Audit-ready by design",
-      "body1": "Every gate run produces a deterministic record: which decision was referenced, what the diff changed, why it passed or was blocked. Exportable, timestamped, traceable.",
-      "body2": "When your compliance team asks how you ensure human oversight on AI-generated code, you have an answer, and the evidence.",
-      "badge1": "EU AI Act Art. 14",
-      "badge2": "ISO/IEC 42001",
-      "badge3": "NIST AI RMF",
-      "badge4": "SOC 2 AI controls"
+      "body1": "Every gate run produces a hash-chained, Ed25519-signed evidence record: which ADRs were evaluated, each verdict with its confidence score, the diff hash, and who authored the change. Exportable, timestamped, cryptographically verifiable.",
+      "body2": "When your compliance team asks how you ensure human oversight on AI-generated code, you have an answer, and the evidence chain to prove it.",
+      "badge1": "SOC 2 ready",
+      "badge2": "ISO 42001 aligned",
+      "badge3": "EU AI Act Art. 17 supportive",
+      "badge4": "NIST AI RMF compatible"
     },
     "buyers": {
-      "eyebrow": "Who it’s for",
+      "eyebrow": "Who it's for",
       "title": "One tool, three outcomes",
       "b1Role": "Platform / DevEx",
-      "b1Desc": "One CI step. Zero workflow changes. Measurable governance your leadership can point to.",
-      "b1Outcome": "Enforcement without friction, and evidence when it’s asked for.",
+      "b1Desc": "One CI step. Zero workflow changes. Architecture governance your leadership can measure.",
+      "b1Outcome": "Enforcement without friction, evidence when it's asked for.",
       "b2Role": "Engineering Manager",
-      "b2Desc": "AI is 10x-ing your team’s output. Decern makes sure it’s the right output.",
-      "b2Outcome": "Speed without losing control.",
+      "b2Desc": "AI is 10x-ing your team's output. Decern makes sure it follows the decisions your team already made.",
+      "b2Outcome": "Speed without architectural drift.",
       "b3Role": "Tech Lead",
-      "b3Desc": "Stop repeating architecture rules in every review. Set them once, enforce them in CI.",
-      "b3Outcome": "No more playing the architecture police."
+      "b3Desc": "Stop repeating architecture rules in every review. Write them as ADRs once, enforce them in CI. New patterns get surfaced as signals.",
+      "b3Outcome": "From architecture police to architecture reviewer."
     },
     "trust": {
       "eyebrow": "Trust and control",
-      "title": "Your model. Your keys.<mbr></mbr>Your rules.",
-      "intro": "Decern doesn’t replace code review. It catches what reviewers miss, especially when the code was written by an AI that doesn’t know your decisions, conventions, or architectural guardrails.",
+      "title": "Your LLM. Your repo.<mbr></mbr>Your rules.",
+      "intro": "Decern doesn't manage your LLM or your ADRs. Your repo is the source of truth. Your LLM runs the evaluation. Decern is the orchestration layer that connects them in CI.",
       "t1Title": "Bring your own LLM",
-      "t1Desc": "The Judge runs on the provider you choose. OpenAI, Claude, or any OpenAI-compatible endpoint. Your API keys are used per-request, never stored. Full control for teams with internal LLM policies.",
-      "t2Title": "Observation first, blocking when ready",
-      "t2Desc": "Start in report mode. See what the gate catches. Enable blocking when your team is ready. No big-bang rollout.",
-      "t3Title": "Auditable, deterministic outputs",
-      "t3Desc": "Every gate run produces a decision reference, scope verdict, and reason code. Ready for review and compliance."
+      "t1Desc": "The gate calls the LLM you choose. OpenAI, Anthropic, or any OpenAI-compatible endpoint. Your API keys stay in your CI environment, never stored by Decern. Confidence scores and model warnings prevent false positives.",
+      "t2Title": "Repo is the source of truth",
+      "t2Desc": "ADRs live in /docs/adr/ as markdown files. The gate reads them locally. The dashboard caches them for display. Every lifecycle change (approve, promote, supersede) creates a PR. Nothing enters the repo without a merge.",
+      "t3Title": "Evidence chain for audit",
+      "t3Desc": "Every gate run produces a signed, hash-chained evidence record. Export bundles include records, signatures, and public keys. Verifiable offline. Retention configurable per workspace."
     },
     "selfHosted": {
       "eyebrow": "Enterprise deployment",
       "title": "Deploy in your own VPC",
-      "body": "For regulated teams in finance, healthcare, defense, and public sector, Decern runs self-hosted. Your code, your LLM, your infrastructure. Nothing leaves your network.",
+      "body": "For regulated teams in finance, healthcare, defense, and public sector. Decern runs self-hosted: your code, your LLM, your infrastructure. Nothing leaves your network.",
       "cta": "Talk to us about self-hosted"
     },
     "pricingTeaser": {
       "eyebrow": "Pricing",
-      "title": "Start free.<mbr></mbr>Unlock blocking when ready.",
-      "freeDesc": "Observation mode for up to 5 developers. Validate value with zero risk.",
-      "enterpriseDesc": "Blocking mode, advanced policies, roles, self-hosted deployment, and dedicated support.",
+      "title": "Start free.<mbr></mbr>Full CI gate included.",
+      "freeDesc": "1 workspace, 3 developers. Full gate with BYO LLM, signal detection, dashboard, and evidence chain. No limitations on ADRs or gate runs.",
+      "enterpriseDesc": "Unlimited workspaces and developers. Draft ADR generation, PR creation from dashboard, self-hosted deployment, SSO, and dedicated support.",
       "ctaPrimary": "See full pricing",
-      "bottomLine": "Free forever on observation mode. No credit card."
+      "bottomLine": "Free forever. No credit card. No observation-only limitations."
     },
     "cta": {
       "title": "AI doesn\u2019t know<br></br>what your team decided.<br></br><accent>Decern does.</accent>",
       "ctaPrimary": "Start free",
       "ctaSecondary": "Book a demo",
-      "microcopy": "Free forever on observation mode.<br></br>No credit card required."
+      "microcopy": "Free forever. Full CI gate.<br></br>No credit card required."
     },
     "footer": {
       "pricing": "Pricing",
@@ -387,7 +367,7 @@
       "signUp": "Sign up",
       "terms": "Terms",
       "contact": "Contact",
-      "copyright": "© Decern. CI gate for architecture decisions and engineering rules.",
+      "copyright": "\u00a9 Decern. Architecture governance for AI-assisted teams.",
       "builtBy": "Designed and built by Alessandro Palazzesi"
     }
   }

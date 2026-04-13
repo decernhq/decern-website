@@ -1,65 +1,40 @@
 # decern-website
 
-Marketing and pricing website for Decern.
+Marketing and pricing website for Decern. Separate from `decern-core` (the app/dashboard).
 
-This repository is intentionally separate from `decern-core`:
+## Routes
 
-- `decern-website` serves public marketing pages and checkout flow
-- `decern-core` serves app/dashboard/auth/API product functionality
+| Route | Description |
+|---|---|
+| `/` | Landing page: hero, how it works, audit, trust, pricing teaser |
+| `/pricing` | Plans: Free and Enterprise |
+| `/terms` | Terms and conditions |
+| `/docs` | Documentation entry |
+| `/api/contact` | Contact form submission |
 
 ## Stack
 
-- Next.js 16
-- React 19
-- TypeScript
+- Next.js (App Router, TypeScript)
 - Tailwind CSS
-- Stripe SDK
-- `next-intl` for localization
+- `next-intl` (English + Italian)
+- Stripe SDK (checkout)
 
-## Main Routes
-
-- `/` - landing page
-- `/pricing` - pricing and checkout CTA
-- `/docs` - public docs entry
-- `POST /api/stripe/checkout` - checkout session creation
-
-## Local Development
-
-1) Install dependencies:
+## Local development
 
 ```bash
 npm install
-```
-
-2) Create env file:
-
-```bash
 cp .env.example .env.local
-```
-
-3) Run:
-
-```bash
 npm run dev
 ```
 
-Open `http://localhost:3000`.
+## Environment variables
 
-## Required Environment Variables
-
-- `NEXT_PUBLIC_WEBSITE_URL` (example: `https://decern.dev`)
-- `NEXT_PUBLIC_APP_URL` (example: `https://app.decern.dev`)
-- `STRIPE_SECRET_KEY`
-- `STRIPE_TEAM_PRICE_ID`
-- `STRIPE_BUSINESS_PRICE_ID`
-
-## Scripts
-
-- `npm run dev` - development server
-- `npm run build` - production build
-- `npm run start` - run built app
-- `npm run lint` - lint codebase
+| Variable | Description |
+|---|---|
+| `NEXT_PUBLIC_WEBSITE_URL` | Website URL (e.g. `https://decern.dev`) |
+| `NEXT_PUBLIC_APP_URL` | App URL (e.g. `https://app.decern.dev`) |
+| `RESEND_API_KEY` | Email API for contact form |
 
 ## Deploy
 
-Deploy on Vercel as a standalone app and set the env vars above for Production and Preview.
+Vercel as standalone app.

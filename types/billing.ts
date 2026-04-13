@@ -2,10 +2,7 @@ export type PlanId = "free" | "enterprise";
 
 export interface PlanLimits {
   workspaces_limit: number;
-  projects_limit: number;
   users_per_workspace_limit: number;
-  decisions_limit: number;
-  ai_generations_per_month: number;
 }
 
 export interface Plan {
@@ -13,8 +10,6 @@ export interface Plan {
   name: string;
   description: string;
   price: number;
-  perDeveloper: boolean;
-  minDevelopers: number | null;
   priceId: string | null;
   features: string[];
   limits: PlanLimits;
@@ -24,38 +19,41 @@ export const PLANS: Record<PlanId, Plan> = {
   free: {
     id: "free",
     name: "Free",
-    description: "Visibility",
+    description: "Get started",
     price: 0,
-    perDeveloper: false,
-    minDevelopers: null,
     priceId: null,
     features: [
-      "Up to 5 developers",
-      "1 workspace, unlimited projects, unlimited decisions",
-      "Observation mode only (warnings, no blocking)",
-      "LLM as a Judge (advisory, BYO only)",
-      "AI decision generation (fair use)",
+      "1 workspace, up to 3 developers",
+      "Unlimited ADRs, unlimited gate runs",
+      "CI gate with BYO LLM (blocking + warning)",
+      "Signal detection (Case C)",
+      "Dashboard: ADRs, signals, gate runs",
+      "Evidence chain + export",
     ],
-    limits: { workspaces_limit: 1, projects_limit: -1, users_per_workspace_limit: 5, decisions_limit: -1, ai_generations_per_month: 10 },
+    limits: {
+      workspaces_limit: 1,
+      users_per_workspace_limit: 3,
+    },
   },
   enterprise: {
     id: "enterprise",
-    name: "Enterprise / Self-Hosted",
-    description: "Deployment control",
-    price: 2500,
-    perDeveloper: false,
-    minDevelopers: null,
+    name: "Enterprise",
+    description: "Full control",
+    price: 0,
     priceId: null,
     features: [
-      "Unlimited workspaces, projects, decisions",
-      "Blocking mode + advanced policies",
-      "Roles & permissions",
-      "Self-hosted deployment (VPC, air-gapped options)",
-      "BYO LLM enforced",
+      "Unlimited workspaces and developers",
+      "Everything in Free",
+      "Draft ADR generation from signals (cloud LLM)",
+      "Create PR from dashboard (GitHub)",
+      "Self-hosted deployment (VPC, air-gapped)",
+      "SSO (SAML, OIDC)",
       "Dedicated support with SLA",
-      "Security review assistance (SOC 2, ISO 42001 evidence pack)",
-      "Custom onboarding",
+      "Security review assistance (SOC 2, ISO 42001)",
     ],
-    limits: { workspaces_limit: -1, projects_limit: -1, users_per_workspace_limit: -1, decisions_limit: -1, ai_generations_per_month: -1 },
+    limits: {
+      workspaces_limit: -1,
+      users_per_workspace_limit: -1,
+    },
   },
 };
