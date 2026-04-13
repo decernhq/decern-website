@@ -346,7 +346,7 @@
     },
     "pricingTeaser": {
       "eyebrow": "Prezzi",
-      "title": "Inizia gratis.<mbr></mbr>CI gate completo incluso.",
+      "title": "Inizia gratis.<br></br>CI gate completo incluso.",
       "freeDesc": "1 workspace, 3 sviluppatori. Gate completo con BYO LLM, rilevazione segnali, dashboard e catena di evidenza. Nessun limite su ADR o gate run.",
       "enterpriseDesc": "Workspace e sviluppatori illimitati. Generazione bozze ADR, creazione PR dalla dashboard, deploy self-hosted, SSO e supporto dedicato.",
       "ctaPrimary": "Vedi tutti i prezzi",

@@ -354,7 +354,7 @@
     },
     "pricingTeaser": {
       "eyebrow": "Pricing",
-      "title": "Start free.<mbr></mbr>Full CI gate included.",
+      "title": "Start free.<br></br>Full CI gate included.",
       "freeDesc": "1 workspace, 3 developers. Full gate with BYO LLM, signal detection, dashboard, and evidence chain. No limitations on ADRs or gate runs.",
       "enterpriseDesc": "Unlimited workspaces and developers. Draft ADR generation, PR creation from dashboard, self-hosted deployment, SSO, and dedicated support.",
       "ctaPrimary": "See full pricing",

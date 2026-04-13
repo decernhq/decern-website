@@ -300,7 +300,7 @@ export default async function LandingPage() {
           <FadeIn className="text-center">
             <Eyebrow>{t("trust.eyebrow")}</Eyebrow>
             <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">{t.rich("trust.title", { mbr: () => <br className="sm:hidden" /> })}</h2>
-            <p className="mx-auto mt-5 max-w-2xl text-lg text-gray-600 dark:text-gray-300">{t("trust.intro")}</p>
+            <p className="mx-auto mt-5 max-w-2xl text-left text-lg text-gray-600 dark:text-gray-300">{t("trust.intro")}</p>
           </FadeIn>
           <div className="mt-12 grid gap-5 lg:grid-cols-3">
             {(["t1", "t2", "t3"] as const).map((k, i) => (
@@ -317,14 +317,16 @@ export default async function LandingPage() {
 
       {/* ── Self-hosted ────────────────────────────────────────────── */}
       <section id="self-hosted" className="scroll-mt-20 border-y border-gray-900/10 bg-gray-900/[0.03] px-4 py-16 dark:border-white/10 dark:bg-white/[0.03] sm:py-28">
-        <div className="mx-auto max-w-3xl text-center">
+        <div className="mx-auto max-w-3xl">
           <FadeIn>
-            <Eyebrow>{t("selfHosted.eyebrow")}</Eyebrow>
-            <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">{t("selfHosted.title")}</h2>
-            <p className="mx-auto mt-5 max-w-2xl text-lg text-gray-600 dark:text-gray-300">{t("selfHosted.body")}</p>
+            <div className="text-center">
+              <Eyebrow>{t("selfHosted.eyebrow")}</Eyebrow>
+              <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">{t("selfHosted.title")}</h2>
+            </div>
+            <p className="mt-5 text-lg text-gray-600 dark:text-gray-300">{t("selfHosted.body")}</p>
           </FadeIn>
           <FadeIn delay={100}>
-            <div className="mt-8">
+            <div className="mt-8 text-center">
               <ContactFormButton
                 labels={contactLabels}
                 defaultSubject="Self-Hosted"
@@ -342,7 +344,7 @@ export default async function LandingPage() {
         <div className="mx-auto max-w-5xl">
           <FadeIn className="text-center">
             <Eyebrow>{t("pricingTeaser.eyebrow")}</Eyebrow>
-            <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">{t.rich("pricingTeaser.title", { mbr: () => <br className="sm:hidden" /> })}</h2>
+            <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">{t.rich("pricingTeaser.title", { br: () => <br /> })}</h2>
           </FadeIn>
           <div className="mt-12 grid gap-5 md:grid-cols-2 max-w-2xl mx-auto">
             {([["free", "freeDesc"], ["enterprise", "enterpriseDesc"]] as const).map(([plan, descKey], i) => (
