@@ -261,7 +261,7 @@
       "title": "Contact Information",
       "body": [
         "For questions regarding these Terms: opensource@decern.dev",
-        "Alessandro Palazzesi — Decern."
+        "Alessandro Palazzesi Decern."
       ]
     }
   },
@@ -277,14 +277,14 @@
     },
     "noAdrs": {
       "eyebrow": "No ADRs yet?",
-      "title": "You don't have ADRs? Decern extracts them from your codebase.",
-      "body": "Most teams have dozens of implicit architecture decisions they've never written down — which database to use, where business logic lives, which patterns are approved. Run `decern init` and Decern analyzes your directory structure, dependencies, git history, and entry points to propose 15-25 ADR drafts. You review each one, approve or skip, and commit the ones that matter. In 30 minutes you go from zero ADRs to an enforced architecture baseline.",
+      "title": "You don't have ADRs?<br></br>Decern extracts them from your codebase.",
+      "body": "Most teams have dozens of implicit architecture decisions they've never written down which database to use, where business logic lives, which patterns are approved. Run `decern init` and Decern analyzes your directory structure, dependencies, git history, and entry points to propose 15-25 ADR drafts. You review each one, approve or skip, and commit the ones that matter. In 30 minutes you go from zero ADRs to an enforced architecture baseline.",
       "cta": "See how bootstrap works"
     },
     "whyNow": {
       "eyebrow": "Why now",
       "title": "Review doesn't scale when AI writes 30-70% of your PRs.",
-      "body": "Until 2024, architecture governance was a review problem — the tech lead read every PR and caught the drift. Since AI coding became mainstream, it's a throughput problem. Copilot, Cursor, and Claude Code ship code fast, but they don't know what your team decided. The old way of catching drift in review stopped working when the volume tripled. Decern moves the check from the reviewer's head into CI, where it runs on every PR, for every developer, including AI agents."
+      "body": "Until 2024, architecture governance was a review problem the tech lead read every PR and caught the drift. Since AI coding became mainstream, it's a throughput problem. Copilot, Cursor, and Claude Code ship code fast, but they don't know what your team decided. The old way of catching drift in review stopped working when the volume tripled. Decern moves the check from the reviewer's head into CI, where it runs on every PR, for every developer, including AI agents."
     },
     "integrations": {
       "label": "Works with your CI and your LLM",
@@ -312,7 +312,7 @@
       "flowOutcome": "Pass, block, or signal",
       "flowStep1Desc": "Run `decern init` in your repo. Decern analyzes your codebase and proposes 15-25 ADR drafts. You review, approve the ones that matter, and commit them to /docs/adr/. Done in 30 minutes.",
       "flowStep2Desc": "Add `decern gate` to your CI. Every PR gets evaluated against your ADRs. Violations on blocking ADRs fail the build. Warnings get logged. Confidence scores prevent false positives.",
-      "flowStep3Desc": "Every PR is scanned for new patterns not covered by any ADR. The tech lead sees them as signals in the dashboard, generates a draft ADR with one click, and manages the full lifecycle (approve, promote, supersede) — all via PRs on the repo.",
+      "flowStep3Desc": "Every PR is scanned for new patterns not covered by any ADR. The tech lead sees them as signals in the dashboard, generates a draft ADR with one click, and manages the full lifecycle (approve, promote, supersede) all via PRs on the repo.",
       "bottomLine": "ADRs in the repo are the source of truth.<br></br>The dashboard is the control plane. The gate is the enforcement."
     },
     "audit": {
@@ -362,7 +362,7 @@
     },
     "whyDecern": {
       "eyebrow": "Why Decern",
-      "body": "I built Decern after watching tech leads spend their Fridays writing the same review comment for the tenth time, while Copilot introduced patterns nobody had discussed. The code was shipping, but the architecture was drifting. Review was becoming a bottleneck, not a safety net. This tool is what I wish I'd had: write the decision once, enforce it in CI, and get back to building. — Alessandro"
+      "body": "I built Decern after watching tech leads spend their Fridays writing the same review comment for the tenth time, while Copilot introduced patterns nobody had discussed. The code was shipping, but the architecture was drifting. Review was becoming a bottleneck, not a safety net. This tool is what I wish I'd had: write the decision once, enforce it in CI, and get back to building. Alessandro"
     },
     "earlyAdopter": {
       "line": "Built in 2026. Looking for design partners.",

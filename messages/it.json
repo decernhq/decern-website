@@ -253,7 +253,7 @@
       "title": "Contatti",
       "body": [
         "Per domande su questi Termini: opensource@decern.dev",
-        "Alessandro Palazzesi — Decern."
+        "Alessandro Palazzesi Decern."
       ]
     }
   },
@@ -269,7 +269,7 @@
     },
     "noAdrs": {
       "eyebrow": "Non hai ADR?",
-      "title": "Non hai ADR? Decern le estrae dal tuo codice.",
+      "title": "Non hai ADR?<br></br>Decern le estrae dal tuo codice.",
       "body": "La maggior parte dei team ha decine di decisioni architetturali implicite mai scritte \u2014 quale database usare, dove vive la business logic, quali pattern sono approvati. Lancia `decern init` e Decern analizza struttura, dipendenze, git history ed entry point per proporre 15-25 bozze di ADR. Le rivedi una per una, approvi o skip, e committi quelle che contano. In 30 minuti passi da zero ADR a un baseline architetturale enforciata.",
       "cta": "Come funziona il bootstrap"
     },
@@ -304,7 +304,7 @@
       "flowOutcome": "Pass, block, o signal",
       "flowStep1Desc": "Lancia `decern init` nel tuo repo. Decern analizza il codice e propone 15-25 bozze di ADR. Le rivedi, approvi quelle che contano, e le committi in /docs/adr/. In 30 minuti.",
       "flowStep2Desc": "Aggiungi `decern gate` al tuo CI. Ogni PR viene valutata rispetto alle ADR. Le violazioni su ADR blocking falliscono la build. I warning vengono loggati. I punteggi di confidence prevengono i falsi positivi.",
-      "flowStep3Desc": "Ogni PR viene analizzata per nuovi pattern non coperti da nessuna ADR. Il tech lead li vede come segnali nella dashboard, genera una bozza di ADR con un click, e gestisce l'intero lifecycle (approva, promuovi, supersedi) — tutto via PR sul repo.",
+      "flowStep3Desc": "Ogni PR viene analizzata per nuovi pattern non coperti da nessuna ADR. Il tech lead li vede come segnali nella dashboard, genera una bozza di ADR con un click, e gestisce l'intero lifecycle (approva, promuovi, supersedi) tutto via PR sul repo.",
       "bottomLine": "Le ADR nel repo sono la fonte di verità.<br></br>La dashboard è il piano di controllo. Il gate è l'enforcement."
     },
     "audit": {

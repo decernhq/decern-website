@@ -148,7 +148,7 @@ export default async function LandingPage() {
         <div className="mx-auto max-w-3xl text-center">
           <FadeIn>
             <Eyebrow>{t("noAdrs.eyebrow")}</Eyebrow>
-            <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">{t("noAdrs.title")}</h2>
+            <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">{t.rich("noAdrs.title", { br: () => <br /> })}</h2>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-gray-600 dark:text-gray-300">
               {t("noAdrs.body")}
             </p>
