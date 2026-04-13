@@ -143,6 +143,26 @@ export default async function LandingPage() {
         </div>
       </section>
 
+      {/* ── No ADRs yet? ─────────────────────────────────────────── */}
+      <section className="scroll-mt-20 border-y border-brand-100/60 bg-brand-50/30 px-4 py-16 dark:border-white/10 dark:bg-white/[0.03] sm:py-24">
+        <div className="mx-auto max-w-3xl text-center">
+          <FadeIn>
+            <Eyebrow>{t("noAdrs.eyebrow")}</Eyebrow>
+            <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">{t("noAdrs.title")}</h2>
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-gray-600 dark:text-gray-300">
+              {t("noAdrs.body")}
+            </p>
+          </FadeIn>
+          <FadeIn delay={100}>
+            <div className="mt-8">
+              <a href="#solution">
+                <Button variant="outline" className="h-10 px-6">{t("noAdrs.cta")}</Button>
+              </a>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
       {/* ── Problem / Value (Sound familiar?) ──────────────────────── */}
       <section id="value" className="scroll-mt-20 px-4 py-16 sm:py-28">
         <div className="mx-auto max-w-5xl">
@@ -173,6 +193,19 @@ export default async function LandingPage() {
           <FadeIn delay={260}>
             <p className="mt-10 text-center text-base font-semibold text-gray-900 dark:text-white">
               {t("value.closingLine")}
+            </p>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* ── Why Now ──────────────────────────────────────────────── */}
+      <section className="scroll-mt-20 px-4 py-16 sm:py-24">
+        <div className="mx-auto max-w-3xl text-center">
+          <FadeIn>
+            <Eyebrow>{t("whyNow.eyebrow")}</Eyebrow>
+            <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-3xl">{t("whyNow.title")}</h2>
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-gray-600 dark:text-gray-300">
+              {t("whyNow.body")}
             </p>
           </FadeIn>
         </div>
@@ -231,16 +264,9 @@ export default async function LandingPage() {
             </p>
           </FadeIn>
           <FadeIn delay={200}>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
-              {(["badge1", "badge2", "badge3", "badge4"] as const).map((k) => (
-                <span
-                  key={k}
-                  className="rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-xs font-medium text-gray-600 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400"
-                >
-                  {t(`audit.${k}`)}
-                </span>
-              ))}
-            </div>
+            <p className="mt-8 text-center text-sm font-medium text-gray-500 dark:text-gray-400">
+              {t("audit.badgeLine")}
+            </p>
           </FadeIn>
         </div>
       </section>
@@ -338,13 +364,21 @@ export default async function LandingPage() {
         </div>
       </section>
 
-      {/* ── Social proof placeholder ────────────────────────────────── */}
-      {/* TODO: add design partner logos when available */}
-      <section className="hidden border-y border-gray-200/70 bg-gray-50/70 px-4 py-12 dark:border-gray-800/80 dark:bg-gray-900/40">
-        <div className="mx-auto max-w-4xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-500 dark:text-gray-400">
-            Trusted by platform teams shipping AI-assisted code
-          </p>
+      {/* ── Why Decern (founder voice) ──────────────────────────────── */}
+      <section className="border-y border-gray-200/70 bg-gray-50/70 px-4 py-16 dark:border-gray-800/80 dark:bg-gray-900/40 sm:py-24">
+        <div className="mx-auto max-w-2xl text-center">
+          <FadeIn>
+            <Eyebrow>{t("whyDecern.eyebrow")}</Eyebrow>
+            <p className="mt-4 text-base italic leading-relaxed text-gray-600 dark:text-gray-300">
+              {t("whyDecern.body")}
+            </p>
+          </FadeIn>
+          <FadeIn delay={100}>
+            <div className="mt-8 rounded-xl border border-gray-200 bg-white px-6 py-4 dark:border-gray-700 dark:bg-gray-800/50">
+              <p className="text-sm font-medium text-gray-900 dark:text-white">{t("earlyAdopter.line")}</p>
+              <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">{t("earlyAdopter.cta")}</p>
+            </div>
+          </FadeIn>
         </div>
       </section>
 

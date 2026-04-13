@@ -260,12 +260,23 @@
   "landing": {
     "hero": {
       "eyebrow": "Governance architetturale per team AI-assisted",
-      "headline": "L'AI scrive il\u00a0codice.<br></br>Decern verifica che segua le\u00a0tue regole.",
-      "subheadline": "Un CI gate che controlla ogni pull request generata dall'AI rispetto alle decisioni architetturali del tuo team, usando il tuo LLM. <b>Ciò che non è conforme viene bloccato.</b> I nuovi pattern vengono segnalati al tech lead per essere formalizzati.",
+      "headline": "Le decisioni architetturali del tuo team<br></br>\u2014 anche quelle mai scritte \u2014<br></br>enforce su ogni\u00a0PR.",
+      "subheadline": "Un CI gate che valuta ogni pull request rispetto alle decisioni architetturali del tuo team, usando il tuo LLM. <b>Le violazioni di ADR blocking falliscono la build. Tutto il resto viene segnalato, non bloccato.</b> I nuovi pattern emergono come segnali per il tech lead.",
       "ctaPrimary": "Inizia gratis",
       "ctaSecondary": "Come funziona",
       "ctaMicrocopy": "Gratis per sempre. CI gate completo.<br></br>Nessuna carta di credito.",
       "buyerLine": "Costruito per i platform team i cui sviluppatori usano Copilot, Cursor e Claude Code."
+    },
+    "noAdrs": {
+      "eyebrow": "Non hai ADR?",
+      "title": "Non hai ADR? Decern le estrae dal tuo codice.",
+      "body": "La maggior parte dei team ha decine di decisioni architetturali implicite mai scritte \u2014 quale database usare, dove vive la business logic, quali pattern sono approvati. Lancia `decern init` e Decern analizza struttura, dipendenze, git history ed entry point per proporre 15-25 bozze di ADR. Le rivedi una per una, approvi o skip, e committi quelle che contano. In 30 minuti passi da zero ADR a un baseline architetturale enforciata.",
+      "cta": "Come funziona il bootstrap"
+    },
+    "whyNow": {
+      "eyebrow": "Perch\u00e9 ora",
+      "title": "La review non scala quando l'AI scrive il 30-70% delle PR.",
+      "body": "Fino al 2024, la governance architetturale era un problema di review \u2014 il tech lead leggeva ogni PR e intercettava il drift. Da quando l'AI coding \u00e8 diventato mainstream, \u00e8 un problema di throughput. Copilot, Cursor e Claude Code scrivono codice veloce, ma non sanno cosa ha deciso il tuo team. Il vecchio modo di intercettare il drift in review ha smesso di funzionare quando il volume \u00e8 triplicato. Decern sposta il check dalla testa del reviewer nel CI, dove gira su ogni PR, per ogni sviluppatore, inclusi gli agenti AI."
     },
     "integrations": {
       "label": "Funziona con il tuo CI e il tuo LLM",
@@ -301,10 +312,7 @@
       "title": "Pronto per l'audit by design",
       "body1": "Ogni esecuzione del gate produce un record di evidenza concatenato via hash e firmato Ed25519: quali ADR sono state valutate, ciascun verdetto con il proprio punteggio di confidence, l'hash del diff, e chi ha creato la modifica. Esportabile, con timestamp, verificabile crittograficamente.",
       "body2": "Quando il team compliance chiede come garantite la supervisione umana sul codice generato dall'AI, avete una risposta, e la catena di evidenza per dimostrarla.",
-      "badge1": "SOC 2 ready",
-      "badge2": "ISO 42001 aligned",
-      "badge3": "EU AI Act Art. 17 supportive",
-      "badge4": "NIST AI RMF compatible"
+      "badgeLine": "Progettato per audit trail SOC 2 e ISO 42001. Compatibile con EU AI Act Art. 17 e NIST AI RMF."
     },
     "buyers": {
       "eyebrow": "Per chi è",
@@ -343,6 +351,14 @@
       "enterpriseDesc": "Workspace e sviluppatori illimitati. Generazione bozze ADR, creazione PR dalla dashboard, deploy self-hosted, SSO e supporto dedicato.",
       "ctaPrimary": "Vedi tutti i prezzi",
       "bottomLine": "Gratis per sempre. Nessuna carta di credito. Nessun limite observation-only."
+    },
+    "whyDecern": {
+      "eyebrow": "Perch\u00e9 Decern",
+      "body": "Ho costruito Decern dopo aver visto tech lead passare i venerd\u00ec a scrivere lo stesso commento di review per la decima volta, mentre Copilot introduceva pattern che nessuno aveva discusso. Il codice veniva shippato, ma l'architettura stava derivando. La review era diventata un collo di bottiglia, non una rete di sicurezza. Questo tool \u00e8 quello che avrei voluto avere: scrivi la decisione una volta, enforcia in CI, e torna a costruire. \u2014 Alessandro"
+    },
+    "earlyAdopter": {
+      "line": "Costruito nel 2026. Cerchiamo design partner.",
+      "cta": "Inizia gratis per provarlo, o contattaci se vuoi contribuire a dare forma al prodotto."
     },
     "cta": {
       "title": "L'AI non sa<br></br>cosa ha deciso il tuo team.<br></br><accent>Decern sì.</accent>",

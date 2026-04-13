@@ -268,12 +268,23 @@
   "landing": {
     "hero": {
       "eyebrow": "Architecture governance for AI-assisted teams",
-      "headline": "AI writes your\u00a0code.<br></br>Decern makes sure it follows your\u00a0rules.",
-      "subheadline": "A CI gate that checks every AI-generated pull request against your team's architecture decisions using your own LLM. <b>What doesn't fit gets blocked.</b> New patterns get flagged as signals for the tech lead to formalize.",
+      "headline": "Your team's architecture decisions<br></br>\u2014 even the ones you never wrote down \u2014<br></br>enforced on every\u00a0PR.",
+      "subheadline": "A CI gate that evaluates every pull request against your architecture decisions using your own LLM. <b>Violations of blocking ADRs fail the build. Everything else gets flagged, not blocked.</b> New patterns get surfaced as signals for the tech lead to formalize.",
       "ctaPrimary": "Start free",
       "ctaSecondary": "See how it works",
       "ctaMicrocopy": "Free forever. Full CI gate.<br></br>No credit card.",
       "buyerLine": "Built for platform teams whose developers ship with Copilot, Cursor, and Claude Code."
+    },
+    "noAdrs": {
+      "eyebrow": "No ADRs yet?",
+      "title": "You don't have ADRs? Decern extracts them from your codebase.",
+      "body": "Most teams have dozens of implicit architecture decisions they've never written down — which database to use, where business logic lives, which patterns are approved. Run `decern init` and Decern analyzes your directory structure, dependencies, git history, and entry points to propose 15-25 ADR drafts. You review each one, approve or skip, and commit the ones that matter. In 30 minutes you go from zero ADRs to an enforced architecture baseline.",
+      "cta": "See how bootstrap works"
+    },
+    "whyNow": {
+      "eyebrow": "Why now",
+      "title": "Review doesn't scale when AI writes 30-70% of your PRs.",
+      "body": "Until 2024, architecture governance was a review problem — the tech lead read every PR and caught the drift. Since AI coding became mainstream, it's a throughput problem. Copilot, Cursor, and Claude Code ship code fast, but they don't know what your team decided. The old way of catching drift in review stopped working when the volume tripled. Decern moves the check from the reviewer's head into CI, where it runs on every PR, for every developer, including AI agents."
     },
     "integrations": {
       "label": "Works with your CI and your LLM",
@@ -309,10 +320,7 @@
       "title": "Audit-ready by design",
       "body1": "Every gate run produces a hash-chained, Ed25519-signed evidence record: which ADRs were evaluated, each verdict with its confidence score, the diff hash, and who authored the change. Exportable, timestamped, cryptographically verifiable.",
       "body2": "When your compliance team asks how you ensure human oversight on AI-generated code, you have an answer, and the evidence chain to prove it.",
-      "badge1": "SOC 2 ready",
-      "badge2": "ISO 42001 aligned",
-      "badge3": "EU AI Act Art. 17 supportive",
-      "badge4": "NIST AI RMF compatible"
+      "badgeLine": "Designed for SOC 2 and ISO 42001 audit trails. Compatible with EU AI Act Art. 17 and NIST AI RMF."
     },
     "buyers": {
       "eyebrow": "Who it's for",
@@ -351,6 +359,14 @@
       "enterpriseDesc": "Unlimited workspaces and developers. Draft ADR generation, PR creation from dashboard, self-hosted deployment, SSO, and dedicated support.",
       "ctaPrimary": "See full pricing",
       "bottomLine": "Free forever. No credit card. No observation-only limitations."
+    },
+    "whyDecern": {
+      "eyebrow": "Why Decern",
+      "body": "I built Decern after watching tech leads spend their Fridays writing the same review comment for the tenth time, while Copilot introduced patterns nobody had discussed. The code was shipping, but the architecture was drifting. Review was becoming a bottleneck, not a safety net. This tool is what I wish I'd had: write the decision once, enforce it in CI, and get back to building. — Alessandro"
+    },
+    "earlyAdopter": {
+      "line": "Built in 2026. Looking for design partners.",
+      "cta": "Start free to try it, or get in touch if you want to shape the product."
     },
     "cta": {
       "title": "AI doesn\u2019t know<br></br>what your team decided.<br></br><accent>Decern does.</accent>",
