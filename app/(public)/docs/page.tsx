@@ -14,15 +14,18 @@ const SECTIONS: DocSection[] = [
   { id: "overview", label: "Overview" },
   { id: "quick-start", label: "Quick Start" },
   { id: "adr-format", label: "ADR Format" },
+  { id: "writing-adrs", label: "Writing Good ADRs" },
   { id: "bootstrap", label: "Bootstrap (decern init)" },
   { id: "ci-gate", label: "CI Gate Setup" },
   { id: "evaluation", label: "How Evaluation Works" },
   { id: "signals", label: "Signal Detection" },
   { id: "lifecycle", label: "ADR Lifecycle" },
+  { id: "override", label: "Override & Escape Hatches" },
   { id: "multi-repo", label: "Multi-Repo" },
   { id: "dashboard", label: "Dashboard" },
   { id: "evidence", label: "Evidence Chain" },
   { id: "models", label: "Recommended Models" },
+  { id: "troubleshooting", label: "Troubleshooting & FAQ" },
   { id: "self-hosted", label: "Self-Hosted" },
   { id: "plans", label: "Plans" },
 ];
@@ -110,7 +113,10 @@ export default function DocsPage() {
           <section id="overview" className="docs-section">
             <SectionTitle id="overview">Overview</SectionTitle>
             <P>
-              <strong>Decern</strong> is an architecture governance tool for engineering teams. It reads your Architecture Decision Records (ADRs) from the repo, evaluates every pull request against them using your own LLM, and blocks what doesn{"'"}t fit. New architectural patterns are flagged as signals for the tech lead to formalize.
+              Decern exists because the tech lead can{"'"}t review every PR anymore — especially when half of them are written by AI. Copilot, Cursor, and Claude Code write code fast, but they don{"'"}t know what your team decided last quarter about database access patterns, or why you deprecated that caching layer, or which dependencies are approved.
+            </P>
+            <P>
+              <strong>Decern turns your team{"'"}s architecture decisions into rules the CI enforces automatically</strong>, so you can stop being the architecture police. It reads your ADRs from the repo, evaluates every pull request against them using your own LLM, blocks what doesn{"'"}t fit, and surfaces new patterns for the tech lead to formalize.
             </P>
             <SubTitle>Three phases</SubTitle>
             <div className="mt-4 grid gap-4 sm:grid-cols-3">
@@ -221,6 +227,89 @@ No other database engines are allowed in production.
                 </tbody>
               </table>
             </div>
+          </section>
+
+          {/* ─── Writing Good ADRs ─── */}
+          <section id="writing-adrs" className="docs-section mt-16">
+            <SectionTitle id="writing-adrs">Writing ADRs That Work With the Gate</SectionTitle>
+            <P>
+              The quality of the gate depends directly on the quality of your ADRs. A vague ADR produces vague verdicts. A precise ADR produces precise verdicts. This section is the difference between a gate that catches real violations and one that produces false positives until your team disables it.
+            </P>
+
+            <SubTitle>1. Decision must be specific and verifiable</SubTitle>
+            <P>The LLM needs to answer a binary question: does this diff respect this decision, yes or no? If the decision is fuzzy, the LLM guesses.</P>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <div className="rounded-xl border border-red-200 bg-red-50/50 p-4 dark:border-red-800/50 dark:bg-red-900/10">
+                <p className="text-xs font-semibold uppercase text-red-600 dark:text-red-400">Bad</p>
+                <p className="mt-1 text-sm text-gray-700 dark:text-gray-300">{'"'}Code should be readable and well-structured.{'"'}</p>
+              </div>
+              <div className="rounded-xl border border-green-200 bg-green-50/50 p-4 dark:border-green-800/50 dark:bg-green-900/10">
+                <p className="text-xs font-semibold uppercase text-green-600 dark:text-green-400">Good</p>
+                <p className="mt-1 text-sm text-gray-700 dark:text-gray-300">{'"'}All database queries go through the service layer in src/services/. No direct DB access from route handlers.{'"'}</p>
+              </div>
+            </div>
+
+            <SubTitle>2. Scope must be specific</SubTitle>
+            <P>Narrow scope = fewer files sent to the LLM = faster evaluation, lower cost, fewer false positives. An ADR with empty scope evaluates against every file in every PR.</P>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <div className="rounded-xl border border-red-200 bg-red-50/50 p-4 dark:border-red-800/50 dark:bg-red-900/10">
+                <p className="text-xs font-semibold uppercase text-red-600 dark:text-red-400">Bad</p>
+                <p className="mt-1 font-mono text-sm text-gray-700 dark:text-gray-300">scope: (empty)</p>
+              </div>
+              <div className="rounded-xl border border-green-200 bg-green-50/50 p-4 dark:border-green-800/50 dark:bg-green-900/10">
+                <p className="text-xs font-semibold uppercase text-green-600 dark:text-green-400">Good</p>
+                <p className="mt-1 font-mono text-sm text-gray-700 dark:text-gray-300">scope: [src/api/**, src/routes/**]</p>
+              </div>
+            </div>
+
+            <SubTitle>3. Context must explain the why</SubTitle>
+            <P>
+              Context is not just for humans — the LLM reads it too. A good Context section helps the LLM understand intent, which reduces false positives on edge cases. {'"'}We chose X because of Y{'"'} is more useful than {'"'}We use X.{'"'}
+            </P>
+
+            <SubTitle>4. Consequences must be honest</SubTitle>
+            <P>
+              Include trade-offs. This helps the LLM distinguish between {'"'}intentional deviation{'"'} (a known trade-off) and {'"'}violation{'"'} (something the team didn{"'"}t consider). It also helps future team members understand what they{"'"}re signing up for.
+            </P>
+
+            <SubTitle>5. Blocking vs Warning — the most important decision</SubTitle>
+            <P>This is the choice that determines whether Decern helps or annoys your team.</P>
+            <div className="mt-4 overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700">
+              <table className="w-full text-left text-sm">
+                <thead className="border-b border-gray-200 bg-gray-50 text-xs uppercase tracking-wider text-gray-500 dark:border-gray-700 dark:bg-gray-800/60 dark:text-gray-400">
+                  <tr><th className="px-4 py-2.5">Use blocking when...</th><th className="px-4 py-2.5">Use warning when...</th></tr>
+                </thead>
+                <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
+                  <tr>
+                    <td className="px-4 py-2.5">The violation is clear-cut and binary (yes/no, not maybe)</td>
+                    <td className="px-4 py-2.5">The violation is a judgment call or has legitimate exceptions</td>
+                  </tr>
+                  <tr>
+                    <td className="px-4 py-2.5">A violation in production would be costly or hard to reverse</td>
+                    <td className="px-4 py-2.5">A violation is a style preference or soft convention</td>
+                  </tr>
+                  <tr>
+                    <td className="px-4 py-2.5">The team has strong consensus (everyone agrees this is non-negotiable)</td>
+                    <td className="px-4 py-2.5">The ADR is new and you{"'"}re still calibrating whether the gate catches it correctly</td>
+                  </tr>
+                  <tr>
+                    <td className="px-4 py-2.5">The scope is narrow (less risk of false positives on unrelated code)</td>
+                    <td className="px-4 py-2.5">The scope is broad or the decision is philosophical</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <Callout type="tip">
+              Start every ADR as <Code>warning</Code>. Observe the gate output for 1-2 weeks. When you{"'"}re confident it catches real violations without false positives, promote to <Code>blocking</Code>. This is the safe path.
+            </Callout>
+
+            <SubTitle>6. Anti-patterns to avoid</SubTitle>
+            <ul className="mt-3 list-inside list-disc space-y-2 text-[0.935rem] text-gray-600 dark:text-gray-300">
+              <li><strong>ADRs about process, not code</strong>: {'"'}Every PR must be reviewed by 2 people{'"'} — the gate can{"'"}t see your GitHub review settings, only the diff.</li>
+              <li><strong>ADRs that are always true</strong>: {'"'}We use TypeScript{'"'} for a TypeScript repo — every diff will pass, the ADR adds no value.</li>
+              <li><strong>ADRs with overlapping scope</strong>: Two ADRs both covering <Code>src/**</Code> with conflicting decisions confuse the LLM.</li>
+              <li><strong>Too many blocking ADRs too early</strong>: Start with 2-3 blocking ADRs. Add more as confidence grows.</li>
+            </ul>
           </section>
 
           {/* ─── Bootstrap ─── */}
@@ -454,6 +543,47 @@ steps:
             </Callout>
           </section>
 
+          {/* ─── Override ─── */}
+          <section id="override" className="docs-section mt-16">
+            <SectionTitle id="override">Override &amp; Escape Hatches</SectionTitle>
+            <P>
+              Sometimes a developer needs to bypass a blocking ADR intentionally — a production hotfix on Friday evening, a one-time migration that temporarily violates a pattern, or an edge case the ADR didn{"'"}t anticipate. Decern supports this with a documented override workflow.
+            </P>
+
+            <SubTitle>How override works</SubTitle>
+            <ol className="mt-3 list-inside list-decimal space-y-2 text-[0.935rem] text-gray-600 dark:text-gray-300">
+              <li>The gate blocks the PR with a violation (exit code 1, CI fails)</li>
+              <li>The developer or tech lead calls <Code>POST /api/override</Code> with the evidence ID and a <strong>mandatory reason</strong> (minimum 20 characters)</li>
+              <li>Decern creates a new evidence record of type {'"'}override{'"'} linked to the original blocked record, containing who overrode, when, and why</li>
+              <li>The original evidence record is updated with the override data</li>
+              <li>The developer can re-run the gate or merge with a manual approval</li>
+            </ol>
+
+            <SubTitle>Override via API</SubTitle>
+            <Pre title="curl">{`curl -X POST https://your-decern.app/api/override \\
+  -H "Authorization: Bearer \$DECERN_CI_TOKEN" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "evidence_id": "01912345-...",
+    "override_reason": "Production hotfix for payment processing bug. ADR-012 violation is intentional and will be reverted in follow-up PR #234."
+  }'`}</Pre>
+
+            <SubTitle>What gets recorded</SubTitle>
+            <P>The override is part of the evidence chain. An auditor sees:</P>
+            <ul className="mt-3 list-inside list-disc space-y-1 text-[0.935rem] text-gray-600 dark:text-gray-300">
+              <li>The original gate run (blocked, with ADR evaluation and confidence)</li>
+              <li>The override record (who, when, reason)</li>
+              <li>Both are hash-chained and signed — the override can{"'"}t be silently inserted after the fact</li>
+            </ul>
+
+            <Callout type="warn">
+              The override reason is stored permanently in the evidence chain. Write it as if an auditor will read it in 6 months — because they might. {'"'}needed to deploy{'"'} is not enough. {'"'}Production hotfix for #123, ADR-012 violation intentional, revert in PR #234{'"'} is.
+            </Callout>
+
+            <SubTitle>Reducing the need for overrides</SubTitle>
+            <P>If your team overrides the same ADR frequently, it{"'"}s a signal that the ADR needs updating — the decision may have changed, the scope may be too broad, or the enforcement should be <Code>warning</Code> instead of <Code>blocking</Code>. Check the drift report for patterns.</P>
+          </section>
+
           {/* ─── Multi-Repo ─── */}
           <section id="multi-repo" className="docs-section mt-16">
             <SectionTitle id="multi-repo">Multi-Repo</SectionTitle>
@@ -540,6 +670,73 @@ steps:
             <Callout type="info">
               The LLM is BYO (Bring Your Own). You provide the API key, Decern calls the API per-request. Keys stay in your CI environment, never stored by Decern.
             </Callout>
+          </section>
+
+          {/* ─── Troubleshooting ─── */}
+          <section id="troubleshooting" className="docs-section mt-16">
+            <SectionTitle id="troubleshooting">Troubleshooting &amp; FAQ</SectionTitle>
+
+            <SubTitle>The gate is slow (30+ seconds)</SubTitle>
+            <P>
+              Each ADR that passes scope filter = one LLM call. With 10 matching ADRs at 3 concurrent (default), that{"'"}s 4 rounds of calls. Solutions: (1) Tighten scope patterns so fewer ADRs match per PR. (2) Increase <Code>DECERN_EVAL_CONCURRENCY</Code> to 5 (watch for LLM rate limits). (3) Use a faster model.
+            </P>
+
+            <SubTitle>I see {'"'}error{'"'} verdicts in gate runs</SubTitle>
+            <P>
+              An <Code>error</Code> verdict means the LLM call failed (timeout, rate limit, malformed response). The gate treats errors as fail-open: the PR passes, but the error is logged. If you see many errors: check your LLM API key, rate limits, and model availability. The CI log shows the exact error message for each failed evaluation.
+            </P>
+
+            <SubTitle>Too many false positives (blocking on things that aren{"'"}t violations)</SubTitle>
+            <P>Ranked by impact:</P>
+            <ol className="mt-3 list-inside list-decimal space-y-2 text-[0.935rem] text-gray-600 dark:text-gray-300">
+              <li><strong>Check the ADR</strong>: is the Decision section specific and verifiable? Vague ADRs produce vague verdicts.</li>
+              <li><strong>Tighten the scope</strong>: a broad scope means the ADR evaluates diffs it shouldn{"'"}t care about.</li>
+              <li><strong>Lower the confidence threshold</strong>: set <Code>DECERN_CONFIDENCE_THRESHOLD=0.85</Code> to only block high-confidence violations.</li>
+              <li><strong>Upgrade the model</strong>: smaller models produce more false positives. Check the Recommended Models section.</li>
+              <li><strong>Demote to warning</strong>: if the ADR is consistently problematic, switch from <Code>blocking</Code> to <Code>warning</Code> while you calibrate.</li>
+            </ol>
+
+            <SubTitle>The LLM provider is down — does the gate block all PRs?</SubTitle>
+            <P>
+              No. LLM failures are fail-open: the verdict is <Code>error</Code> (not <Code>violation</Code>), the PR passes, and the gate logs a warning. Your CI is never blocked by an LLM outage.
+            </P>
+
+            <SubTitle>How do I handle very large diffs (1000+ lines)?</SubTitle>
+            <P>
+              The gate sends a scope-filtered diff per ADR (only hunks matching the ADR{"'"}s scope, not the full diff). For most PRs this keeps the payload small. If the total diff exceeds 2MB, it{"'"}s truncated with a logged warning. For very large PRs, consider splitting into smaller PRs — this is good practice regardless of Decern.
+            </P>
+
+            <SubTitle>Can I run the gate locally before pushing?</SubTitle>
+            <P>
+              Yes. From your repo root:
+            </P>
+            <Pre title="Terminal">{`export DECERN_LLM_BASE_URL=https://api.anthropic.com
+export DECERN_LLM_API_KEY=sk-ant-...
+export DECERN_LLM_MODEL=claude-sonnet-4-6
+npx decern gate`}</Pre>
+            <P>
+              It uses <Code>origin/main...HEAD</Code> as the diff range. Useful for testing before opening a PR.
+            </P>
+
+            <SubTitle>What happens if I have no ADRs?</SubTitle>
+            <P>
+              The gate passes immediately: {'"'}No approved ADRs found. Gate passes (nothing to enforce).{'"'} Signal detection also doesn{"'"}t run. Run <Code>decern init</Code> to bootstrap.
+            </P>
+
+            <SubTitle>Can two repos in the same workspace have the same ADR ID?</SubTitle>
+            <P>
+              Yes. ADRs are scoped per-repo. <Code>ADR-001</Code> in <Code>github.com/acme/api</Code> and <Code>ADR-001</Code> in <Code>github.com/acme/web</Code> are independent records in the dashboard.
+            </P>
+
+            <SubTitle>How do I remove an ADR?</SubTitle>
+            <P>
+              Delete the file from <Code>docs/adr/</Code> and commit. On the next sync (or gate run with cloud reporting), the ADR disappears from the dashboard. Alternatively, set <Code>status: rejected</Code> to keep the record but stop enforcement.
+            </P>
+
+            <SubTitle>Does Decern store my code?</SubTitle>
+            <P>
+              No. The gate runs in your CI and sends the LLM call directly to your BYO provider. The cloud receives only: verdict, confidence, ADR IDs evaluated, diff hash (not the diff itself), file paths, and author metadata. Your code never passes through Decern servers.
+            </P>
           </section>
 
           {/* ─── Self-Hosted ─── */}
