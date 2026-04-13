@@ -275,7 +275,7 @@
     },
     "whyNow": {
       "eyebrow": "Perch\u00e9 ora",
-      "title": "La review non scala quando l'AI scrive il 30-70% delle PR.",
+      "title": "La review non scala quando l'AI scrive<br></br>il 30-70% delle PR.",
       "body": "Fino al 2024, la governance architetturale era un problema di review \u2014 il tech lead leggeva ogni PR e intercettava il drift. Da quando l'AI coding \u00e8 diventato mainstream, \u00e8 un problema di throughput. Copilot, Cursor e Claude Code scrivono codice veloce, ma non sanno cosa ha deciso il tuo team. Il vecchio modo di intercettare il drift in review ha smesso di funzionare quando il volume \u00e8 triplicato. Decern sposta il check dalla testa del reviewer nel CI, dove gira su ogni PR, per ogni sviluppatore, inclusi gli agenti AI."
     },
     "integrations": {

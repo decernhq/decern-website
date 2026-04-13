@@ -199,11 +199,11 @@ export default async function LandingPage() {
       </section>
 
       {/* ── Why Now ──────────────────────────────────────────────── */}
-      <section className="scroll-mt-20 px-4 py-16 sm:py-24">
+      <section className="scroll-mt-20 border-y border-gray-900/10 bg-gray-900/[0.03] px-4 py-16 dark:border-white/10 dark:bg-white/[0.03] sm:py-24">
         <div className="mx-auto max-w-3xl text-center">
           <FadeIn>
             <Eyebrow>{t("whyNow.eyebrow")}</Eyebrow>
-            <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-3xl">{t("whyNow.title")}</h2>
+            <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-3xl">{t.rich("whyNow.title", { br: () => <br /> })}</h2>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-gray-600 dark:text-gray-300">
               {t("whyNow.body")}
             </p>

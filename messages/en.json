@@ -283,7 +283,7 @@
     },
     "whyNow": {
       "eyebrow": "Why now",
-      "title": "Review doesn't scale when AI writes 30-70% of your PRs.",
+      "title": "Review doesn't scale when AI writes<br></br>30-70% of your PRs.",
       "body": "Until 2024, architecture governance was a review problem the tech lead read every PR and caught the drift. Since AI coding became mainstream, it's a throughput problem. Copilot, Cursor, and Claude Code ship code fast, but they don't know what your team decided. The old way of catching drift in review stopped working when the volume tripled. Decern moves the check from the reviewer's head into CI, where it runs on every PR, for every developer, including AI agents."
     },
     "integrations": {
