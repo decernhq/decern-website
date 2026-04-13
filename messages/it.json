@@ -260,7 +260,7 @@
   "landing": {
     "hero": {
       "eyebrow": "Governance architetturale per team AI-assisted",
-      "headline": "Le decisioni architetturali del tuo team<br></br>\u2014 anche quelle mai scritte \u2014<br></br>enforce su ogni\u00a0PR.",
+      "headline": "L'AI scrive il\u00a0codice.<br></br>Decern verifica che segua le\u00a0tue regole.",
       "subheadline": "Un CI gate che valuta ogni pull request rispetto alle decisioni architetturali del tuo team, usando il tuo LLM. <b>Le violazioni di ADR blocking falliscono la build. Tutto il resto viene segnalato, non bloccato.</b> I nuovi pattern emergono come segnali per il tech lead.",
       "ctaPrimary": "Inizia gratis",
       "ctaSecondary": "Come funziona",

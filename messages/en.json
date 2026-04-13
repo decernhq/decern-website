@@ -268,7 +268,7 @@
   "landing": {
     "hero": {
       "eyebrow": "Architecture governance for AI-assisted teams",
-      "headline": "Your team's architecture decisions<br></br>\u2014 even the ones you never wrote down \u2014<br></br>enforced on every\u00a0PR.",
+      "headline": "AI writes your\u00a0code.<br></br>Decern makes sure it follows your\u00a0rules.",
       "subheadline": "A CI gate that evaluates every pull request against your architecture decisions using your own LLM. <b>Violations of blocking ADRs fail the build. Everything else gets flagged, not blocked.</b> New patterns get surfaced as signals for the tech lead to formalize.",
       "ctaPrimary": "Start free",
       "ctaSecondary": "See how it works",
