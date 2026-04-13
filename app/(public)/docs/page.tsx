@@ -113,10 +113,13 @@ export default function DocsPage() {
           <section id="overview" className="docs-section">
             <SectionTitle id="overview">Overview</SectionTitle>
             <P>
+              Decern is a CI gate that verifies every pull request — human or AI-generated — respects your team{"'"}s architecture decisions. Decisions live as markdown files in your repo (<Code>docs/adr/*.md</Code>). An LLM compares each PR against the relevant decisions and blocks (or flags) violations. Everything stays yours: if you uninstall Decern, your ADRs remain in the repo as plain files.
+            </P>
+            <P>
               Decern exists because the tech lead can{"'"}t review every PR anymore — especially when half of them are written by AI. Copilot, Cursor, and Claude Code write code fast, but they don{"'"}t know what your team decided last quarter about database access patterns, or why you deprecated that caching layer, or which dependencies are approved.
             </P>
             <P>
-              <strong>Decern turns your team{"'"}s architecture decisions into rules the CI enforces automatically</strong>, so you can stop being the architecture police. It reads your ADRs from the repo, evaluates every pull request against them using your own LLM, blocks what doesn{"'"}t fit, and surfaces new patterns for the tech lead to formalize.
+              <strong>Decern turns those decisions into rules the CI enforces automatically</strong>, so you can stop being the architecture police.
             </P>
             <SubTitle>Three phases</SubTitle>
             <div className="mt-4 grid gap-4 sm:grid-cols-3">
@@ -515,6 +518,9 @@ steps:
           {/* ─── Lifecycle ─── */}
           <section id="lifecycle" className="docs-section mt-16">
             <SectionTitle id="lifecycle">ADR Lifecycle</SectionTitle>
+            <Callout type="tip">
+              <strong>Principle: nothing enters the repo or changes state without an explicit merge by a human.</strong> Decern proposes, you decide. Every lifecycle transition — approve, promote to blocking, supersede — generates a pull request on your repo. No silent changes, no magic commits, no overwritten files.
+            </Callout>
             <P>
               ADRs follow a status flow. Only <Code>approved</Code> ADRs are enforced by the gate.
             </P>
@@ -596,11 +602,20 @@ steps:
             <P>
               Repository identifier format: <Code>github.com/owner/repo</Code>, <Code>gitlab.com/group/project</Code>. Detected automatically from <Code>GITHUB_REPOSITORY</Code> (in CI) or <Code>git remote.origin.url</Code> (local).
             </P>
+
+            <SubTitle>Cross-repo ADRs</SubTitle>
+            <P>
+              Decern does not support cross-repo ADRs today. Each ADR lives in one repo and is enforced only in that repo{"'"}s PRs. For organization-wide policies (e.g. a security standard that applies to all repos), the recommended pattern is to replicate the ADR file in each repo{"'"}s <Code>docs/adr/</Code>. This is intentionally explicit: each team owns their copy and can adapt it to their context. Cross-repo governance is on the roadmap.
+            </P>
           </section>
 
           {/* ─── Dashboard ─── */}
           <section id="dashboard" className="docs-section mt-16">
             <SectionTitle id="dashboard">Dashboard</SectionTitle>
+            <P>
+              The dashboard is the control plane for your architecture governance. It reads from the same data the gate writes — ADR cache, evidence records, signals — and lets the tech lead manage everything without touching the terminal.
+            </P>
+            {/* TODO: add screenshot per section when UI stabilizes */}
             <SubTitle>ADRs</SubTitle>
             <P>
               View all ADRs across repos. Collapsible accordion per repo with search bar. Each repo header shows counts (total, blocking, proposed) and a Sync button (GitHub repos). Click an ADR to open the detail drawer with full body, lifecycle actions, and raw markdown.
@@ -743,7 +758,10 @@ npx decern gate`}</Pre>
           <section id="self-hosted" className="docs-section mt-16">
             <SectionTitle id="self-hosted">Self-Hosted</SectionTitle>
             <P>
-              Enterprise customers can deploy Decern on their own infrastructure (VPC, air-gapped). The gate CLI runs in your CI as always. The dashboard and cloud API run on your servers.
+              Self-hosted is for teams in regulated industries (finance, healthcare, defense, public sector) or with strict data residency requirements. <strong>If you can use the cloud, use the cloud</strong> — it{"'"}s simpler and gets updates automatically. Choose self-hosted when your security policy requires that no data leaves your network, or when you need air-gapped deployment.
+            </P>
+            <P>
+              The gate CLI runs in your CI as always. The dashboard and cloud API run on your servers.
             </P>
 
             <SubTitle>Requirements</SubTitle>
@@ -771,6 +789,9 @@ npx decern gate`}</Pre>
           {/* ─── Plans ─── */}
           <section id="plans" className="docs-section mt-16">
             <SectionTitle id="plans">Plans</SectionTitle>
+            <P>
+              The Free plan is <strong>free forever</strong> — no trial, no credit card, no expiration. It includes the full CI gate with blocking, signal detection, evidence chain, and export. The only limits are 1 workspace and 3 developers. Enterprise adds unlimited scale, draft ADR generation, PR creation from dashboard, self-hosted deployment, SSO, and dedicated support.
+            </P>
             <div className="mt-4 overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700">
               <table className="w-full text-left text-sm">
                 <thead className="border-b border-gray-200 bg-gray-50 text-xs uppercase tracking-wider text-gray-500 dark:border-gray-700 dark:bg-gray-800/60 dark:text-gray-400">
