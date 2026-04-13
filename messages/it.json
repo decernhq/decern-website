@@ -260,8 +260,8 @@
   "landing": {
     "hero": {
       "eyebrow": "Governance architetturale per team AI-assisted",
-      "headline": "Le ADR del tuo team.<br></br>Enforce in ogni PR.",
-      "subheadline": "Decern legge le tue Architecture Decision Record, valuta ogni pull request con il tuo LLM, e <b>blocca ciò che non è conforme.</b> I nuovi pattern vengono segnalati al tech lead per essere formalizzati.",
+      "headline": "L'AI scrive il\u00a0codice.<br></br>Decern verifica che segua le\u00a0tue regole.",
+      "subheadline": "Un CI gate che controlla ogni pull request generata dall'AI rispetto alle decisioni architetturali del tuo team, usando il tuo LLM. <b>Ciò che non è conforme viene bloccato.</b> I nuovi pattern vengono segnalati al tech lead per essere formalizzati.",
       "ctaPrimary": "Inizia gratis",
       "ctaSecondary": "Come funziona",
       "ctaMicrocopy": "Gratis per sempre. CI gate completo.<br></br>Nessuna carta di credito.",
@@ -288,14 +288,12 @@
       "title": "Tre fasi. Un CI gate.",
       "step1Title": "Bootstrap",
       "step2Title": "CI gate",
-      "step3Title": "Rilevazione segnali",
-      "step4Title": "Lifecycle dalla dashboard",
+      "step3Title": "Evoluzione",
       "flowJudgeLabel": "BYO LLM valuta",
       "flowOutcome": "Pass, block, o signal",
       "flowStep1Desc": "Lancia `decern init` nel tuo repo. Decern analizza il codice e propone 15-25 bozze di ADR. Le rivedi, approvi quelle che contano, e le committi in /docs/adr/. In 30 minuti.",
       "flowStep2Desc": "Aggiungi `decern gate` al tuo CI. Ogni PR viene valutata rispetto alle ADR. Le violazioni su ADR blocking falliscono la build. I warning vengono loggati. I punteggi di confidence prevengono i falsi positivi.",
-      "flowStep3Desc": "Ogni PR viene anche analizzata per nuovi pattern architetturali non coperti da nessuna ADR. Il tech lead li vede nella dashboard come segnali, e può generare una bozza di ADR con un click.",
-      "flowStep4Desc": "Approva, promuovi a blocking, supersedi o ignora le ADR dalla dashboard. Ogni modifica crea una PR sul tuo repo. L'umano ha sempre l'ultima parola.",
+      "flowStep3Desc": "Ogni PR viene analizzata per nuovi pattern non coperti da nessuna ADR. Il tech lead li vede come segnali nella dashboard, genera una bozza di ADR con un click, e gestisce l'intero lifecycle (approva, promuovi, supersedi) — tutto via PR sul repo.",
       "bottomLine": "Le ADR nel repo sono la fonte di verità.<br></br>La dashboard è il piano di controllo. Il gate è l'enforcement."
     },
     "audit": {

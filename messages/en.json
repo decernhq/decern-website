@@ -268,8 +268,8 @@
   "landing": {
     "hero": {
       "eyebrow": "Architecture governance for AI-assisted teams",
-      "headline": "Your team's ADRs.<br></br>Enforced in every PR.",
-      "subheadline": "Decern reads your Architecture Decision Records, evaluates every pull request against them with your LLM, and <b>blocks what doesn't fit.</b> New patterns get flagged as signals for the tech lead to formalize.",
+      "headline": "AI writes your\u00a0code.<br></br>Decern makes sure it follows your\u00a0rules.",
+      "subheadline": "A CI gate that checks every AI-generated pull request against your team's architecture decisions using your own LLM. <b>What doesn't fit gets blocked.</b> New patterns get flagged as signals for the tech lead to formalize.",
       "ctaPrimary": "Start free",
       "ctaSecondary": "See how it works",
       "ctaMicrocopy": "Free forever. Full CI gate.<br></br>No credit card.",
@@ -296,14 +296,12 @@
       "title": "Three phases. One CI gate.",
       "step1Title": "Bootstrap",
       "step2Title": "CI gate",
-      "step3Title": "Signal detection",
-      "step4Title": "Dashboard lifecycle",
+      "step3Title": "Evolution",
       "flowJudgeLabel": "BYO LLM evaluates",
       "flowOutcome": "Pass, block, or signal",
       "flowStep1Desc": "Run `decern init` in your repo. Decern analyzes your codebase and proposes 15-25 ADR drafts. You review, approve the ones that matter, and commit them to /docs/adr/. Done in 30 minutes.",
       "flowStep2Desc": "Add `decern gate` to your CI. Every PR gets evaluated against your ADRs. Violations on blocking ADRs fail the build. Warnings get logged. Confidence scores prevent false positives.",
-      "flowStep3Desc": "Every PR is also scanned for new architectural patterns not covered by any ADR. The tech lead sees them in the dashboard as signals, and can generate a draft ADR with one click.",
-      "flowStep4Desc": "Approve, promote to blocking, supersede, or dismiss ADRs from the dashboard. Every change creates a PR on your repo. The human always has the last word.",
+      "flowStep3Desc": "Every PR is scanned for new patterns not covered by any ADR. The tech lead sees them as signals in the dashboard, generates a draft ADR with one click, and manages the full lifecycle (approve, promote, supersede) — all via PRs on the repo.",
       "bottomLine": "ADRs in the repo are the source of truth.<br></br>The dashboard is the control plane. The gate is the enforcement."
     },
     "audit": {

@@ -7,25 +7,26 @@ import { Button } from "@/components/ui/button";
 export const metadata: Metadata = {
   title: "Documentation",
   description:
-    "Learn how to use Decern: workspaces, projects, decisions, CI integration, Decision Gate, LLM Judge, roles, policies, GitHub sync and self-hosting.",
+    "Learn how to set up Decern: bootstrap ADRs, configure CI gate, signal detection, evidence chain, dashboard lifecycle, and self-hosted deployment.",
 };
 
 const SECTIONS: DocSection[] = [
   { id: "overview", label: "Overview" },
-  { id: "getting-started", label: "Getting Started" },
-  { id: "workspaces", label: "Workspaces" },
-  { id: "projects", label: "Projects" },
-  { id: "decisions", label: "Decisions" },
-  { id: "ci-integration", label: "CI Integration" },
-  { id: "decision-gate", label: "Decision Gate" },
-  { id: "judge", label: "LLM Judge" },
-  { id: "roles", label: "Roles & Permissions" },
-  { id: "policies", label: "Policies" },
-  { id: "github-sync", label: "GitHub Sync" },
-  { id: "self-hosted", label: "Self Hosted" },
+  { id: "quick-start", label: "Quick Start" },
+  { id: "adr-format", label: "ADR Format" },
+  { id: "bootstrap", label: "Bootstrap (decern init)" },
+  { id: "ci-gate", label: "CI Gate Setup" },
+  { id: "evaluation", label: "How Evaluation Works" },
+  { id: "signals", label: "Signal Detection" },
+  { id: "lifecycle", label: "ADR Lifecycle" },
+  { id: "multi-repo", label: "Multi-Repo" },
+  { id: "dashboard", label: "Dashboard" },
+  { id: "evidence", label: "Evidence Chain" },
+  { id: "models", label: "Recommended Models" },
+  { id: "self-hosted", label: "Self-Hosted" },
+  { id: "plans", label: "Plans" },
 ];
 
-/* ── tiny helpers ── */
 const SectionTitle = ({ id, children }: { id: string; children: React.ReactNode }) => (
   <h2 id={id} className="scroll-mt-24 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
     {children}
@@ -97,38 +98,26 @@ const EnvTable = ({ rows }: { rows: { name: string; required: boolean; desc: str
   </div>
 );
 
-/* ── page ── */
 export default function DocsPage() {
   return (
     <main className="mx-auto min-h-[calc(100vh-4rem)] max-w-6xl px-4 py-12 lg:py-16">
       <div className="lg:grid lg:grid-cols-[220px_1fr] lg:gap-12">
-        {/* Sidebar */}
         <DocsNav sections={SECTIONS} />
 
-        {/* Content */}
         <article className="docs-prose min-w-0 max-w-3xl">
+
           {/* ─── Overview ─── */}
           <section id="overview" className="docs-section">
             <SectionTitle id="overview">Overview</SectionTitle>
             <P>
-              <strong>Decern</strong> is the decision register for engineering teams.
-              It helps you document, share and enforce architectural decisions (ADRs)
-              across your entire software delivery lifecycle.
+              <strong>Decern</strong> is an architecture governance tool for engineering teams. It reads your Architecture Decision Records (ADRs) from the repo, evaluates every pull request against them using your own LLM, and blocks what doesn{"'"}t fit. New architectural patterns are flagged as signals for the tech lead to formalize.
             </P>
-            <P>
-              Every significant technical choice, from database migrations to infrastructure changes,
-              gets recorded as a <em>decision</em>. Decisions flow through a clear lifecycle
-              (<Code>proposed</Code> → <Code>approved</Code> → <Code>superseded</Code> / <Code>rejected</Code>)
-              and can be enforced automatically in your CI/CD pipeline via <strong>Decision Gate</strong>.
-            </P>
-
-            <SubTitle>How Decern fits your workflow</SubTitle>
-            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+            <SubTitle>Three phases</SubTitle>
+            <div className="mt-4 grid gap-4 sm:grid-cols-3">
               {[
-                { title: "Document", desc: "Record context, options, outcome, and consequences for every architectural choice." },
-                { title: "Collaborate", desc: "Team members propose decisions; approvers review and approve them inside the workspace." },
-                { title: "Enforce", desc: "Decision Gate blocks high-impact CI changes (migrations, Dockerfiles, lockfiles) that lack an approved decision." },
-                { title: "Judge", desc: "An optional LLM-as-a-Judge step verifies that the code diff actually aligns with the referenced decision." },
+                { title: "1. Bootstrap", desc: "Run `decern init` to analyze your codebase and generate ADR drafts. Review, approve, and commit to /docs/adr/." },
+                { title: "2. CI Gate", desc: "Add `decern gate` to your CI. Every PR is evaluated against ADRs. Violations on blocking ADRs fail the build." },
+                { title: "3. Evolution", desc: "Signals surface new patterns. The tech lead generates draft ADRs from the dashboard. The repo stays the source of truth." },
               ].map((c) => (
                 <div key={c.title} className="rounded-xl border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-800/50">
                   <p className="font-semibold text-gray-900 dark:text-white">{c.title}</p>
@@ -136,205 +125,31 @@ export default function DocsPage() {
                 </div>
               ))}
             </div>
-
-            <SubTitle>Core components</SubTitle>
-            <ul className="mt-3 space-y-2 text-[0.935rem] text-gray-600 dark:text-gray-300">
-              <li><strong>Decern App</strong> - the web dashboard where you manage workspaces, projects, decisions and team members.</li>
-              <li><strong>Decision Gate</strong> (<Code>decern-gate</Code>) - a CLI you run in CI to enforce decision policies on high-impact changes.</li>
-              <li><strong>Protocol</strong> (<Code>@decern/protocol</Code>) - a stateless TypeScript library with shared domain logic (ADR parsing, validation, policies).</li>
-            </ul>
           </section>
 
-          {/* ─── Getting Started ─── */}
-          <section id="getting-started" className="docs-section">
-            <SectionTitle id="getting-started">Getting Started</SectionTitle>
-            <P>Get up and running in under five minutes.</P>
+          {/* ─── Quick Start ─── */}
+          <section id="quick-start" className="docs-section mt-16">
+            <SectionTitle id="quick-start">Quick Start</SectionTitle>
+            <P>Get from zero to enforced ADRs in 5 minutes.</P>
 
-            <SubTitle>1. Create an account</SubTitle>
+            <SubTitle>1. Bootstrap ADRs</SubTitle>
+            <Pre title="Terminal">{`export DECERN_LLM_BASE_URL=https://api.anthropic.com
+export DECERN_LLM_API_KEY=sk-ant-...
+export DECERN_LLM_MODEL=claude-sonnet-4-6
+
+npx decern init`}</Pre>
             <P>
-              Sign up at <a href={appPath("/signup")} className="docs-link">app.decern.dev</a>.
-              A default workspace is created automatically for you.
+              Decern scans your codebase (directory tree, package.json, git history, README) and proposes 15-25 ADR drafts. You review each one interactively: <Code>[A]pprove</Code> / <Code>[S]kip</Code> / <Code>[Q]uit</Code>. Approved ADRs are written to <Code>docs/adr/</Code>.
             </P>
 
-            <SubTitle>2. Create your first project</SubTitle>
-            <P>
-              From the dashboard, go to <strong>Projects → New project</strong>.
-              Give it a name (e.g. your repository name) and optionally link a GitHub repository
-              to enable ADR sync.
-            </P>
+            <SubTitle>2. Commit and push</SubTitle>
+            <Pre title="Terminal">{`git add docs/adr/
+git commit -m "docs: bootstrap architecture decisions"
+git push`}</Pre>
 
-            <SubTitle>3. Record your first decision</SubTitle>
-            <P>Open the project and click <strong>New decision</strong>. Fill in:</P>
-            <ul className="mt-2 ml-5 list-disc space-y-1 text-[0.935rem] text-gray-600 dark:text-gray-300">
-              <li><strong>Title</strong> - a short summary (e.g. &quot;Adopt PostgreSQL for user data&quot;).</li>
-              <li><strong>Context</strong> - the problem or requirement that prompted this decision.</li>
-              <li><strong>Options considered</strong> - the alternatives you evaluated.</li>
-              <li><strong>Decision</strong> - what you chose and why.</li>
-              <li><strong>Consequences</strong> - positive and negative impacts of this choice.</li>
-            </ul>
-            <P>
-              The decision starts in <Code>proposed</Code> status. An approver can move it to <Code>approved</Code>.
-            </P>
-
-            <SubTitle>4. Connect your CI (optional)</SubTitle>
-            <P>
-              To enforce decisions on pull requests, install <Code>decern-gate</Code> in your pipeline.
-              See the <a href="#ci-integration" className="docs-link">CI Integration</a> section below.
-            </P>
-
-            <Callout type="tip">
-              On the <strong>Free</strong> plan you can create unlimited decisions, one workspace, and one project.
-              Contact us for <strong>Enterprise / Self-Hosted</strong> plans with unlimited projects and advanced features.
-            </Callout>
-          </section>
-
-          {/* ─── Workspaces ─── */}
-          <section id="workspaces" className="docs-section">
-            <SectionTitle id="workspaces">Workspaces</SectionTitle>
-            <P>
-              A <strong>workspace</strong> is the top-level container where your team collaborates.
-              It holds projects, decisions, members, and policies.
-            </P>
-            <P>
-              When you sign up, a default workspace is automatically created. Depending on your plan
-              you can create additional workspaces.
-            </P>
-
-            <SubTitle>Members</SubTitle>
-            <P>
-              Invite team members via email from <strong>Workspace → Members</strong>.
-              Each member has a <em>workspace access role</em> (admin or member).
-              On the Enterprise plan, members also receive a <em>decision role</em>,
-              see <a href="#roles" className="docs-link">Roles &amp; Permissions</a>.
-            </P>
-
-            <SubTitle>CI Token</SubTitle>
-            <P>
-              To use Decision Gate, the workspace owner generates a <strong>CI Token</strong> from
-              <strong> Workspace → Token CI (Decision Gate)</strong>.
-              The token is shown only once, store it in your CI secrets as <Code>DECERN_CI_TOKEN</Code>.
-            </P>
-            <Callout type="warn">
-              Only the workspace owner can generate or revoke the CI token.
-              If the token is compromised, revoke it and generate a new one immediately.
-            </Callout>
-          </section>
-
-          {/* ─── Projects ─── */}
-          <section id="projects" className="docs-section">
-            <SectionTitle id="projects">Projects</SectionTitle>
-            <P>
-              Projects live inside a workspace and group related decisions together,
-              usually one project per repository or service.
-            </P>
-            <P>
-              When creating a project you can optionally link a <strong>GitHub repository</strong>.
-              This enables:
-            </P>
-            <ul className="mt-2 ml-5 list-disc space-y-1 text-[0.935rem] text-gray-600 dark:text-gray-300">
-              <li>Two-way ADR sync - decisions are committed as markdown files in your repo.</li>
-              <li>Pull request URLs are automatically linked to decisions.</li>
-            </ul>
-
-            <SubTitle>Plan limits</SubTitle>
-            <div className="mt-4 overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700">
-              <table className="w-full text-left text-sm">
-                <thead className="border-b border-gray-200 bg-gray-50 text-xs uppercase tracking-wider text-gray-500 dark:border-gray-700 dark:bg-gray-800/60 dark:text-gray-400">
-                  <tr>
-                    <th className="px-4 py-2.5">Plan</th>
-                    <th className="px-4 py-2.5">Workspaces</th>
-                    <th className="px-4 py-2.5">Projects</th>
-                    <th className="px-4 py-2.5">Members</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
-                  <tr><td className="px-4 py-2.5 font-medium">Free</td><td className="px-4 py-2.5">1</td><td className="px-4 py-2.5">1</td><td className="px-4 py-2.5">5</td></tr>
-                  <tr><td className="px-4 py-2.5 font-medium">Enterprise / Self Hosted</td><td className="px-4 py-2.5">Unlimited</td><td className="px-4 py-2.5">Unlimited</td><td className="px-4 py-2.5">Unlimited</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </section>
-
-          {/* ─── Decisions ─── */}
-          <section id="decisions" className="docs-section">
-            <SectionTitle id="decisions">Decisions</SectionTitle>
-            <P>
-              Decisions are the core entity of Decern. Each decision is an <strong>Architectural Decision Record (ADR)</strong> that
-              captures the context, options, outcome, and consequences of a technical choice.
-            </P>
-
-            <SubTitle>Decision fields</SubTitle>
-            <ul className="mt-3 ml-5 list-disc space-y-1.5 text-[0.935rem] text-gray-600 dark:text-gray-300">
-              <li><strong>Title</strong> - short summary of the decision.</li>
-              <li><strong>Status</strong> - <Code>proposed</Code>, <Code>approved</Code>, <Code>superseded</Code>, or <Code>rejected</Code>.</li>
-              <li><strong>Context</strong> - the problem or requirement.</li>
-              <li><strong>Options</strong> - alternatives considered (one per line).</li>
-              <li><strong>Decision</strong> - what was chosen and why.</li>
-              <li><strong>Consequences</strong> - positive and negative impacts.</li>
-              <li><strong>Tags</strong> - free-form labels for categorization.</li>
-              <li><strong>External links</strong> - references to RFCs, design docs, etc.</li>
-              <li><strong>Pull request URLs</strong> - linked PRs implementing this decision.</li>
-              <li><strong>ADR ref</strong> - an optional identifier like <Code>ADR-001</Code> used for GitHub sync and CI references.</li>
-              <li><strong>Linked decision</strong> - reference to a superseded decision.</li>
-            </ul>
-
-            <SubTitle>Decision lifecycle</SubTitle>
-            <div className="mt-4 flex flex-wrap items-center gap-2 text-sm">
-              {["proposed", "approved", "superseded", "rejected"].map((s, i) => (
-                <span key={s} className="flex items-center gap-2">
-                  <span className={`rounded-full px-3 py-1 font-medium ${
-                    s === "proposed" ? "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300" :
-                    s === "approved" ? "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300" :
-                    s === "superseded" ? "bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400" :
-                    "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300"
-                  }`}>{s}</span>
-                  {i < 3 && <span className="text-gray-400 dark:text-gray-600">→</span>}
-                </span>
-              ))}
-            </div>
-            <P>
-              A decision starts as <Code>proposed</Code>. Team members with the appropriate role can
-              approve or reject it. An approved decision can later be <Code>superseded</Code> by a new
-              one, and the old decision links to its replacement.
-            </P>
-
-            <SubTitle>AI generation</SubTitle>
-            <P>
-              Decern can generate a decision draft from a plain-text description using AI.
-              Paste your thoughts and click <strong>Generate with AI</strong>, and the system produces
-              a structured ADR you can review and edit before saving. This feature is available
-              on all plans under fair-use limits.
-            </P>
-
-            <SubTitle>CSV export</SubTitle>
-            <P>
-              Export all decisions in a project as CSV from <strong>Project → Export</strong>.
-              Useful for audits and offline review.
-            </P>
-          </section>
-
-          {/* ─── CI Integration ─── */}
-          <section id="ci-integration" className="docs-section">
-            <SectionTitle id="ci-integration">CI Integration</SectionTitle>
-            <P>
-              Decern integrates into your CI/CD pipeline via <Code>decern-gate</Code>,
-              a lightweight CLI that ensures high-impact changes are backed by an approved decision
-              before they can be merged.
-            </P>
-
-            <SubTitle>Quick setup</SubTitle>
-            <ol className="mt-3 ml-5 list-decimal space-y-2 text-[0.935rem] text-gray-600 dark:text-gray-300">
-              <li>Generate a <strong>CI token</strong> in your workspace settings (see <a href="#workspaces" className="docs-link">Workspaces</a>).</li>
-              <li>Add <Code>DECERN_BASE_URL</Code> and <Code>DECERN_CI_TOKEN</Code> as secrets in your CI provider.</li>
-              <li>Add the gate step to your pipeline (see examples below).</li>
-            </ol>
-
-            <SubTitle>GitHub Actions</SubTitle>
+            <SubTitle>3. Add the gate to CI</SubTitle>
             <Pre title=".github/workflows/decern.yml">{`name: Decern Gate
-on:
-  pull_request:
-    branches: [main]
-
+on: [pull_request]
 jobs:
   gate:
     runs-on: ubuntu-latest
@@ -342,443 +157,453 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
       - name: Decern gate
+        run: npx decern gate
         env:
+          DECERN_LLM_BASE_URL: \${{ secrets.DECERN_LLM_BASE_URL }}
+          DECERN_LLM_API_KEY: \${{ secrets.DECERN_LLM_API_KEY }}
+          DECERN_LLM_MODEL: \${{ secrets.DECERN_LLM_MODEL }}
           DECERN_BASE_URL: \${{ secrets.DECERN_BASE_URL }}
           DECERN_CI_TOKEN: \${{ secrets.DECERN_CI_TOKEN }}
-          CI_BASE_SHA: \${{ github.event.pull_request.base.sha }}
-          CI_HEAD_SHA: \${{ github.event.pull_request.head.sha }}
-          CI_PR_TITLE: \${{ github.event.pull_request.title }}
-          CI_PR_URL: \${{ github.event.pull_request.html_url }}
-          CI_PR_BODY: \${{ github.event.pull_request.body }}
-        run: npx decern-gate`}</Pre>
-
-            <SubTitle>GitLab CI</SubTitle>
-            <Pre title=".gitlab-ci.yml">{`decern-gate:
-  script:
-    - export CI_BASE_SHA=$CI_MERGE_REQUEST_DIFF_BASE_SHA
-    - export CI_HEAD_SHA=$CI_COMMIT_SHA
-    - export CI_PR_TITLE="$CI_MERGE_REQUEST_TITLE"
-    - export CI_PR_URL="$CI_MERGE_REQUEST_PROJECT_URL/-/merge_requests/$CI_MERGE_REQUEST_IID"
-    - export CI_PR_BODY="$CI_MERGE_REQUEST_DESCRIPTION"
-    - npx decern-gate
-  variables:
-    DECERN_BASE_URL: $DECERN_BASE_URL
-    DECERN_CI_TOKEN: $DECERN_CI_TOKEN`}</Pre>
-
-            <SubTitle>Jenkins</SubTitle>
-            <Pre title="Jenkinsfile (shell step)">{`export DECERN_BASE_URL="https://app.decern.dev"
-export DECERN_CI_TOKEN="$(cat /run/secrets/decern_ci_token)"
-export CI_BASE_SHA="\${GIT_PREVIOUS_COMMIT:-origin/main}"
-export CI_HEAD_SHA="\${GIT_COMMIT}"
-npx decern-gate`}</Pre>
-
-            <SubTitle>How to reference a decision in your PR</SubTitle>
-            <P>
-              The gate extracts decision references from the PR title, body, or commit message.
-              Use any of these formats:
-            </P>
-            <ul className="mt-2 ml-5 list-disc space-y-1 text-[0.935rem] text-gray-600 dark:text-gray-300">
-              <li><Code>decern:&lt;decision-id&gt;</Code> - e.g. <Code>decern:550e8400-...</Code></li>
-              <li><Code>DECERN-&lt;id&gt;</Code> - e.g. <Code>DECERN-550e8400</Code></li>
-              <li>A Decern URL containing <Code>/decisions/&lt;id&gt;</Code></li>
-              <li>An ADR ref - e.g. <Code>ADR-001</Code></li>
-            </ul>
-
-            <Callout type="info">
-              If no high-impact files are changed, the gate passes immediately, with no decision reference needed.
+          CI_PR_URL: \${{ github.event.pull_request.html_url }}`}</Pre>
+            <Callout type="warn">
+              <Code>fetch-depth: 0</Code> is required so git can compute the diff between base and head.
             </Callout>
+
+            <SubTitle>4. Done</SubTitle>
+            <P>Every PR is now evaluated against your ADRs. Violations on blocking ADRs fail the build. Warnings are logged. Signals are reported to the dashboard.</P>
           </section>
 
-          {/* ─── Decision Gate ─── */}
-          <section id="decision-gate" className="docs-section">
-            <SectionTitle id="decision-gate">Decision Gate</SectionTitle>
-            <P>
-              Decision Gate is the core enforcement mechanism. When your PR touches files
-              that match <strong>high-impact patterns</strong>, the gate requires a reference
-              to an approved decision.
-            </P>
+          {/* ─── ADR Format ─── */}
+          <section id="adr-format" className="docs-section mt-16">
+            <SectionTitle id="adr-format">ADR Format</SectionTitle>
+            <P>ADRs are markdown files in <Code>docs/adr/</Code> with YAML frontmatter and three sections.</P>
 
-            <SubTitle>High-impact file patterns</SubTitle>
-            <P>The gate automatically detects changes to:</P>
-            <div className="mt-4 grid gap-3 sm:grid-cols-2">
-              {[
-                { cat: "Database / Schema", examples: "migrations/, schema.prisma, alembic/, drizzle/" },
-                { cat: "Infrastructure", examples: "Dockerfile, docker-compose.yml, terraform/, helm/, k8s/" },
-                { cat: "CI/CD", examples: ".github/workflows/, .gitlab-ci.yml, Jenkinsfile" },
-                { cat: "Dependencies", examples: "package.json, yarn.lock, go.mod, Cargo.lock, requirements.txt" },
-                { cat: "Security / Auth", examples: "auth/, rbac/, CODEOWNERS, .snyk" },
-                { cat: "API contracts", examples: "openapi.yaml, schema.graphql, proto/" },
-                { cat: "Runtime config", examples: ".env, vercel.json, nginx.conf, fly.toml" },
-                { cat: "Observability", examples: "prometheus/, grafana/, sentry.*.config.js" },
-              ].map((c) => (
-                <div key={c.cat} className="rounded-lg border border-gray-200 px-3.5 py-2.5 dark:border-gray-700">
-                  <p className="text-sm font-semibold text-gray-900 dark:text-white">{c.cat}</p>
-                  <p className="mt-0.5 text-xs text-gray-500 dark:text-gray-400">{c.examples}</p>
-                </div>
-              ))}
-            </div>
+            <Pre title="docs/adr/adr-007-use-postgres.md">{`---
+id: ADR-007
+title: Use PostgreSQL for persistence
+status: approved
+enforcement: blocking
+scope:
+  - src/db/**
+  - migrations/**
+supersedes: null
+date: 2026-04-10
+---
 
-            <SubTitle>Custom patterns</SubTitle>
-            <P>
-              Add extra patterns via the <Code>DECERN_GATE_EXTRA_PATTERNS</Code> environment variable.
-              Comma-separated. Paths containing <Code>/</Code> match as substrings; otherwise they match the basename exactly.
-            </P>
-            <Pre>{`DECERN_GATE_EXTRA_PATTERNS=internal/config/,secret.conf`}</Pre>
+## Context
+The team evaluated PostgreSQL, MySQL, and MongoDB.
+PostgreSQL was chosen for its JSONB support and transactional integrity.
 
-            <SubTitle>Gate flow</SubTitle>
-            <ol className="mt-3 ml-5 list-decimal space-y-1.5 text-[0.935rem] text-gray-600 dark:text-gray-300">
-              <li>Compute changed files via <Code>git diff --name-only base...head</Code>.</li>
-              <li>Check if any file matches a high-impact pattern.</li>
-              <li>If yes, extract decision references from PR title/body/commit message.</li>
-              <li>Call the <strong>validate</strong> endpoint to confirm the decision is approved.</li>
-              <li>If the <a href="#judge" className="docs-link">LLM Judge</a> is enabled, run the judge step.</li>
-              <li>Exit 0 (pass) or exit 1 (block).</li>
-            </ol>
+## Decision
+All persistent data storage uses PostgreSQL.
+No other database engines are allowed in production.
 
-            <SubTitle>Plan behavior</SubTitle>
+## Consequences
+- All team members must know SQL
+- MongoDB skills are not leveraged
+- JSONB provides flexibility without a separate document store`}</Pre>
+
+            <SubTitle>Frontmatter fields</SubTitle>
             <div className="mt-4 overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700">
               <table className="w-full text-left text-sm">
                 <thead className="border-b border-gray-200 bg-gray-50 text-xs uppercase tracking-wider text-gray-500 dark:border-gray-700 dark:bg-gray-800/60 dark:text-gray-400">
-                  <tr>
-                    <th className="px-4 py-2.5">Plan</th>
-                    <th className="px-4 py-2.5">Gate behavior</th>
-                    <th className="px-4 py-2.5">Judge mode</th>
-                  </tr>
+                  <tr><th className="px-4 py-2.5">Field</th><th className="px-4 py-2.5">Values</th><th className="px-4 py-2.5">Description</th></tr>
                 </thead>
                 <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
-                  <tr><td className="px-4 py-2.5 font-medium">Free</td><td className="px-4 py-2.5">Warnings only (non-blocking)</td><td className="px-4 py-2.5">Advisory only</td></tr>
-                  <tr><td className="px-4 py-2.5 font-medium">Enterprise / Self Hosted</td><td className="px-4 py-2.5">Blocking + advanced policies</td><td className="px-4 py-2.5">Can block (configurable)</td></tr>
+                  <tr><td className="px-4 py-2.5 font-mono text-xs">id</td><td className="px-4 py-2.5 text-xs">ADR-NNN</td><td className="px-4 py-2.5">Unique identifier</td></tr>
+                  <tr><td className="px-4 py-2.5 font-mono text-xs">title</td><td className="px-4 py-2.5 text-xs">Free text</td><td className="px-4 py-2.5">Concise, descriptive title</td></tr>
+                  <tr><td className="px-4 py-2.5 font-mono text-xs">status</td><td className="px-4 py-2.5 text-xs">proposed | approved | superseded | rejected</td><td className="px-4 py-2.5">Only <Code>approved</Code> ADRs are enforced by the gate</td></tr>
+                  <tr><td className="px-4 py-2.5 font-mono text-xs">enforcement</td><td className="px-4 py-2.5 text-xs">blocking | warning</td><td className="px-4 py-2.5"><Code>blocking</Code> fails CI on violation. <Code>warning</Code> logs but passes.</td></tr>
+                  <tr><td className="px-4 py-2.5 font-mono text-xs">scope</td><td className="px-4 py-2.5 text-xs">Glob patterns</td><td className="px-4 py-2.5">Files this ADR applies to. Empty = all files. Supports <Code>*</Code>, <Code>**</Code>, <Code>?</Code></td></tr>
+                  <tr><td className="px-4 py-2.5 font-mono text-xs">supersedes</td><td className="px-4 py-2.5 text-xs">ADR-NNN | null</td><td className="px-4 py-2.5">Which ADR this one replaces</td></tr>
+                  <tr><td className="px-4 py-2.5 font-mono text-xs">date</td><td className="px-4 py-2.5 text-xs">YYYY-MM-DD</td><td className="px-4 py-2.5">When the decision was made</td></tr>
                 </tbody>
               </table>
             </div>
+          </section>
+
+          {/* ─── Bootstrap ─── */}
+          <section id="bootstrap" className="docs-section mt-16">
+            <SectionTitle id="bootstrap">Bootstrap (<Code>decern init</Code>)</SectionTitle>
+            <P>
+              The bootstrap command analyzes your codebase and proposes ADR drafts for decisions the team has implicitly made but never written down. It looks at: directory structure, package manifests, git history, README, and key entry point files.
+            </P>
+            <P>
+              All proposed ADRs have <Code>status: approved</Code> and <Code>enforcement: warning</Code>. The tech lead promotes specific ADRs to <Code>blocking</Code> after review.
+            </P>
+            <EnvTable rows={[
+              { name: "DECERN_LLM_BASE_URL", required: true, desc: "LLM API base URL" },
+              { name: "DECERN_LLM_API_KEY", required: true, desc: "LLM API key" },
+              { name: "DECERN_LLM_MODEL", required: true, desc: "Model ID (e.g. claude-sonnet-4-6)" },
+              { name: "DECERN_ADR_DIR", required: false, desc: "ADR directory (default: docs/adr)" },
+            ]} />
+            <Callout type="tip">
+              After bootstrap, run <Code>decern adr sync</Code> to push the ADR index to the dashboard (if cloud is configured). Or just add the gate to CI — it syncs automatically on the next PR.
+            </Callout>
+          </section>
+
+          {/* ─── CI Gate ─── */}
+          <section id="ci-gate" className="docs-section mt-16">
+            <SectionTitle id="ci-gate">CI Gate Setup</SectionTitle>
+            <P>
+              The gate runs on every pull request and evaluates the diff against your approved ADRs. It requires a BYO LLM (you provide the API key) and optionally reports results to the Decern cloud dashboard.
+            </P>
 
             <SubTitle>Environment variables</SubTitle>
             <EnvTable rows={[
-              { name: "DECERN_BASE_URL", required: true, desc: "Base URL of your Decern instance (no trailing slash)." },
-              { name: "DECERN_CI_TOKEN", required: true, desc: "Workspace CI token (from Dashboard → Workspace)." },
-              { name: "CI_BASE_SHA", required: false, desc: "Git base ref for diff. Falls back to origin/main...HEAD." },
-              { name: "CI_HEAD_SHA", required: false, desc: "Git head ref for diff." },
-              { name: "CI_PR_TITLE", required: false, desc: "PR title (used to extract decision refs and label gate runs in the dashboard)." },
-              { name: "CI_PR_URL", required: false, desc: "PR URL (used by the Gate runs dashboard to link back to the PR)." },
-              { name: "CI_PR_BODY", required: false, desc: "PR body (used to extract decision refs)." },
-              { name: "CI_COMMIT_MESSAGE", required: false, desc: "Commit message (fallback if PR vars not set)." },
-              { name: "DECERN_GATE_TIMEOUT_MS", required: false, desc: "Validate API timeout in ms (default: 5000)." },
-              { name: "DECERN_GATE_EXTRA_PATTERNS", required: false, desc: "Comma-separated extra file patterns." },
+              { name: "DECERN_LLM_BASE_URL", required: true, desc: "LLM API base URL (e.g. https://api.anthropic.com or https://api.openai.com/v1)" },
+              { name: "DECERN_LLM_API_KEY", required: true, desc: "LLM API key" },
+              { name: "DECERN_LLM_MODEL", required: true, desc: "Model ID. See Recommended Models section." },
+              { name: "DECERN_ADR_DIR", required: false, desc: "ADR directory (default: docs/adr)" },
+              { name: "DECERN_BASE_URL", required: false, desc: "Decern cloud URL. Enables evidence reporting and PR comments." },
+              { name: "DECERN_CI_TOKEN", required: false, desc: "Workspace CI token. Required if DECERN_BASE_URL is set." },
+              { name: "DECERN_CONFIDENCE_THRESHOLD", required: false, desc: "Minimum confidence to block (0-1, default: 0.75). Violations below this are degraded to warnings." },
+              { name: "DECERN_EVAL_CONCURRENCY", required: false, desc: "Max parallel LLM calls (default: 3)" },
+              { name: "CI_BASE_SHA", required: false, desc: "Base commit SHA. Auto-detected from origin/main if not set." },
+              { name: "CI_HEAD_SHA", required: false, desc: "Head commit SHA. Auto-detected as HEAD if not set." },
+              { name: "CI_PR_URL", required: false, desc: "PR URL. Enables PR violation comments and nudges." },
+              { name: "CI_PR_TITLE", required: false, desc: "PR title. Included in evidence record." },
             ]} />
 
-            <Callout type="warn">
-              The gate is <strong>fail-closed</strong>: network errors, timeouts, or 5xx responses cause exit 1. The CI token is never logged.
-            </Callout>
+            <SubTitle>GitHub Actions</SubTitle>
+            <Pre title=".github/workflows/decern.yml">{`name: Decern Gate
+on: [pull_request]
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Decern gate
+        run: npx decern gate
+        env:
+          DECERN_LLM_BASE_URL: \${{ secrets.DECERN_LLM_BASE_URL }}
+          DECERN_LLM_API_KEY: \${{ secrets.DECERN_LLM_API_KEY }}
+          DECERN_LLM_MODEL: \${{ secrets.DECERN_LLM_MODEL }}
+          DECERN_BASE_URL: \${{ secrets.DECERN_BASE_URL }}
+          DECERN_CI_TOKEN: \${{ secrets.DECERN_CI_TOKEN }}
+          CI_PR_URL: \${{ github.event.pull_request.html_url }}`}</Pre>
+
+            <SubTitle>GitLab CI</SubTitle>
+            <Pre title=".gitlab-ci.yml">{`decern-gate:
+  image: node:20
+  stage: test
+  script:
+    - npx decern gate
+  variables:
+    DECERN_LLM_BASE_URL: \$DECERN_LLM_BASE_URL
+    DECERN_LLM_API_KEY: \$DECERN_LLM_API_KEY
+    DECERN_LLM_MODEL: \$DECERN_LLM_MODEL
+    DECERN_BASE_URL: \$DECERN_BASE_URL
+    DECERN_CI_TOKEN: \$DECERN_CI_TOKEN
+  only:
+    - merge_requests`}</Pre>
+
+            <SubTitle>Bitbucket Pipelines</SubTitle>
+            <Pre title="bitbucket-pipelines.yml">{`pipelines:
+  pull-requests:
+    '**':
+      - step:
+          name: Decern Gate
+          image: node:20
+          script:
+            - npx decern gate`}</Pre>
+
+            <SubTitle>Jenkins</SubTitle>
+            <Pre title="Jenkinsfile">{`pipeline {
+  agent { docker { image 'node:20' } }
+  stages {
+    stage('Decern Gate') {
+      steps {
+        sh 'npx decern gate'
+      }
+    }
+  }
+}`}</Pre>
+
+            <SubTitle>Azure DevOps</SubTitle>
+            <Pre title="azure-pipelines.yml">{`trigger: none
+pr:
+  branches:
+    include: ['*']
+pool:
+  vmImage: 'ubuntu-latest'
+steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '20.x'
+  - script: npx decern gate
+    displayName: Decern Gate
+    env:
+      DECERN_LLM_BASE_URL: $(DECERN_LLM_BASE_URL)
+      DECERN_LLM_API_KEY: $(DECERN_LLM_API_KEY)
+      DECERN_LLM_MODEL: $(DECERN_LLM_MODEL)`}</Pre>
           </section>
 
-          {/* ─── LLM Judge ─── */}
-          <section id="judge" className="docs-section">
-            <SectionTitle id="judge">LLM Judge</SectionTitle>
-            <P>
-              The <strong>LLM-as-a-Judge</strong> is an optional step that runs after validation.
-              It uses an LLM to verify that the actual code diff is consistent with the referenced decision.
-            </P>
+          {/* ─── Evaluation ─── */}
+          <section id="evaluation" className="docs-section mt-16">
+            <SectionTitle id="evaluation">How Evaluation Works</SectionTitle>
 
-            <SubTitle>How it works</SubTitle>
-            <ol className="mt-3 ml-5 list-decimal space-y-1.5 text-[0.935rem] text-gray-600 dark:text-gray-300">
-              <li>After validate passes, the CLI builds the full <Code>git diff</Code> (with exclusions and a 2 MB cap).</li>
-              <li>Sends the diff + decision reference + your LLM config to the judge endpoint.</li>
-              <li>The backend calls the LLM with the decision content and diff, asking if they align.</li>
-              <li>Returns <Code>allowed: true/false</Code> with a confidence score and reason.</li>
+            <SubTitle>Step by step</SubTitle>
+            <P>For each PR, the gate:</P>
+            <ol className="mt-3 list-inside list-decimal space-y-2 text-[0.935rem] text-gray-600 dark:text-gray-300">
+              <li>Reads approved ADRs from <Code>docs/adr/*.md</Code></li>
+              <li>Computes the diff (<Code>git diff base...head</Code>)</li>
+              <li><strong>Scope pre-filter</strong>: skips ADRs whose glob patterns don{"'"}t match any changed file (zero LLM cost)</li>
+              <li><strong>Scope-filtered diff</strong>: for each relevant ADR, sends only the diff hunks for matching files (not the full diff)</li>
+              <li><strong>LLM evaluation</strong>: concurrent calls (configurable, default 3) asking the LLM: does this diff respect, violate, or is unrelated to this ADR? Plus a confidence score (0-1).</li>
+              <li><strong>Confidence threshold</strong>: violations with confidence below threshold (default 0.75) are degraded from blocking to warning</li>
+              <li><strong>Signal detection</strong>: in parallel, a separate LLM call scans for new patterns not covered by any ADR (1-3 signals max)</li>
             </ol>
 
-            <SubTitle>BYO LLM</SubTitle>
-            <P>
-              The judge is <strong>Bring Your Own LLM</strong>. You provide the API credentials
-              via environment variables, they are sent in the request body and <strong>never stored</strong>
-              by the backend. Compatible with OpenAI and Anthropic APIs.
-            </P>
-            <EnvTable rows={[
-              { name: "DECERN_GATE_JUDGE_ENABLED", required: true, desc: "Set to true or 1 to enable the judge step." },
-              { name: "DECERN_JUDGE_LLM_BASE_URL", required: true, desc: "LLM API base URL (e.g. https://api.openai.com/v1)." },
-              { name: "DECERN_JUDGE_LLM_API_KEY", required: true, desc: "LLM API key. Never stored or logged." },
-              { name: "DECERN_JUDGE_LLM_MODEL", required: true, desc: "Model name (e.g. gpt-4o-mini, claude-sonnet-4-20250514)." },
-              { name: "DECERN_JUDGE_MIN_CONFIDENCE", required: false, desc: "Min confidence threshold 0–1. Blocks if below." },
-            ]} />
-
-            <SubTitle>Diff exclusions</SubTitle>
-            <P>Before sending, the CLI automatically excludes:</P>
-            <ul className="mt-2 ml-5 list-disc space-y-1 text-[0.935rem] text-gray-600 dark:text-gray-300">
-              <li>Images and heavy assets (<Code>.png</Code>, <Code>.jpg</Code>, <Code>.gif</Code>, <Code>.svg</Code>, <Code>.pdf</Code>, <Code>.woff2</Code>, etc.)</li>
-              <li>Single files larger than 1 MB</li>
-              <li>Total diff capped at 2 MB (truncated with a flag)</li>
-            </ul>
-
-            <SubTitle>Advisory vs Blocking</SubTitle>
-            <P>
-              On the <strong>Free</strong> plan the judge is always <em>advisory</em>, it logs warnings but never blocks the pipeline.
-              On <strong>Enterprise / Self Hosted</strong>, the judge can block if the workspace policy &quot;Judge blocking&quot;
-              is enabled (on by default). When the backend returns <Code>advisory: true</Code>, the CLI passes even if <Code>allowed: false</Code>.
-            </P>
-
-            <SubTitle>Confidence &amp; tolerance</SubTitle>
-            <P>
-              The judge returns a confidence score (0–1). You can set a minimum threshold via
-              <Code> DECERN_JUDGE_MIN_CONFIDENCE</Code> - the gate blocks if the score is below, even when
-              <Code> allowed: true</Code>. Workspace admins can also set a <em>judge tolerance</em> percentage
-              in the workspace policies.
-            </P>
-
-            <SubTitle>Gate runs dashboard</SubTitle>
-            <P>
-              Every judge call is recorded in <strong>Dashboard → Gate runs</strong>. The page shows
-              total PRs checked this month, how many were flagged as out of scope, the overall
-              alignment percentage, and the average judge confidence — plus a table of recent runs
-              with PR title, decision reference, verdict, confidence and one-line reason. Set
-              <Code> CI_PR_TITLE</Code> and <Code>CI_PR_URL</Code> in your CI environment so each
-              run is labeled and links back to the PR. Only verdicts and PR metadata are stored,
-              never the diff or your LLM credentials.
-            </P>
-          </section>
-
-          {/* ─── Roles & Permissions ─── */}
-          <section id="roles" className="docs-section">
-            <div className="rounded-2xl border-2 border-gray-200 bg-gray-50/30 p-6 dark:border-gray-700/50 dark:bg-gray-900/10">
-              <SectionTitle id="roles">Roles &amp; Permissions</SectionTitle>
-              <P>
-                The roles system provides fine-grained control over who can do what inside your workspace.
-                It is available on the <strong>Enterprise / Self Hosted</strong> plan.
-              </P>
-
-              <SubTitle>Two-tier role model</SubTitle>
-              <P>Every workspace member has two distinct roles:</P>
-
-              <div className="mt-4 grid gap-4 sm:grid-cols-2">
-                <div className="rounded-xl border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-800/50">
-                  <p className="text-sm font-bold text-gray-900 dark:text-white">Workspace access role</p>
-                  <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">Controls administration capabilities</p>
-                  <ul className="mt-3 space-y-1.5 text-sm text-gray-600 dark:text-gray-300">
-                    <li><strong>Owner</strong> - full control, generates CI tokens, manages billing.</li>
-                    <li><strong>Admin</strong> - can manage members, update workspace settings.</li>
-                    <li><strong>Member</strong> - basic workspace access.</li>
-                  </ul>
-                </div>
-                <div className="rounded-xl border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-800/50">
-                  <p className="text-sm font-bold text-gray-900 dark:text-white">Decision role</p>
-                  <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">Controls the decision lifecycle</p>
-                  <ul className="mt-3 space-y-1.5 text-sm text-gray-600 dark:text-gray-300">
-                    <li><strong>Approver</strong> - can approve/reject decisions, plus edit.</li>
-                    <li><strong>Contributor</strong> - can create and edit decisions (not approve).</li>
-                    <li><strong>Viewer</strong> - read-only access to decisions.</li>
-                  </ul>
-                </div>
-              </div>
-
-              <SubTitle>How roles are enforced</SubTitle>
-              <P>
-                Roles are enforced at the database level through Row Level Security (RLS) policies.
-                This means permissions are checked on every query, regardless of how the request reaches the database.
-              </P>
-              <ul className="mt-2 ml-5 list-disc space-y-1 text-[0.935rem] text-gray-600 dark:text-gray-300">
-                <li><strong>Creating/editing</strong> decisions requires at least the <em>contributor</em> decision role.</li>
-                <li><strong>Approving/rejecting</strong> decisions requires the <em>approver</em> decision role.</li>
-                <li><strong>Managing members</strong> requires the <em>admin</em> workspace access role or being the owner.</li>
-              </ul>
-
-              <SubTitle>Assigning roles</SubTitle>
-              <P>
-                Roles are assigned when inviting a member or can be changed later from
-                <strong> Workspace → Members</strong>. The workspace owner and admins can modify roles.
-                When inviting, you select both the workspace access role and the decision role.
-              </P>
-
-              <Callout type="info">
-                On the Free plan, all members have full access to create,
-                edit, and approve decisions. Roles become active on the Enterprise / Self Hosted plan.
-              </Callout>
-            </div>
-          </section>
-
-          {/* ─── Policies ─── */}
-          <section id="policies" className="docs-section">
-            <SectionTitle id="policies">Policies</SectionTitle>
-            <P>
-              Workspace policies configure how Decision Gate behaves for your team.
-              They are set in <strong>Workspace → Policies</strong> (Enterprise / Self Hosted plan).
-            </P>
-
+            <SubTitle>Verdict types</SubTitle>
             <div className="mt-4 overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700">
               <table className="w-full text-left text-sm">
                 <thead className="border-b border-gray-200 bg-gray-50 text-xs uppercase tracking-wider text-gray-500 dark:border-gray-700 dark:bg-gray-800/60 dark:text-gray-400">
-                  <tr>
-                    <th className="px-4 py-2.5">Policy</th>
-                    <th className="px-4 py-2.5">Default</th>
-                    <th className="px-4 py-2.5">Description</th>
-                  </tr>
+                  <tr><th className="px-4 py-2.5">Result</th><th className="px-4 py-2.5">Blocks CI?</th><th className="px-4 py-2.5">Description</th></tr>
                 </thead>
                 <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
-                  <tr><td className="px-4 py-2.5 font-mono text-xs">high_impact</td><td className="px-4 py-2.5">on</td><td className="px-4 py-2.5 text-gray-600 dark:text-gray-300">Enforce the gate on high-impact file changes.</td></tr>
-                  <tr><td className="px-4 py-2.5 font-mono text-xs">require_approved</td><td className="px-4 py-2.5">on</td><td className="px-4 py-2.5 text-gray-600 dark:text-gray-300">The referenced decision must have &quot;approved&quot; status.</td></tr>
-                  <tr><td className="px-4 py-2.5 font-mono text-xs">require_linked_pr</td><td className="px-4 py-2.5">off</td><td className="px-4 py-2.5 text-gray-600 dark:text-gray-300">The decision must have at least one linked PR URL.</td></tr>
-                  <tr><td className="px-4 py-2.5 font-mono text-xs">judge_blocking</td><td className="px-4 py-2.5">on</td><td className="px-4 py-2.5 text-gray-600 dark:text-gray-300">LLM Judge can block the pipeline (vs advisory only).</td></tr>
-                  <tr><td className="px-4 py-2.5 font-mono text-xs">judge_tolerance_percent</td><td className="px-4 py-2.5">N/A</td><td className="px-4 py-2.5 text-gray-600 dark:text-gray-300">Confidence tolerance for the judge (0-100%).</td></tr>
+                  <tr><td className="px-4 py-2.5 font-mono text-xs">pass</td><td className="px-4 py-2.5">No</td><td className="px-4 py-2.5">Diff respects the ADR</td></tr>
+                  <tr><td className="px-4 py-2.5 font-mono text-xs">violation + blocking + high confidence</td><td className="px-4 py-2.5 font-semibold text-red-600">Yes</td><td className="px-4 py-2.5">Clear violation, CI fails</td></tr>
+                  <tr><td className="px-4 py-2.5 font-mono text-xs">violation + blocking + low confidence</td><td className="px-4 py-2.5">No</td><td className="px-4 py-2.5">Ambiguous, degraded to warning</td></tr>
+                  <tr><td className="px-4 py-2.5 font-mono text-xs">violation + warning</td><td className="px-4 py-2.5">No</td><td className="px-4 py-2.5">Advisory only, logged</td></tr>
+                  <tr><td className="px-4 py-2.5 font-mono text-xs">unrelated</td><td className="px-4 py-2.5">No</td><td className="px-4 py-2.5">ADR not relevant to this diff</td></tr>
+                  <tr><td className="px-4 py-2.5 font-mono text-xs">skipped</td><td className="px-4 py-2.5">No</td><td className="px-4 py-2.5">Scope pre-filter, no LLM call</td></tr>
+                  <tr><td className="px-4 py-2.5 font-mono text-xs">error</td><td className="px-4 py-2.5">No</td><td className="px-4 py-2.5">LLM failure, fail-open with warning</td></tr>
                 </tbody>
               </table>
             </div>
 
+            <SubTitle>LLM cost</SubTitle>
+            <P>
+              <Code>N</Code> = ADRs that pass scope filter. Total LLM calls = <Code>N + 1</Code> (N evaluations + 1 signal detection). Skipped ADRs cost nothing. With 15 ADRs and 4 matching scope, you make 5 LLM calls per PR.
+            </P>
+
+            <SubTitle>Diff truncation</SubTitle>
+            <P>
+              Diffs are capped at 2MB total (100K chars per ADR evaluation, 80K for signal detection). When truncated, the gate logs: {'"'}Note: the diff was truncated for analysis. Some changes may not have been evaluated.{'"'}
+            </P>
+          </section>
+
+          {/* ─── Signals ─── */}
+          <section id="signals" className="docs-section mt-16">
+            <SectionTitle id="signals">Signal Detection</SectionTitle>
+            <P>
+              Every PR is scanned for new architectural patterns not covered by any existing ADR. This runs in parallel with ADR evaluation — a PR can pass ADR-007, violate ADR-012, AND generate a signal for a new caching pattern, all at the same time.
+            </P>
+            <P>
+              The LLM receives the diff, the list of existing ADR titles + decision summaries, and is asked: {'"'}does this diff introduce something architecturally significant not covered by the existing ADRs?{'"'} It returns 0-3 signals.
+            </P>
+            <SubTitle>What counts as a signal</SubTitle>
+            <ul className="mt-3 list-inside list-disc space-y-1 text-[0.935rem] text-gray-600 dark:text-gray-300">
+              <li>New external dependency (library, framework, service)</li>
+              <li>New structural pattern (layer, abstraction boundary, module system)</li>
+              <li>New technology (first gRPC, first message queue, first IaC)</li>
+              <li>New convention not covered by existing ADRs</li>
+            </ul>
+            <SubTitle>What does NOT count</SubTitle>
+            <ul className="mt-3 list-inside list-disc space-y-1 text-[0.935rem] text-gray-600 dark:text-gray-300">
+              <li>Bug fixes, refactors, renames, style changes</li>
+              <li>Patch version updates</li>
+              <li>Tests, docs, comments</li>
+              <li>Routine feature work following existing patterns</li>
+            </ul>
+
+            <SubTitle>Dashboard flow</SubTitle>
+            <P>
+              Signals appear in the Signals page grouped by repo. The tech lead can:
+            </P>
+            <ul className="mt-3 list-inside list-disc space-y-1 text-[0.935rem] text-gray-600 dark:text-gray-300">
+              <li><strong>Generate draft ADR</strong> (Enterprise) — cloud LLM creates a full ADR markdown from the signal(s)</li>
+              <li><strong>Create PR</strong> (GitHub) — commits the ADR file to the repo via a PR</li>
+              <li><strong>Copy markdown</strong> — for non-GitHub repos, copy and commit manually</li>
+              <li><strong>Dismiss</strong> — mark as not a real architectural decision</li>
+            </ul>
+          </section>
+
+          {/* ─── Lifecycle ─── */}
+          <section id="lifecycle" className="docs-section mt-16">
+            <SectionTitle id="lifecycle">ADR Lifecycle</SectionTitle>
+            <P>
+              ADRs follow a status flow. Only <Code>approved</Code> ADRs are enforced by the gate.
+            </P>
+            <Pre>{`proposed → approved → superseded
+                ↘ rejected`}</Pre>
+
+            <SubTitle>Lifecycle from the dashboard</SubTitle>
+            <P>
+              The ADR detail drawer shows contextual action buttons. Each action generates a markdown preview that you can edit, then either copy or create a PR (GitHub).
+            </P>
+            <div className="mt-4 overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700">
+              <table className="w-full text-left text-sm">
+                <thead className="border-b border-gray-200 bg-gray-50 text-xs uppercase tracking-wider text-gray-500 dark:border-gray-700 dark:bg-gray-800/60 dark:text-gray-400">
+                  <tr><th className="px-4 py-2.5">Current state</th><th className="px-4 py-2.5">Actions available</th></tr>
+                </thead>
+                <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
+                  <tr><td className="px-4 py-2.5 font-mono text-xs">proposed + warning</td><td className="px-4 py-2.5">Approve, Reject</td></tr>
+                  <tr><td className="px-4 py-2.5 font-mono text-xs">approved + warning</td><td className="px-4 py-2.5">Promote to blocking, Supersede</td></tr>
+                  <tr><td className="px-4 py-2.5 font-mono text-xs">approved + blocking</td><td className="px-4 py-2.5">Demote to warning, Supersede</td></tr>
+                  <tr><td className="px-4 py-2.5 font-mono text-xs">superseded / rejected</td><td className="px-4 py-2.5">No actions (terminal states)</td></tr>
+                </tbody>
+              </table>
+            </div>
             <Callout type="info">
-              On the Free plan, the gate always runs in observation mode (warnings only, never blocks).
-              Policies become effective on the Enterprise / Self Hosted plan.
+              Every lifecycle action creates a PR on the repo. Nothing changes without a merge. The suggested branch name is shown in the preview.
             </Callout>
           </section>
 
-          {/* ─── GitHub Sync ─── */}
-          <section id="github-sync" className="docs-section">
-            <SectionTitle id="github-sync">GitHub Sync</SectionTitle>
+          {/* ─── Multi-Repo ─── */}
+          <section id="multi-repo" className="docs-section mt-16">
+            <SectionTitle id="multi-repo">Multi-Repo</SectionTitle>
             <P>
-              Decern can sync decisions as ADR markdown files in your GitHub repository, and vice versa.
+              A workspace can host multiple repos. Each repo has its own <Code>docs/adr/</Code> tree. ADRs are scoped per-repo — two repos can both have <Code>ADR-001</Code> without collision.
             </P>
-
-            <SubTitle>Setup</SubTitle>
-            <ol className="mt-3 ml-5 list-decimal space-y-1.5 text-[0.935rem] text-gray-600 dark:text-gray-300">
-              <li>Connect your GitHub account from <strong>Settings → GitHub</strong>.</li>
-              <li>When creating a project, select the linked repository.</li>
-              <li>Decisions with an <Code>ADR ref</Code> (e.g. <Code>ADR-001</Code>) will be committed as markdown files.</li>
-            </ol>
-
-            <SubTitle>ADR format</SubTitle>
             <P>
-              Synced files follow the standard ADR markdown format:
+              Repos connect implicitly: any repo that presents the workspace{"'"}s CI token is associated with that workspace. No explicit {'"'}add repo{'"'} UI — the first gate run or ADR sync from a repo makes it appear.
             </P>
-            <Pre title="docs/decisions/ADR-001.md">{`# ADR-001: Adopt PostgreSQL for user data
-
-## Status
-Approved
-
-## Context
-We need a reliable relational database for user data
-that supports complex queries and strong consistency.
-
-## Decision
-We will use PostgreSQL as our primary database.
-
-## Consequences
-- Strong ACID compliance
-- Rich ecosystem of tools and extensions
-- Team already has PostgreSQL expertise`}</Pre>
-
-            <SubTitle>Webhook sync</SubTitle>
             <P>
-              Decern installs a GitHub webhook to detect when ADR files are pushed to the repository.
-              Changes to ADR files in the repo are automatically synced back to the Decern dashboard.
+              Repository identifier format: <Code>github.com/owner/repo</Code>, <Code>gitlab.com/group/project</Code>. Detected automatically from <Code>GITHUB_REPOSITORY</Code> (in CI) or <Code>git remote.origin.url</Code> (local).
             </P>
           </section>
 
-          {/* ─── Self Hosted ─── */}
-          <section id="self-hosted" className="docs-section">
-            <SectionTitle id="self-hosted">Self Hosted</SectionTitle>
+          {/* ─── Dashboard ─── */}
+          <section id="dashboard" className="docs-section mt-16">
+            <SectionTitle id="dashboard">Dashboard</SectionTitle>
+            <SubTitle>ADRs</SubTitle>
             <P>
-              Decern is distributed as a <strong>Docker image</strong> for self-hosted deployments.
-              The image includes all features (Decision Gate, Judge, GitHub Sync, AI generation,
-              Roles, Policies) with unlimited members. You run the container on your
-              infrastructure, and no source code is exposed.
+              View all ADRs across repos. Collapsible accordion per repo with search bar. Each repo header shows counts (total, blocking, proposed) and a Sync button (GitHub repos). Click an ADR to open the detail drawer with full body, lifecycle actions, and raw markdown.
+            </P>
+            <SubTitle>Signals</SubTitle>
+            <P>
+              New architectural decisions detected in PRs. Grouped by repo. Generate draft ADR (Enterprise), create PR, or dismiss. Resolved signals (formalized or dismissed) shown at the bottom.
+            </P>
+            <SubTitle>Gate Runs</SubTitle>
+            <P>
+              Evidence records from CI. Stats (total, passed, warned, blocked) for the current month. Table with verdict badges, PR link, repo, and a detail modal showing commit SHA, CI provider, author, ADRs evaluated, and files changed.
+            </P>
+            <SubTitle>Workspace</SubTitle>
+            <P>
+              CI token management (generate, revoke). Evidence retention policy (days). Member management (invite, roles). Signing key warning if not configured.
+            </P>
+          </section>
+
+          {/* ─── Evidence ─── */}
+          <section id="evidence" className="docs-section mt-16">
+            <SectionTitle id="evidence">Evidence Chain</SectionTitle>
+            <P>
+              Every gate run produces an immutable evidence record with:
+            </P>
+            <ul className="mt-3 list-inside list-disc space-y-1 text-[0.935rem] text-gray-600 dark:text-gray-300">
+              <li>All ADRs evaluated, each verdict with confidence score, enforcement level, and reason</li>
+              <li>Diff hash (SHA-256) and files touched</li>
+              <li>Author identity from CI metadata</li>
+              <li>Timestamp with microsecond precision</li>
+              <li>Hash chain: each record{"'"}s <Code>previous_evidence_hash</Code> points to the preceding record</li>
+              <li>Ed25519 signature (algorithm, key_id, value)</li>
+            </ul>
+
+            <SubTitle>Export</SubTitle>
+            <P>
+              <Code>GET /api/evidence/export?from=...&amp;to=...</Code> returns a JSON bundle containing records, access logs, chain tip, manifest, and public keys. The manifest includes <Code>signing_key_type: {'"'}persistent{'"'} | {'"'}ephemeral{'"'}</Code> so auditors can verify integrity.
             </P>
 
-            <SubTitle>Quick start</SubTitle>
-            <ol className="mt-3 ml-5 list-decimal space-y-2 text-[0.935rem] text-gray-600 dark:text-gray-300">
-              <li>Contact <a href="mailto:support@decern.dev" className="docs-link">support@decern.dev</a> to get access to the container registry (<Code>ghcr.io/decernhq/decern</Code>).</li>
-              <li>Create a <strong>Supabase</strong> project (hosted at <a href="https://supabase.com" className="docs-link" target="_blank" rel="noopener noreferrer">supabase.com</a> or self-hosted).</li>
-              <li>Run the database migrations against your Supabase instance.</li>
-              <li>Create an <Code>.env</Code> file with your configuration (see below).</li>
-              <li>Start the container.</li>
-            </ol>
+            <SubTitle>Verification</SubTitle>
+            <Pre title="Terminal">{`npx decern verify-evidence evidence-export.json`}</Pre>
+            <P>Verifies hash chain continuity and Ed25519 signatures offline.</P>
 
-            <Pre title="docker-compose.yml">{`services:
-  decern:
-    image: ghcr.io/decernhq/decern:latest
-    ports:
-      - "3000:3000"
-    env_file:
-      - .env
-    environment:
-      - NEXT_PUBLIC_SELF_HOSTED=true
-    restart: unless-stopped`}</Pre>
-            <Pre title="Terminal">{`docker compose up -d`}</Pre>
-
-            <SubTitle>Required environment variables</SubTitle>
-            <EnvTable rows={[
-              { name: "NEXT_PUBLIC_SUPABASE_URL", required: true, desc: "Your Supabase project URL." },
-              { name: "NEXT_PUBLIC_SUPABASE_ANON_KEY", required: true, desc: "Supabase anonymous key." },
-              { name: "SUPABASE_SERVICE_ROLE_KEY", required: true, desc: "Supabase service role key (server-only)." },
-              { name: "SUPABASE_WEBHOOK_SECRET", required: true, desc: "From DB after migration 00014: SELECT secret FROM app_webhook_secret;" },
-              { name: "NEXT_PUBLIC_APP_URL", required: true, desc: "The public URL of your instance (e.g. https://decern.yourcompany.com)." },
-              { name: "NEXT_PUBLIC_SELF_HOSTED", required: true, desc: "Set to true (set automatically by the Docker entrypoint)." },
-            ]} />
-
-            <SubTitle>GitHub integration (recommended)</SubTitle>
-            <P>
-              To enable ADR sync and repository linking, create a
-              <a href="https://github.com/settings/developers" className="docs-link" target="_blank" rel="noopener noreferrer"> GitHub OAuth App</a> and
-              set these variables:
-            </P>
-            <EnvTable rows={[
-              { name: "GITHUB_CLIENT_ID", required: true, desc: "OAuth App client ID." },
-              { name: "GITHUB_CLIENT_SECRET", required: true, desc: "OAuth App client secret." },
-              { name: "GITHUB_WEBHOOK_SECRET", required: false, desc: "Secret for verifying GitHub push webhooks." },
-            ]} />
-            <Callout type="tip">
-              Set the OAuth callback URL to <Code>https://your-instance/api/github/callback</Code>.
+            <SubTitle>Signing key</SubTitle>
+            <P>Generate a persistent Ed25519 signing key:</P>
+            <Pre title="Terminal">{`node -e "console.log(require('crypto').randomBytes(32).toString('base64'))"`}</Pre>
+            <P>Add to your environment:</P>
+            <Pre>{`DECERN_EVIDENCE_SIGNING_KEY=K7x2mFp3Q1nR8vYb...==`}</Pre>
+            <Callout type="warn">
+              Without this key, evidence is signed with an ephemeral key that changes on server restart. Signatures will not be verifiable across restarts. The dashboard shows a warning banner when the key is not configured.
             </Callout>
-
-            <SubTitle>AI features</SubTitle>
-            <P>
-              AI decision generation and the fair-use Judge fallback require an OpenAI-compatible API key.
-            </P>
-            <EnvTable rows={[
-              { name: "OPEN_AI_API_KEY", required: false, desc: "OpenAI API key for AI features." },
-              { name: "OPEN_AI_MODEL", required: false, desc: "Model name (default: gpt-4o-mini)." },
-              { name: "DECERN_LLM_CREDENTIALS_ENCRYPTION_KEY", required: false, desc: "Base64 key (32 bytes) to encrypt BYO LLM credentials in DB. Generate with: openssl rand -base64 32" },
-            ]} />
-
-            <SubTitle>Database migrations</SubTitle>
-            <P>
-              The Supabase migrations are provided separately. Apply them to your Supabase instance
-              using the Supabase CLI or by running the SQL files in order:
-            </P>
-            <Pre title="Terminal">{`# With Supabase CLI (if using Supabase hosted)
-supabase db push
-
-# Or apply manually: run each file in supabase/migrations/ in order
-# 00001_create_profiles.sql through 00038_projects_create_roles.sql`}</Pre>
-
-            <SubTitle>Plan &amp; features</SubTitle>
-            <P>
-              Licensed self-hosted instances automatically unlock the <strong>enterprise</strong> tier,
-              all features are enabled with no limits. No Stripe setup is required
-              unless you want to manage internal billing for your organization.
-            </P>
-
-            <SubTitle>Updating</SubTitle>
-            <Pre title="Terminal">{`docker compose pull
-docker compose up -d`}</Pre>
-
-            <P>
-              For pricing, license inquiries, or dedicated support contact{" "}
-              <a href="mailto:support@decern.dev" className="docs-link">support@decern.dev</a>.
-            </P>
           </section>
 
-          {/* ─── Footer ─── */}
-          <div className="mt-16 flex flex-col items-center gap-4 border-t border-gray-200 pt-8 dark:border-gray-700">
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              Ready to get started?
-            </p>
-            <div className="flex gap-3">
+          {/* ─── Models ─── */}
+          <section id="models" className="docs-section mt-16">
+            <SectionTitle id="models">Recommended Models</SectionTitle>
+            <P>
+              The gate quality depends directly on the LLM. Tested and recommended for production:
+            </P>
+            <ul className="mt-3 list-inside list-disc space-y-1 text-[0.935rem] text-gray-600 dark:text-gray-300">
+              <li><Code>claude-sonnet-4-6</Code>, <Code>claude-opus-4-6</Code> (Anthropic)</li>
+              <li><Code>gpt-4o</Code>, <Code>gpt-4.1</Code>, <Code>gpt-5</Code> (OpenAI)</li>
+              <li><Code>gemini-2.5-pro</Code> (Google)</li>
+            </ul>
+            <P>
+              Smaller models (<Code>gpt-4o-mini</Code>, <Code>claude-haiku</Code>) work but produce significantly more false negatives — violations that the model misses. A runtime warning is logged in CI when using a non-recommended model.
+            </P>
+            <Callout type="info">
+              The LLM is BYO (Bring Your Own). You provide the API key, Decern calls the API per-request. Keys stay in your CI environment, never stored by Decern.
+            </Callout>
+          </section>
+
+          {/* ─── Self-Hosted ─── */}
+          <section id="self-hosted" className="docs-section mt-16">
+            <SectionTitle id="self-hosted">Self-Hosted</SectionTitle>
+            <P>
+              Enterprise customers can deploy Decern on their own infrastructure (VPC, air-gapped). The gate CLI runs in your CI as always. The dashboard and cloud API run on your servers.
+            </P>
+
+            <SubTitle>Requirements</SubTitle>
+            <ul className="mt-3 list-inside list-disc space-y-1 text-[0.935rem] text-gray-600 dark:text-gray-300">
+              <li>Node.js 20+</li>
+              <li>PostgreSQL 15+ (Supabase or standalone)</li>
+              <li>BYO LLM endpoint accessible from CI</li>
+            </ul>
+
+            <SubTitle>Key environment variables</SubTitle>
+            <EnvTable rows={[
+              { name: "NEXT_PUBLIC_SUPABASE_URL", required: true, desc: "Supabase project URL" },
+              { name: "NEXT_PUBLIC_SUPABASE_ANON_KEY", required: true, desc: "Supabase anon key" },
+              { name: "SUPABASE_SERVICE_ROLE_KEY", required: true, desc: "Supabase service role key" },
+              { name: "DECERN_EVIDENCE_SIGNING_KEY", required: true, desc: "Ed25519 seed (32 bytes, base64) for persistent evidence signatures" },
+              { name: "CLOUD_LLM_API_KEY", required: false, desc: "Anthropic key for draft ADR generation (Enterprise feature)" },
+              { name: "CLOUD_LLM_MODEL", required: false, desc: "Model for draft generation (default: claude-sonnet-4-6)" },
+              { name: "CRON_SECRET", required: false, desc: "Bearer token for cron endpoints (evidence archival)" },
+            ]} />
+            <Callout type="warn">
+              No data leaves your infrastructure unless you configure an external LLM endpoint. The gate CLI calls the LLM directly from CI; the cloud dashboard calls the LLM only for Enterprise draft generation.
+            </Callout>
+          </section>
+
+          {/* ─── Plans ─── */}
+          <section id="plans" className="docs-section mt-16">
+            <SectionTitle id="plans">Plans</SectionTitle>
+            <div className="mt-4 overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700">
+              <table className="w-full text-left text-sm">
+                <thead className="border-b border-gray-200 bg-gray-50 text-xs uppercase tracking-wider text-gray-500 dark:border-gray-700 dark:bg-gray-800/60 dark:text-gray-400">
+                  <tr><th className="px-4 py-2.5">Feature</th><th className="px-4 py-2.5">Free</th><th className="px-4 py-2.5">Enterprise</th></tr>
+                </thead>
+                <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
+                  <tr><td className="px-4 py-2.5">Workspaces</td><td className="px-4 py-2.5">1</td><td className="px-4 py-2.5">Unlimited</td></tr>
+                  <tr><td className="px-4 py-2.5">Developers</td><td className="px-4 py-2.5">3</td><td className="px-4 py-2.5">Unlimited</td></tr>
+                  <tr><td className="px-4 py-2.5">ADRs + gate runs</td><td className="px-4 py-2.5">Unlimited</td><td className="px-4 py-2.5">Unlimited</td></tr>
+                  <tr><td className="px-4 py-2.5">CI blocking</td><td className="px-4 py-2.5">Yes</td><td className="px-4 py-2.5">Yes</td></tr>
+                  <tr><td className="px-4 py-2.5">Signal detection</td><td className="px-4 py-2.5">Yes</td><td className="px-4 py-2.5">Yes</td></tr>
+                  <tr><td className="px-4 py-2.5">Evidence chain + export</td><td className="px-4 py-2.5">Yes</td><td className="px-4 py-2.5">Yes</td></tr>
+                  <tr><td className="px-4 py-2.5">Draft ADR from signals</td><td className="px-4 py-2.5 text-gray-400">No</td><td className="px-4 py-2.5">Cloud LLM</td></tr>
+                  <tr><td className="px-4 py-2.5">Create PR from dashboard</td><td className="px-4 py-2.5 text-gray-400">No</td><td className="px-4 py-2.5">GitHub</td></tr>
+                  <tr><td className="px-4 py-2.5">Self-hosted</td><td className="px-4 py-2.5 text-gray-400">No</td><td className="px-4 py-2.5">VPC / air-gapped</td></tr>
+                  <tr><td className="px-4 py-2.5">SSO</td><td className="px-4 py-2.5 text-gray-400">No</td><td className="px-4 py-2.5">SAML, OIDC</td></tr>
+                  <tr><td className="px-4 py-2.5">Support</td><td className="px-4 py-2.5">Community</td><td className="px-4 py-2.5">Dedicated with SLA</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div className="mt-8 flex gap-4">
               <a href={appPath("/signup")}>
-                <Button>Create free account</Button>
+                <Button>Start free</Button>
               </a>
               <Link href="/pricing">
-                <Button variant="outline">View pricing</Button>
+                <Button variant="outline">See pricing</Button>
               </Link>
             </div>
-          </div>
+          </section>
+
         </article>
       </div>
     </main>

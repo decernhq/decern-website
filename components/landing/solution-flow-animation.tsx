@@ -22,8 +22,8 @@ export function SolutionFlowAnimation({
   judgeLabel,
   outcomeLabel,
 }: {
-  steps: [string, string, string, string];
-  stepBodies: [string, string, string, string];
+  steps: string[];
+  stepBodies: string[];
   judgeLabel: string;
   outcomeLabel: string;
 }) {

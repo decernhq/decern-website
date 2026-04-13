@@ -201,8 +201,8 @@ export default async function LandingPage() {
           </FadeIn>
           <div className="mt-14">
             <SolutionFlowAnimation
-              steps={[t("solution.step1Title"), t("solution.step2Title"), t("solution.step3Title"), t("solution.step4Title")]}
-              stepBodies={[t("solution.flowStep1Desc"), t("solution.flowStep2Desc"), t("solution.flowStep3Desc"), t("solution.flowStep4Desc")]}
+              steps={[t("solution.step1Title"), t("solution.step2Title"), t("solution.step3Title")]}
+              stepBodies={[t("solution.flowStep1Desc"), t("solution.flowStep2Desc"), t("solution.flowStep3Desc")]}
               judgeLabel={t("solution.flowJudgeLabel")}
               outcomeLabel={t("solution.flowOutcome")}
             />
