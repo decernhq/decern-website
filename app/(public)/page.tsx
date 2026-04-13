@@ -145,16 +145,18 @@ export default async function LandingPage() {
 
       {/* ── No ADRs yet? ─────────────────────────────────────────── */}
       <section className="scroll-mt-20 border-y border-brand-100/60 bg-brand-50/30 px-4 py-16 dark:border-white/10 dark:bg-white/[0.03] sm:py-24">
-        <div className="mx-auto max-w-3xl text-center">
+        <div className="mx-auto max-w-3xl">
           <FadeIn>
-            <Eyebrow>{t("noAdrs.eyebrow")}</Eyebrow>
-            <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">{t.rich("noAdrs.title", { br: () => <br /> })}</h2>
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-gray-600 dark:text-gray-300">
+            <div className="text-center">
+              <Eyebrow>{t("noAdrs.eyebrow")}</Eyebrow>
+              <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">{t.rich("noAdrs.title", { br: () => <br /> })}</h2>
+            </div>
+            <p className="mt-5 text-base leading-relaxed text-gray-600 dark:text-gray-300">
               {t("noAdrs.body")}
             </p>
           </FadeIn>
           <FadeIn delay={100}>
-            <div className="mt-8">
+            <div className="mt-8 text-center">
               <a href="#solution">
                 <Button variant="outline" className="h-10 px-6">{t("noAdrs.cta")}</Button>
               </a>
@@ -200,11 +202,13 @@ export default async function LandingPage() {
 
       {/* ── Why Now ──────────────────────────────────────────────── */}
       <section className="scroll-mt-20 border-y border-gray-900/10 bg-gray-900/[0.03] px-4 py-16 dark:border-white/10 dark:bg-white/[0.03] sm:py-24">
-        <div className="mx-auto max-w-3xl text-center">
+        <div className="mx-auto max-w-3xl">
           <FadeIn>
-            <Eyebrow>{t("whyNow.eyebrow")}</Eyebrow>
-            <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-3xl">{t.rich("whyNow.title", { br: () => <br /> })}</h2>
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-gray-600 dark:text-gray-300">
+            <div className="text-center">
+              <Eyebrow>{t("whyNow.eyebrow")}</Eyebrow>
+              <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-3xl">{t.rich("whyNow.title", { br: () => <br /> })}</h2>
+            </div>
+            <p className="mt-5 text-base leading-relaxed text-gray-600 dark:text-gray-300">
               {t("whyNow.body")}
             </p>
           </FadeIn>
@@ -256,15 +260,13 @@ export default async function LandingPage() {
             <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">{t("audit.title")}</h2>
           </FadeIn>
           <FadeIn delay={100}>
-            <p className="mt-8 text-center text-base leading-relaxed text-gray-600 dark:text-gray-300">
+            <p className="mt-8 text-base leading-relaxed text-gray-600 dark:text-gray-300">
               {t("audit.body1")}
             </p>
-            <p className="mt-4 text-center text-base leading-relaxed text-gray-600 dark:text-gray-300">
+            <p className="mt-4 text-base leading-relaxed text-gray-600 dark:text-gray-300">
               {t("audit.body2")}
             </p>
-          </FadeIn>
-          <FadeIn delay={200}>
-            <p className="mt-8 text-center text-sm font-medium text-gray-500 dark:text-gray-400">
+            <p className="mt-6 text-sm font-medium text-gray-500 dark:text-gray-400">
               {t("audit.badgeLine")}
             </p>
           </FadeIn>
