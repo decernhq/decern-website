@@ -270,7 +270,7 @@
     "noAdrs": {
       "eyebrow": "Non hai ADR?",
       "title": "Non hai ADR?<br></br>Decern le estrae dal tuo codice.",
-      "body": "La maggior parte dei team ha decine di decisioni architetturali implicite mai scritte \u2014 quale database usare, dove vive la business logic, quali pattern sono approvati. Lancia `decern init` e Decern analizza struttura, dipendenze, git history ed entry point per proporre 15-25 bozze di ADR. Le rivedi una per una, approvi o skip, e committi quelle che contano. In 30 minuti passi da zero ADR a un baseline architetturale enforciata.",
+      "body": "Una ADR (Architecture Decision Record) è un breve file markdown che cattura una decisione tecnica del tuo team: cosa avete scelto, perché, e quali sono i trade-off. Vive nel repo accanto al codice che governa. La maggior parte dei team ha decine di queste decisioni ma non le ha mai scritte \u2014 quale database usare, dove vive la business logic, quali pattern sono approvati. Lancia `decern init` e Decern analizza struttura, dipendenze, git history ed entry point per proporre 15-25 bozze di ADR. Le rivedi una per una, approvi o skip, e committi quelle che contano. In 30 minuti passi da zero ADR a un baseline architetturale enforciata.",
       "cta": "Come funziona il bootstrap"
     },
     "whyNow": {
